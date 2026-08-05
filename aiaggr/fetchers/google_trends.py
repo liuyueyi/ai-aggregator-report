@@ -5,6 +5,25 @@ import time
 
 from .base import BaseFetcher, Signal, normalize_score
 
+
+def _patch_urllib3_retry_alias() -> None:
+    """urllib3 2.0 把 Retry.method_whitelist 改名 allowed_methods，pytrends 4.9.2 仍用旧名。
+    在导入 pytrends 前把旧关键字翻译成新关键字，保证十acity>=8/urllib3>=2 下可运行。"""
+    try:
+        import urllib3.util.retry as ur
+    except ImportError:
+        return
+    retry_init = ur.Retry.__init__
+
+    def _compat_init(self, *args, **kwargs):  # noqa: ANN001
+        if "method_whitelist" in kwargs:
+            kwargs.setdefault("allowed_methods", kwargs.pop("method_whitelist"))
+        retry_init(self, *args, **kwargs)
+
+    if "method_whitelist" not in getattr(ur.Retry, "_method_whitelist_compat", ()):
+        ur.Retry.__init__ = _compat_init
+        ur.Retry._method_whitelist_compat = True
+
 # 关注关键词集：跨 7 天比较前半周 vs 后半周 hourly 均值的增幅
 SEED_KEYWORDS = [
     "ai agent", "claude code", "llm local", "vibe coding", "indie hackers",
@@ -32,6 +51,7 @@ class GoogleTrendsFetcher(BaseFetcher):
         return await asyncio.to_thread(self._fetch_sync)
 
     def _fetch_sync(self) -> list[Signal]:
+        _patch_urllib3_retry_alias()
         from pytrends.request import TrendReq  # noqa: PLC0415
 
         conf = self.config
