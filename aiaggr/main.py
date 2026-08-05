@@ -188,6 +188,13 @@ async def amain(args, cfg) -> dict:
     if args.mock_llm:
         settings["mock"] = True
 
+    if settings["mock"]:
+        print("→ LLM: 未启用（mock 模式，不调用模型）")
+    elif not settings["api_key"]:
+        print("→ LLM: 未配置 LLM_API_KEY（将按降级/规则路径运行）")
+    else:
+        print(f"→ LLM: 已启用 · 模型: {settings['model'] or '(未配置 LLM_MODEL)'} · 接口: {settings['base_url'] or '(未配置 LLM_BASE_URL)'}")
+
     base = {
         "exit_code": 0,
         "date": date,

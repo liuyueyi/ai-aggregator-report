@@ -11,7 +11,7 @@
 
 ## 一、一次性准备：配置 Secrets
 
-在仓库 **Settings → Secrets and variables → Actions** 中配置（Secrets 用 `Actions secrets`，公开值用 `Variables`）：
+在仓库 **Settings → Secrets and variables → Actions** 中配置（Secrets 用 `Actions secrets`，公开值用 `Variables`，放在 Repository secrets下）：
 
 | 名称 | 类型 | 是否必填 | 说明 |
 |---|---|---|---|

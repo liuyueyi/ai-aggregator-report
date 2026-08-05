@@ -29,6 +29,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Show LLM configuration
+        run: |
+          if [ -n "${{ secrets.LLM_API_KEY }}" ]; then
+            echo "LLM: enabled (LLM_API_KEY configured)"
+          else
+            echo "LLM: disabled (no LLM_API_KEY; pipeline runs in degraded/mock path)"
+          fi
+          echo "LLM_MODEL: ${{ vars.LLM_MODEL || secrets.LLM_MODEL }}"
+          echo "LLM_BASE_URL: ${{ vars.LLM_BASE_URL || secrets.LLM_BASE_URL }}"
+
       - name: Run pipeline
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
