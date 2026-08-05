@@ -37,7 +37,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FEISHU_WEBHOOK_URLS: ${{ secrets.FEISHU_WEBHOOK_URLS }}
           PAGES_URL: ${{ vars.PAGES_URL }}
-        run: python -m aiaggr.main
+          # GitHub Actions 非 TTY，Python 默认块缓冲会导致日志滞留缓冲区，run 页面看似空白
+          PYTHONUNBUFFERED: "1"
+        run: python -u -m aiaggr.main
+
+      - name: Write run summary
+        if: always()
+        run: |
+          echo "### Daily Report 执行结果" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          if [ -d report ]; then
+            find report -name "*.md" ! -name "index.md" -printf "%T@ %p\n" | sort -rn | head -10 | sed 's|^[0-9.]* ||; s|^|- |' >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ ${{ job.status }} = "success" ]; then
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+            echo "✅ 生成成功" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       - name: Commit reports and state
         run: |
