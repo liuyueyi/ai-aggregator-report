@@ -50,6 +50,8 @@ uv pip install --python .venv/Scripts/python.exe -r requirements.txt
 # 2. 配置 LLM
 cp .env.example .env
 #   编辑 .env，至少填 LLM_API_KEY / LLM_BASE_URL / LLM_MODEL
+# 验证llm配置是否准确
+.venv/Scripts/python.exe scripts/llm_check.py "介绍下你自己"
 
 # 3. 跑一次（生成全部主题日报）
 .venv/Scripts/python.exe -m aiaggr.main
