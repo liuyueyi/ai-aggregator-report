@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <head>
+    <title>User Sources</title>
+  </head>
+  <body>
+    <!--
+      自定义订阅源示例：只 xmlUrl 必填（标准 RSS/Atom），可直接从 Feedly / Inoreader 导出。
+      可选字段：
+        - text / title : 源显示名
+        - userId / turbo    : 忽略
+      主题归属：默认进入 general 主题。
+        如需映射到指定主题，在 config.yaml 的 opml.topic_map 里配置
+        「关键字 -> 主题」，或在此给 outline 加属性 data-topic="ai_daily"。
+    -->
+    <outline type="rss" text="Simon Willison" title="Simon Willison"
+             xmlUrl="https://simonwillison.net/atom/everything/" />
+    <outline type="rss" text="NYT Chinese" title="NYT Chinese"
+             xmlUrl="https://cn.nytimes.com/rss/" />
+  </body>
+</opml>

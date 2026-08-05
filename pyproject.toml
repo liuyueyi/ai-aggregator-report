@@ -1,0 +1,13 @@
+[project]
+name = "ai-aggregator-report"
+version = "0.1.0"
+description = "基于 LLM 的多源热点采集与多主题日报生成引擎"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "ai-aggregator-report" }]
+
+[project.scripts]
+aiaggr = "aiaggr.main:main"
+
+[tool.setuptools]
+packages = ["aiaggr", "aiaggr.fetchers"]

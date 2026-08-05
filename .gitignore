@@ -1,0 +1,60 @@
+# ==========================================================================
+# ai-aggregator-report .gitignore
+# 注意：.state/、report/、manifest.json、feed.xml、index.html 必须提交 git
+# （CI 跨日去重 + GitHub Pages 依赖它们），不要在此忽略。
+# ==========================================================================
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ---- 虚拟环境 ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- 密钥与环境变量（保留 .env.example）----
+.env
+.env.*
+!.env.example
+
+# ---- 运行时临时产物（采集/调试输出）----
+*.log
+.collect_*.json
+.collect_*.log
+.deep_test.json
+_signals_dump.md
+_signals_full.md
+_deep_dump.md
+
+# ---- 用户自定义订阅源（保留 .example）----
+user_sources.opml
+!user_sources.opml.example
+
+# ---- 参照项目（不参与运行，仅作参考）----
+ref/
+
+# ---- 本地 Agent 辅助目录 ----
+.sisyphus/
+.agent/
+.agents/
+.opencode/
+
+# ---- 操作系统 / 编辑器 ----
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo

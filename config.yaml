@@ -1,0 +1,343 @@
+# ==========================================================================
+# ai-aggregator-report 主配置
+# LLM 密钥通过 _env 读取（值为 .env 里的环境变量名），勿在此写明文。
+# ==========================================================================
+
+# ---- LLM 配置（OpenAI 兼容协议）----
+llm:
+  api_key_env: LLM_API_KEY
+  base_url_env: LLM_BASE_URL
+  model_env: LLM_MODEL
+  timeout: 60            # 单次请求超时（秒）
+  temperature: 0.55      # 日报生成温度
+  mock: false            # 设 true（或环境变量 AGGR_MOCK_LLM=1）可无 key 跑通管线
+  max_retries: 4         # tenacity 指数退避重试次数
+
+# ---- 时区（日报按本地日期归属）----
+timezone: Asia/Shanghai
+
+# ---- 去重与幂等 ----
+dedup:
+  window_days: 7          # 跨日去重窗口：N 天内已产出过该信号则不再进今日日报
+  cross_day_exclude: true # true=直接排除；false=仅标记不排除
+  ignore_tracking: true   # 去重时忽略 utm_*/fbclid/ref 等跟踪参数
+
+# ---- 输出 ----
+report:
+  dir: report             # 统一输出根目录 report/
+  # 输出结构 report/YYYY/MM/DD/{topic}.md + index.md
+
+# ---- 状态（幂等/跨日去重持久化文件，随 git 提交以便 CI 连续去重）----
+state:
+  dir: .state
+  seen_file: seen.jsonl       # 每日已产出信号指纹
+  taglines_file: taglines.jsonl
+
+# ---- 站点产物（Web UI + RSS）----
+# 每次生成日报后重建 manifest.json（Web UI 数据源）与 feed.xml（RSS 订阅）。
+site:
+  enabled: true
+  base_url: ""                # 部署根 URL，如 https://<user>.github.io/<repo>；也可用 PAGES_URL env
+
+# ---- GitHub 生态追踪（专题报告 ai-cli.md / ai-agents.md）----
+# 抓取 AI CLI 工具 + Claude Code Skills + OpenClaw/AI Agent 生态的 Issues/PRs/Releases。
+# 留空则使用内置默认仓库列表（见 aiaggr/fetchers/github_tracker.py）。
+tracking:
+  enabled: true
+  window_hours: 24
+  cli_repos: []               # [{repo: owner/repo, name: 显示名}, ...]
+  skills_repo: {}             # {repo: anthropics/skills, name: Claude Code Skills}
+  agents_repos: []            # 同赛道 Agent 项目列表
+
+# ==========================================================================
+# 主题日报配置（可增删；每个主题 = 一个源白名单 + 一份日报 + 一个 prompt）
+# ==========================================================================
+topics:
+  general:
+    name: 综合早报
+    icon: 🌍
+    prompt: report.general.md
+    limit: 15
+    sources: [hackernews, hn_ai, github, v2ex, producthunt, weibo, 36kr, tencent, user]
+    enabled: true
+
+  tech:
+    name: 科技早报
+    icon: 🦄
+    prompt: report.tech.md
+    limit: 12
+    sources: [hackernews, hn_ai, github, producthunt, v2ex, lobsters, devto, sspai, infoq_cn]
+    enabled: true
+
+  ai_daily:
+    name: AI 深度日报
+    icon: 🧠
+    prompt: report.ai_daily.md
+    limit: 12
+    sources: [hn_ai, huggingface, arxiv, aihot, tldr_ai, import_ai, bensbites, interconnects, oneusefulthing, chinai, memia, aitoroi, kdnuggets]
+    enabled: true
+
+  finance:
+    name: 财经早报
+    icon: 📈
+    prompt: report.finance.md
+    limit: 10
+    sources: [wallstreetcn, 36kr, tencent]
+    enabled: true
+
+  social:
+    name: 吃瓜早报
+    icon: 🍉
+    prompt: report.social.md
+    limit: 10
+    sources: [weibo, v2ex]
+    enabled: true
+
+  international:
+    name: 国际新闻
+    icon: 🌐
+    prompt: report.international.md
+    limit: 10
+    sources: [bbc_top, bbc_world, bbc_chinese, guardian_world, aljazeera, france24, reuters]
+    enabled: true
+
+# ==========================================================================
+# 用户自定义订阅源 (User OPML)
+# ==========================================================================
+opml:
+  # 按优先级查找的 OPML 文件路径（支持 ~ 展开）
+  paths:
+    - "~/.config/news-aggregator/user_sources.opml"
+    - "./user_sources.opml"
+  default_topic: general     # OPML 源默认归入的主题
+  # 关键字 -> 主题 映射（匹配源 name/title，命中即归入该主题）
+  topic_map:
+    "ai": ai_daily
+    "llm": ai_daily
+    "openai": ai_daily
+    "anthropic": ai_daily
+
+# ==========================================================================
+# 数据源定义
+#   type=api  : 由 aiaggr/fetchers/ 下同名专用抓取器处理
+#   type=rss  : 由通用 RssFetcher 处理（url + hours 过滤窗口，0=不过滤）
+#   type=trends : pytrends Google Trends
+#   type=opml : 用户自定义
+#   enabled=false 的源不会被抓取。
+# ==========================================================================
+sources:
+  # ---- 专用 API/爬虫源 ----
+  hackernews:
+    type: api
+    enabled: true
+    limit: 60
+    window_hours: 48
+    min_points: 20
+  hn_ai:
+    type: api
+    enabled: true
+    limit: 30            # top N（按分数排序后截取）
+    window_hours: 24     # 过去 24 小时窗口
+    hits_per_page: 50    # 每个查询的候选条数
+  github:
+    type: api
+    enabled: true
+    limit: 25
+  v2ex:
+    type: api
+    enabled: true
+    limit: 20
+  producthunt:
+    type: api
+    enabled: true
+    limit: 20
+  huggingface:
+    type: api
+    enabled: true
+    limit: 12
+  weibo:
+    type: api
+    enabled: true
+    limit: 30
+  wallstreetcn:
+    type: api
+    enabled: true
+    limit: 20
+  tencent:
+    type: api
+    enabled: true
+    limit: 15
+  "36kr":
+    type: api
+    enabled: true
+    limit: 15
+  lobsters:
+    type: api
+    enabled: true
+    limit: 15
+  devto:
+    type: api
+    enabled: true
+    limit: 15
+  reddit:
+    type: api
+    enabled: true
+    limit: 20
+    min_ups: 20
+  google_trends:
+    type: trends
+    enabled: true
+    min_growth_pct: 20.0
+  tracking:
+    type: api
+    enabled: true
+    issues_per_repo: 5      # 每个追踪仓库抓取的热议 Issues/PRs 数
+    releases_per_repo: 3    # 每个追踪仓库抓取的最新 Releases 数
+
+  # ---- 通用 RSS/Atom 源 ----
+  rss:
+    arxiv:
+      name: arXiv
+      url: "http://export.arxiv.org/api/query?search_query=cat:cs.AI+OR+cat:cs.CL+OR+cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=30"
+      hours: 0
+      enabled: true
+    aihot:
+      name: AIHOT
+      url: "https://aihot.virxact.com/rss"
+      hours: 24
+      enabled: true
+    tldr_ai:
+      name: TLDR AI
+      url: "https://tldr.tech/api/rss/ai"
+      hours: 48
+      enabled: true
+    import_ai:
+      name: Import AI
+      url: "https://importai.substack.com/feed"
+      hours: 168
+      enabled: true
+    bensbites:
+      name: Ben's Bites
+      url: "https://www.bensbites.com/feed"
+      hours: 0
+      enabled: true
+    interconnects:
+      name: Interconnects
+      url: "https://www.interconnects.ai/feed"
+      hours: 0
+      enabled: true
+    oneusefulthing:
+      name: One Useful Thing
+      url: "https://www.oneusefulthing.org/feed"
+      hours: 0
+      enabled: true
+    chinai:
+      name: ChinAI
+      url: "https://chinai.substack.com/feed"
+      hours: 0
+      enabled: true
+    memia:
+      name: Memia
+      url: "https://memia.substack.com/feed"
+      hours: 0
+      enabled: true
+    aitoroi:
+      name: AI to ROI
+      url: "https://ai2roi.substack.com/feed"
+      hours: 0
+      enabled: true
+    kdnuggets:
+      name: KDnuggets
+      url: "https://www.kdnuggets.com/feed"
+      hours: 0
+      enabled: true
+    sspai:
+      name: 少数派
+      url: "https://sspai.com/feed"
+      hours: 0
+      enabled: true
+    infoq_cn:
+      name: InfoQ 中文
+      url: "https://www.infoq.cn/feed.xml"
+      hours: 0
+      enabled: true
+    bbc_top:
+      name: BBC Top News
+      url: "https://feeds.bbci.co.uk/news/rss.xml"
+      hours: 24
+      enabled: true
+    bbc_world:
+      name: BBC World
+      url: "https://feeds.bbci.co.uk/news/world/rss.xml"
+      hours: 24
+      enabled: true
+    bbc_chinese:
+      name: BBC 中文
+      url: "https://feeds.bbci.co.uk/zhongwen/simp/rss.xml"
+      hours: 24
+      enabled: true
+    guardian_world:
+      name: The Guardian World
+      url: "https://www.theguardian.com/world/rss"
+      hours: 24
+      enabled: true
+    aljazeera:
+      name: Al Jazeera
+      url: "https://www.aljazeera.com/xml/rss/all.xml"
+      hours: 24
+      enabled: true
+    france24:
+      name: France 24
+      url: "http://www.france24.com/en/rss"
+      hours: 24
+      enabled: true
+    reuters:
+      name: Reuters
+      url: "https://news.google.com/rss/search?q=site%3Areuters.com%20when%3A1d&hl=en-US&gl=US&ceid=US:en"
+      hours: 24
+      enabled: true
+    lexfridman:
+      name: Lex Fridman
+      url: "https://lexfridman.com/feed/podcast"
+      hours: 0
+      enabled: true
+    "80000hours":
+      name: 80,000 Hours
+      url: "https://feeds.transistor.fm/80-000-hours-podcast"
+      hours: 0
+      enabled: true
+    latentspace:
+      name: Latent Space
+      url: "https://latent.space/feed"
+      hours: 0
+      enabled: true
+    waitbutwhy:
+      name: Wait But Why
+      url: "https://waitbutwhy.com/feed"
+      hours: 0
+      enabled: true
+    jamesclear:
+      name: James Clear
+      url: "https://jamesclear.com/feed"
+      hours: 0
+      enabled: true
+    farnamstreet:
+      name: Farnam Street
+      url: "https://fs.blog/feed"
+      hours: 0
+      enabled: true
+    paulgraham:
+      name: Paul Graham
+      url: "http://www.aaronsw.com/2002/feeds/pgessays.rss"
+      hours: 0
+      enabled: true
+    scottyoung:
+      name: Scott Young
+      url: "https://www.scotthyoung.com/blog/feed/"
+      hours: 0
+      enabled: true
+    dankoe:
+      name: Dan Koe
+      url: "https://thedankoe.com/feed/"
+      hours: 0
+      enabled: true

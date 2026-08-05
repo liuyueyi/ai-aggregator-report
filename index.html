@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI 聚合日报</title>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+  header { position: sticky; top: 0; z-index: 10; background: var(--panel);
+           border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex;
+           align-items: baseline; gap: 14px; }
+  header h1 { margin: 0; font-size: 18px; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  header a { color: var(--accent); text-decoration: none; margin-left: auto; font-size: 13px; }
+  main { display: flex; min-height: calc(100vh - 52px); }
+  nav { width: 260px; flex-shrink: 0; border-right: 1px solid var(--border);
+        padding: 12px; overflow-y: auto; max-height: calc(100vh - 52px); }
+  nav .date { color: var(--muted); font-size: 12px; margin: 10px 4px 4px; }
+  nav a.rep { display: block; padding: 5px 10px; border-radius: 6px; color: var(--text);
+              text-decoration: none; font-size: 14px; }
+  nav a.rep:hover { background: var(--panel); }
+  nav a.rep.active { background: rgba(88,166,255,.12); color: var(--accent); }
+  article { flex: 1; padding: 24px 40px; max-width: 900px; }
+  article h1 { font-size: 26px; }
+  article h2 { border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  article h4 { margin: 18px 0 6px; }
+  article a { color: var(--accent); }
+  article blockquote { border-left: 3px solid var(--border); margin: 8px 0;
+                       padding: 4px 14px; color: var(--muted); }
+  article code { background: var(--panel); padding: 2px 6px; border-radius: 4px; }
+  article table { border-collapse: collapse; margin: 10px 0; }
+  article th, article td { border: 1px solid var(--border); padding: 6px 10px; }
+  article hr { border: none; border-top: 1px solid var(--border); }
+  .empty { color: var(--muted); padding: 60px; text-align: center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📡 AI 聚合日报</h1>
+  <span class="sub">多源热点 · 多主题每日简报</span>
+  <a href="feed.xml">⊕ RSS</a>
+</header>
+<main>
+  <nav id="sidebar"></nav>
+  <article id="content"><div class="empty">← 从左侧选择一份日报</div></article>
+</main>
+<script>
+const PATH_PREFIX = "";   // 部署到子路径时改为仓库名，如 "/repo"
+const TOPIC_NAMES = {};   // 可由 manifest 补充，或按文件显示
+
+async function loadManifest() {
+  const resp = await fetch(PATH_PREFIX + "/manifest.json", { cache: "no-store" });
+  return resp.json();
+}
+
+function renderSidebar(manifest) {
+  const nav = document.getElementById("sidebar");
+  nav.innerHTML = "";
+  if (!manifest.dates || !manifest.dates.length) {
+    nav.innerHTML = '<div class="empty">暂无报告</div>';
+    return;
+  }
+  for (const entry of manifest.dates) {
+    const label = document.createElement("div");
+    label.className = "date";
+    label.textContent = entry.date;
+    nav.appendChild(label);
+    for (const rep of entry.reports) {
+      const a = document.createElement("a");
+      a.className = "rep";
+      a.href = "#" + entry.date + "/" + rep;
+      a.textContent = rep;
+      a.dataset.date = entry.date;
+      a.dataset.rep = rep;
+      a.onclick = (e) => { e.preventDefault(); selectReport(entry.date, rep); };
+      nav.appendChild(a);
+    }
+  }
+}
+
+async function selectReport(date, rep) {
+  history.replaceState(null, "", PATH_PREFIX + "#" + date + "/" + rep);
+  document.querySelectorAll("nav a.rep").forEach((a) =>
+    a.classList.toggle("active", a.dataset.date === date && a.dataset.rep === rep));
+  const content = document.getElementById("content");
+  content.innerHTML = '<div class="empty">加载中…</div>';
+  const [y, m, d] = date.split("-");
+  try {
+    const resp = await fetch(PATH_PREFIX + `/report/${y}/${m}/${d}/${rep}.md`);
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    const md = await resp.text();
+    content.innerHTML = marked.parse(md);
+  } catch (err) {
+    content.innerHTML = '<div class="empty">加载失败：' + err.message + "</div>";
+  }
+}
+
+function route() {
+  const hash = location.hash.replace(/^#/, "");
+  if (!hash) { renderSidebar(currentManifest); return; }
+  const parts = hash.split("/");
+  if (parts.length === 2) selectReport(parts[0], parts[1]);
+}
+
+let currentManifest = { dates: [] };
+loadManifest().then((m) => { currentManifest = m; renderSidebar(m); route(); });
+window.addEventListener("hashchange", route);
+</script>
+</body>
+</html>
