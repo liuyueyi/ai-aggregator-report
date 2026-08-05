@@ -52,8 +52,14 @@
   <article id="content"><div class="empty">← 从左侧选择一份日报</div></article>
 </main>
 <script>
-const PATH_PREFIX = "";   // 部署到子路径时改为仓库名，如 "/repo"
 const TOPIC_NAMES = {};   // 可由 manifest 补充，或按文件显示
+// 自动探测部署前缀：GitHub Pages 子路径（如 /ai-aggregator-report/）与根域部署均适用
+const PATH_PREFIX = (() => {
+  const p = (location.pathname || "")
+    .replace(/\/index\.html$/, "")
+    .replace(/\/+$/, "");
+  return p; // ""（根域）或 "/repo"
+})();
 
 async function loadManifest() {
   const resp = await fetch(PATH_PREFIX + "/manifest.json", { cache: "no-store" });
