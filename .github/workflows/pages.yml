@@ -28,16 +28,14 @@ jobs:
 
       - name: Stage site
         run: |
-          mkdir -p site
-          cp index.html site/ 2>/dev/null || true
-          cp manifest.json site/ 2>/dev/null || true
-          cp feed.xml site/ 2>/dev/null || true
-          cp -r report site/ 2>/dev/null || true
-          echo "" > site/.nojekyll
+          mkdir -p _deploy
+          cp site/* _deploy/ 2>/dev/null || true
+          cp -r report _deploy/report 2>/dev/null || true
+          echo "" > _deploy/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: _deploy
 
       - id: deployment
         uses: actions/deploy-pages@v4

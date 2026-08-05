@@ -1,110 +1,78 @@
-﻿# 🌍 综合早报 · 2026-08-05
+# 🌍 综合早报 · 2026-08-05
 
-## 📌 今日概览
+> 模拟 LLM 模式（--mock-llm），以下为当日 15 条原始信号（未经 AI 深度分析）。
 
-| 主线 | 代表信号 | 热度/规模 |
-|---|---|---|
-| AI 内容真实性之争 | AI 配图劝退读者 / SQLite "严重 CVE" 疑为 LLM 水货 | 440 / 370 评论 |
-| 科技巨头法律战 | Apple 前员工泄密 OpenAI，范围扩大 | 259 评论 |
-| 开源与新版本 | FFmpeg 9.0 发布 / 开发者工具须开源 | 94 / 231 评论 |
-| 国内舆论热点 | 中传取消艺考 / 赛格商场坠亡通报 / 韩国国家灾难状态 | 165万 / 135万 / 103万 |
-
----
-
-### 一、AI 内容与开发者文化
-
-#### 1. [AI 生成的图片正在劝退我读你的博客](https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 440 评论
-- **链接**: [讨论](https://news.ycombinator.com/item?id=49167113)
-- **摘要**: 博主 Nelson Figueroa 明确表示：他更愿意看一张丑的 MS Paint 手绘，也不愿看到 AI 生成配图——那会让他怀疑整篇文字是否也是 LLM 写的。
-- **深度洞察**: 💡 核心不是"AI 图片丑"，而是**信任问题**：读者把 AI 视觉当作"内容也可能是机器批量生产的"信号。对独立创作者是成本极低的差异化机会——纯文字或手工图反而传递"这是真人的思考"。这与"内容农场用 AI 灌水"的浪潮形成了鲜明对立。
-
-#### 2. [LLM 会奖励专业能力](https://www.seangoedecke.com/llms-reward-expertise/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 557 评论
+#### 1. [LLMs reward expertise](https://www.seangoedecke.com/llms-reward-expertise/)
+- **来源**: HackerNews | **时间**: 2026-08-03T21:13:53Z
 - **链接**: [讨论](https://news.ycombinator.com/item?id=49161518)
-- **摘要**: 文章主张：LLM 的输出上限由使用者的**领域专业度**决定，而非提示词技巧。
-- **深度洞察**: 💡 即便是最深版本的正文也印证了一个观点——提示工程的红利正在衰减，真正的杠杆是把人类专家脑中"怎么判断好坏"的那套隐性知识喂给模型。对技术团队：投资领域知识工程，比堆 prompt 模板回报更高。
+- **摘要**: （无）
 
-#### 3. [SQLite 严重 CVE 还是 LLM 水货？](https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 370 评论
+#### 2. [In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years](https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/)
+- **来源**: HackerNews | **时间**: 2026-08-04T18:51:38Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49173165)
+- **摘要**: （无）
+
+#### 3. [AI-Generated Images Discourage Me from Reading Your Blog](https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/)
+- **来源**: HackerNews | **时间**: 2026-08-04T11:30:17Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49167113)
+- **摘要**: （无）
+
+#### 4. [SQLite Critical CVEs or LLM Slop?](https://research.jfrog.com/post/sqlite-critical-cves-or-llm-slops/)
+- **来源**: HackerNews | **时间**: 2026-08-03T11:28:54Z
 - **链接**: [讨论](https://news.ycombinator.com/item?id=49154332)
-- **摘要**: JFrog 安全研究员核查发现，`programmervuln/cveadvisory-` 这个新仓库批量发布的 SQLite 漏洞公告几乎全是 AI 生成的水货：引用的函数不存在、PoC 无法触发、未出现在 SQLite 官方公告页；Red Hat 曾给某 CVE 打了 10.0 分，后降至 7.6。
-- **深度洞察**: 💡 这是"LLM 污染安全情报"的实锤案例，且**在攻击者得手前**就已被识破。安全工具链必须建立"溯源 + 人工复核"，否则误报的核查成本会拖垮团队生产力——你花半天查一个并不存在的漏洞，就是给对方赚了时间。
+- **摘要**: （无）
 
-#### 4. [开发者工具必须是开源的](https://blog.exe.dev/devtools-must-be-open-source)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 231 评论
+#### 5. [Devtools must be open source](https://blog.exe.dev/devtools-must-be-open-source)
+- **来源**: HackerNews | **时间**: 2026-08-03T14:15:47Z
 - **链接**: [讨论](https://news.ycombinator.com/item?id=49156111)
-- **摘要**: 作者用自身经历论证：如今让 Agent"下载源码、本地构建、把改动记进版本控制"已极其容易，工程师第一次能真正拥有属于自己的、可自托管的工具链。
-- **深度洞察**: 💡 文章给出了给 Agent 的两类 prompt（"下载源码本地构建 + 记忆规则"、"cron 拉取上游变更"），实际上是在教读者**用 Agent 维护自己的分叉工具**。这意味着"工具主权"从理念变成了可执行的工程实践，独立开发者不再是闭源厂商的被动用户。
+- **摘要**: （无）
 
-### 二、科技巨头与行业信号
-
-#### 5. [Apple 称更多前员工可能将机密数据带给了 OpenAI](https://techcrunch.com/2026/08/04/apple-says-more-ex-employees-may-have-taken-confidential-data-to-openai/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 259 评论
-- **链接**: [讨论](https://news.ycombinator.com/item?id=49170479)
-- **摘要**: TechCrunch 报道 Apple 在贸易机密诉讼中申请初步禁令，并请求加速取证，声称除已点名的两人外又发现 **11 名前员工**可能参与泄密，涉事者包括 Jony Ive 联合创办的 io 设备公司。
-- **深度洞察**: 💡 案件正从"个别离职员工"升级为"系统性取证"，暗示 Apple 掌握了会议纪要、截图等新证据。对 AI/硬件行业，这是一个高敏竞业案例：大厂间的人才与数据流动，正在被用法律手段重新划定边界。
-
-#### 6. [Xbox 宕机：你买的实体盘游戏也玩不了](https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 662 评论
+#### 6. [Xbox goes down. You can't play games you own on disc](https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/)
+- **来源**: HackerNews | **时间**: 2026-08-04T12:01:02Z
 - **链接**: [讨论](https://news.ycombinator.com/item?id=49167448)
-- **摘要**: 从周日开始的大面积 Xbox 宕机，连实体盘游戏也无法游玩——因为"光盘"如今只是许可证，安装与更新仍依赖微软的在线服务。
-- **深度洞察**: 💡 作者用 GBA 卡带与 Xbox 光盘作对比：物理媒体早已名存实亡，**所有权被替代成了许可证**。对做内容/软件分发的团队，这是"永远在线授权 + 集中控制"潜在反噬的最新样本，提醒你在可靠性上给离线场景留下余地。
+- **摘要**: （无）
 
-#### 7. [Show HN：生成多样肤色人像的简单算法与色彩空间](https://toneyalexander.github.io/inclusive-color-space/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 92 评论
-- **链接**: [讨论](https://news.ycombinator.com/item?id=49170165)
-- **摘要**: 作者构建了一个面向一致肤色的人像色彩空间，附 JS 拾色器与 Python 采样算法，开源供角色创建、数字绘画等工具使用。
-- **深度洞察**: 💡 小而具体的包容性工程实践，附完整可运行代码（球面均匀采样 + RGB 变换）。对做头像、角色捏脸、电商模特生成的产品，是把"多样性质量"低成本做进去的现成方案。
-
-#### 8. [OpenAI 公布数学与理论计算机科学十大进展](https://openai.com/index/ten-advances-in-mathematics/)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 914 评论
+#### 7. [Ten advances in mathematics and theoretical computer science](https://openai.com/index/ten-advances-in-mathematics/)
+- **来源**: HackerNews | **时间**: 2026-08-03T16:27:12Z
 - **链接**: [讨论](https://news.ycombinator.com/item?id=49157930)
-- **摘要**: OpenAI 一次性公布其在数学与理论计算机科学领域的十项研究进展。
-- **深度洞察**: 💡 前沿实验室向"可验证推理"集中投入的信号。数学是"可符号验证 + 可合成数据"的领域，这类突破往往是推理模型下一波能力的前置；对做 Agent/工具链的团队，值得逐条拆解其中的证明与评估方法。
+- **摘要**: （无）
 
-#### 9. [X Money 登顶 Product Hunt](https://www.producthunt.com/products/x-money-2)
-- **来源**: Product Hunt | **时间**: 实时 | **热度**: Top Product
-- **摘要**: X（Twitter）的支付产品 X Money 占据今日 Product Hunt 头榜。
-- **深度洞察**: 💡 社交平台金融化持续推进，把支付能力嵌入对话与创作者生态，是"超级应用"路径的关键一环，值得关注其第三方开放节奏。
+#### 8. [Prevent cognitive debt by manually retyping LLM-generated code](https://ankursethi.com/blog/prevent-cognitive-debt-by-manually-retyping-llm-generated-code/)
+- **来源**: HackerNews | **时间**: 2026-08-03T09:32:07Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49153374)
+- **摘要**: （无）
 
-### 三、开源与基础软件
+#### 9. [Show HN: Simple algorithm and color space to generate diverse skin tones](https://toneyalexander.github.io/inclusive-color-space/)
+- **来源**: HackerNews | **时间**: 2026-08-04T15:16:22Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49170165)
+- **摘要**: （无）
 
-#### 10. [FFmpeg 9.0](https://github.com/FFmpeg/FFmpeg/blob/n9.0/RELEASE_NOTES)
-- **来源**: HackerNews | **时间**: 近3天 | **热度**: 94 评论
-- **链接**: [讨论](https://news.ycombinator.com/item?id=49166202) | [GitHub](https://github.com/FFmpeg/FFmpeg)
-- **摘要**: 老牌多媒体处理库发布 9.0 大版本。
-- **深度洞察**: 💡 FFmpeg 是几乎所有视频/直播/转码系统的底层底座，9.0 意味着上游进入新的 API 形态。依赖 FFmpeg 的团队需要评估升级路径与 deprecated API 清理，这是稳定性与长期维护的关键节点。
+#### 10. [Ray Bradbury's "There Will Come Soft Rains" is set today (2026-08-04)](https://short-stories.co/@raybradbury/there-will-come-soft-rains-6k8vr4xxlnmj)
+- **来源**: HackerNews | **时间**: 2026-08-04T10:13:13Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49166491)
+- **摘要**: （无）
 
-### 四、社会与政策
+#### 11. [FFmpeg 9.0](https://github.com/FFmpeg/FFmpeg/blob/n9.0/RELEASE_NOTES)
+- **来源**: HackerNews | **时间**: 2026-08-04T09:30:33Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49166202)
+- **摘要**: （无）
 
-#### 11. [中传取消艺考](https://s.weibo.com/weibo?q=%E4%B8%AD%E4%BC%A0%20%E5%8F%96%E6%B6%88%E8%89%BA%E8%80%83&Refer=top)
-- **来源**: 微博热搜 | **时间**: 实时 | **热度**: 165万
-- **摘要**: 中国传媒大学取消艺术类校考相关词条引爆热搜，教育圈高度关注。
-- **深度洞察**: 💡 艺考改革牵动大量家庭与教培机构，政策口径与替代选拔方式是后续焦点。相关赛道的产品与服务方应跟踪官方细则。
+#### 12. [Twenty Years of Pandoc](https://pandoc.org/twenty-years-of-pandoc.html)
+- **来源**: HackerNews | **时间**: 2026-08-03T15:04:53Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49156750)
+- **摘要**: （无）
 
-#### 12. [官方通报赛格商场坠亡事件](https://s.weibo.com/weibo?q=%E5%AE%98%E6%96%B9%E9%80%9A%E6%8A%A5%E8%B5%9B%E6%A0%BC%E5%95%86%E5%9C%BA%E5%9D%A0%E4%BA%A1%E4%BA%8B%E4%BB%B6&Refer=top)
-- **来源**: 微博热搜 | **时间**: 实时 | **热度**: 135万
-- **摘要**: 官方就赛格商场坠亡事件发布通报，热度极高。
-- **深度洞察**: 💡 公共空间安全事件传播敏感，处置口径与责任认定是舆论焦点。理性吃瓜，以官方通报为准。
+#### 13. [Mistral's Shieldstral: 3B open-weights model for multimodal moderation](https://mistral.ai/news/shieldstral/)
+- **来源**: HackerNews | **时间**: 2026-08-04T16:36:05Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49171268)
+- **摘要**: （无）
 
-#### 13. [火遍全球的 "Chinamaxxing" 是什么](https://s.weibo.com/weibo?q=%E7%81%AB%E9%81%8D%E5%85%A8%E7%90%83%E7%9A%84Chinamaxxing%E6%98%AF%E4%BB%80%E4%B9%88&Refer=top)
-- **来源**: 微博热搜 | **时间**: 实时 | **热度**: 111万
-- **摘要**: 网民科普近期火到海外的网络热词 "Chinamaxxing"。
-- **深度洞察**: 💡 中文梗文化出海成为现象级话题，既是乐子也是观察中外内容互动的窗口，做社媒/出海内容的产品可收录研究。
+#### 14. [There Will Come Soft Rains (1950) [pdf]](https://users.wpi.edu/~zrbutzke/Docs/BradburyStories(1).pdf)
+- **来源**: HackerNews | **时间**: 2026-08-03T23:24:53Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49162653)
+- **摘要**: （无）
 
-#### 14. [韩国宣布国家灾难状态](https://s.weibo.com/weibo?q=%E9%9F%A9%E5%9B%BD%E5%AE%A3%E5%B8%83%E5%9B%BD%E5%AE%B6%E7%81%BE%E9%9A%BE%E7%8A%B6%E6%80%81&Refer=top)
-- **来源**: 微博热搜 | **时间**: 实时 | **热度**: 103万
-- **摘要**: 韩国宣布进入国家灾难状态的新闻登上热搜。
-- **深度洞察**: 💡 区域级突发事件对供应链、外汇与物流有潜在扰动，关注韩国市场的团队建议跟踪进展。
-
----
-
-## 🧭 今日趋势小结
-
-1. **AI 的"真实性"成为新竞争维度**：从博客配图、代码生成到安全漏洞报告，AI 输出泛滥后，**人工可信度与可溯源**反而成为稀缺价值（#1 #4 #5）。
-2. **开发者工具走向"主权化"**：Agent 让自托管、自维护工具变得可行，开源优先 + 本地构建成为独立开发者的防御性选型（#6 #3）。
-3. **巨头竞业摩擦升级**：Apple 对 OpenAI 的取证从个人上升到系统性，反映 AI 人才与数据流动的法律边界正在收紧（#2）。
-4. **舆论场tags民生与公共安全**：艺考改革、坠亡通报等民生议题占据热搜高位，热点波动快、需以官方口径为准（#11-14）。
-
-*报告生成时间：2026-08-05 | 数据源：Hacker News、微博热搜、Product Hunt（--deep 正文抓取）*
+#### 15. [Wind and solar overtake fossil fuels in Germany for the first time](https://www.intellinews.com/wind-and-solar-overtake-fossil-fuels-in-germany-for-the-first-time-ever-458379/)
+- **来源**: HackerNews | **时间**: 2026-08-03T13:13:02Z
+- **链接**: [讨论](https://news.ycombinator.com/item?id=49155359)
+- **摘要**: （无）

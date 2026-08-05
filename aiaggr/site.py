@@ -7,7 +7,7 @@ import re
 from pathlib import Path
 
 # 站点产物：manifest.json（Web UI 数据）+ feed.xml（RSS 2.0 订阅）
-# 写入项目根目录，可由 GitHub Pages / 任意静态托管直接服务。
+# 写入 site/ 目录（可配 config.site.dir），由 GitHub Pages / 任意静态托管服务。
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEED_ITEMS = 30
@@ -215,5 +215,6 @@ def build_feed(report_dir: Path, root: Path, base_url: str, topics_cfg: dict) ->
 
 
 def build_site(report_dir: Path, root: Path, base_url: str, topics_cfg: dict) -> None:
+    root.mkdir(parents=True, exist_ok=True)
     build_manifest(report_dir, root)
     build_feed(report_dir, root, base_url, topics_cfg)

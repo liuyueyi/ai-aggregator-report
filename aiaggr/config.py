@@ -85,3 +85,8 @@ def tracking_config(cfg: dict) -> dict[str, Any]:
 
 def promp_dir(cfg: dict) -> Path:
     return ROOT / "prompts"
+
+
+def site_dir(cfg: dict) -> Path:
+    """站点交付目录：统一收纳 index.html / manifest.json / feed.xml。"""
+    return ROOT / cfg.get("site", {}).get("dir", "site")

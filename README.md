@@ -2,9 +2,9 @@
 
 基于 LLM 的多源热点采集与多主题日报生成引擎。每天自动从 40+ 个数据源并发抓取新闻信号，本地去重幂等，按新闻类型分类生成多份主题日报，统一归档到 `report/YYYY/MM/DD/`，并提供 **Web UI + RSS 订阅 + 飞书推送**。
 
-- 架构蓝本：`ref/dailydawn`（异步抓取 → Signal 模型 → 聚合去重 → LLM 管线）
-- 流程指引：`ref/news-aggregator-skill`（多主题日报、统一模板、反幻觉规则）
-- 能力参照：`ref/agents-radar`（Web UI / RSS / 飞书推送 / GitHub 生态追踪 / HN 并行查询）
+- 架构蓝本：[dailydawn](https://github.com/TangSY/dailydawn)（异步抓取 → Signal 模型 → 聚合去重 → LLM 管线）
+- SKILL参考：[news-aggregator-skill](https://github.com/cclank/news-aggregator-skill/)（多主题日报、统一模板、反幻觉规则）
+- 能力参照：[agents-radar](https://github.com/duanyytop/agents-radar)（Web UI / RSS / 飞书推送 / GitHub 生态追踪 / HN 并行查询）
 
 ---
 
@@ -180,9 +180,10 @@ report/
             ├── ai-cli.md         # 生态追踪专题（cli_tracker）
             └── ai-agents.md      # 生态追踪专题（agents_tracker）
 
-# 站点交付产物（每次日报后重建，供 Web UI / RSS）
-manifest.json     # Web UI 数据源（日期 → 主题 → 文件）
-feed.xml          # RSS 2.0（content:encoded 全文，最新 30 条）
+# 站点交付目录 site/（每次日报后重建，供 Web UI / RSS）
+site/index.html     # Web UI（自包含，hash 路由）
+site/manifest.json  # Web UI 数据源（日期 → 主题 → 文件）
+site/feed.xml       # RSS 2.0（content:encoded 全文，最新 30 条）
 ```
 
 日报遵循统一模板（news-aggregator-skill）：
@@ -274,10 +275,10 @@ PAGES_URL=
 
 - 每日 UTC 定时运行 + 手动 `workflow_dispatch`
 - 运行时填入 `LLM_API_KEY` / `LLM_BASE_URL` / `LLM_MODEL` / `GITHUB_TOKEN` / `FEISHU_WEBHOOK_URLS` / `PAGES_URL` secrets
-- 生成后自动 commit `report/` 与 `.state/`，并重建 `manifest.json` / `feed.xml`
+- 生成后自动 commit `report/` 与 `.state/`，并重建 `site/` 下 `manifest.json` / `feed.xml`
 - 未配置 `FEISHU_WEBHOOK_URLS` 时静默跳过飞书推送
 
-`.github/workflows/pages.yml`：手动 `workflow_dispatch` 可发布 GitHub Pages（`index.html` + `manifest.json` + `feed.xml` + `report/`），提供在线 Web UI 与 RSS 订阅。
+`.github/workflows/pages.yml`：手动 `workflow_dispatch` 可发布 GitHub Pages（`site/` 下的 `index.html` + `manifest.json` + `feed.xml` + `report/`），提供在线 Web UI 与 RSS 订阅。
 
 ---
 
@@ -317,9 +318,10 @@ ai-aggregator-report/
 │   │   └── hn_ai.py          # HN 6 查询串 → Algolia
 │   ├── prompts/             # LLM 提示词（classifier + report.* + tracking.*）
 │   ├── config.yaml          # 主配置
-│   ├── index.html           # Web UI（自包含，hash 路由）
-│   ├── manifest.json        # Web UI 数据源（提交）
-│   ├── feed.xml             # RSS 2.0（提交）
+│   ├── site/                 # 站点交付目录（统一管理，提交）
+│   │   ├── index.html        # Web UI（自包含，hash 路由）
+│   │   ├── manifest.json     # Web UI 数据源（提交）
+│   │   └── feed.xml          # RSS 2.0（提交）
 │   ├── report/              # 输出 report/YYYY/MM/DD/
 │   ├── .state/              # 幂等状态（提交）
 │   └── ref/                     # 参照项目（dailydawn / news-aggregator-skill）

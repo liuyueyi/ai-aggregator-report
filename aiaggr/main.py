@@ -81,9 +81,10 @@ def _build_site(cfg, rdir) -> None:
     if not site_cfg.get("enabled", True):
         return
     base_url = os.environ.get("PAGES_URL") or site_cfg.get("base_url", "") or ""
+    from .config import site_dir
     from .site import build_site
 
-    build_site(rdir, ROOT, base_url, enabled_topics(cfg))
+    build_site(rdir, site_dir(cfg), base_url, enabled_topics(cfg))
 
 
 def _topic_entry(tkey, tconf, *, tagline="", file=None, count=0, skipped=False) -> dict:

@@ -86,7 +86,7 @@ prompts/
 config.yaml            主配置（llm / timezone / dedup / report / state / site / tracking / topics / sources / opml）
 report/               输出目录（YYYY/MM/DD/{topic}.md + index.md + ai-cli.md/ai-agents.md）
 .state/               幂等状态（必须随 git 提交，CI 连续去重依赖它）
-manifest.json / feed.xml / index.html  站点交付产物（提交 git）
+site/                站点交付目录（统一管理 index.html / manifest.json / feed.xml，提交 git）
 ```
 
 ---
@@ -103,7 +103,7 @@ main.py
  ├─ 6. 每主题：过滤 seen_on → 取 score 前 N → generate_topic_report → renderer.save_report
  ├─ 6b. 生态追踪：cli_tracker/agents_tracker 信号独立走 tracking.py → ai-cli.md/ai-agents.md（不占主题位）
  ├─ 7. state.record_emitted() + state.append_tagline() + renderer.save_index()
- └─ 8. site.build_site()（manifest.json + feed.xml）+ notify.send_feishu()（仅非 collect）
+  └─ 8. site.build_site()（写入 site/：manifest.json + feed.xml）+ notify.send_feishu()（仅非 collect）
 ```
 
 ---
@@ -174,10 +174,10 @@ mytopic:
 - 报告计数与 index.md 自动并入当日归档；单仓库/单次请求失败由 `safe_fetch` 兜底
 
 ### 站点交付（`site.py` / `notify.py`）
-- `build_site` 每次日报后重建 `manifest.json` + `feed.xml`（RSS 2.0 `content:encoded` 全文，最新 30 条）；`--collect` 不构建
+- `build_site` 每次日报后重建 `site/` 下 `manifest.json` + `feed.xml`（RSS 2.0 `content:encoded` 全文，最新 30 条）；目录可通过 `config.yaml site.dir` 配置（默认 `site/`）；`--collect` 不构建
 - `markdown` 依赖可选：ImportError 时走 `_md_to_html_simple` 内置轻量渲染器（标题/列表/引用/加粗/链接/代码子集），CI 联网装全量包
 - 飞书 webhook 用 `FEISHU_WEBHOOK_URLS`（逗号分隔，兼容旧 `FEISHU_WEBHOOK_URL`）；未配置**静默跳过**，不报错
-- `index.html` 为自包含 Web UI（hash 路由 `#date/topic`，CDN marked）；`pages.yml` 打包 index/manifest/feed/report 到 GitHub Pages
+- `index.html` 为自包含 Web UI（hash 路由 `#date/topic`，CDN marked）；`pages.yml` 打包 `site/`（index/manifest/feed）与 `report/` 到 GitHub Pages
 
 ### 去重/幂等语义（重要）
 - `dedup.fingerprint(signal)`：优先 `sha1(canonical_url)`，无有效 URL 回退归一化标题

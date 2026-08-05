@@ -37,6 +37,7 @@ state:
 # 每次生成日报后重建 manifest.json（Web UI 数据源）与 feed.xml（RSS 订阅）。
 site:
   enabled: true
+  dir: site                    # 站点交付目录：统一收纳 index.html / manifest.json / feed.xml
   base_url: ""                # 部署根 URL，如 https://<user>.github.io/<repo>；也可用 PAGES_URL env
 
 # ---- GitHub 生态追踪（专题报告 ai-cli.md / ai-agents.md）----
