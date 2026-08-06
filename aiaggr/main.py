@@ -83,8 +83,22 @@ def _build_site(cfg, rdir) -> None:
     base_url = os.environ.get("PAGES_URL") or site_cfg.get("base_url", "") or ""
     from .config import site_dir
     from .site import build_site
+    from .state import StateStore
 
-    build_site(rdir, site_dir(cfg), base_url, enabled_topics(cfg))
+    # 读取跨日 taglines（{date:{topic:tagline}}），供 manifest 在首页展示一句话摘要
+    tagline_map: dict[str, dict[str, str]] = {}
+    try:
+        st = StateStore(state_dir(cfg), window_days=int(cfg.get("dedup", {}).get("window_days", 7)))
+        for rec in st.load_taglines(days=int(cfg.get("dedup", {}).get("window_days", 7))):
+            d = rec.get("date")
+            t = rec.get("topic")
+            tl = rec.get("tagline", "")
+            if d and t and tl:
+                tagline_map.setdefault(d, {})[t] = tl
+    except Exception:  # noqa: BLE001
+        tagline_map = {}
+
+    build_site(rdir, site_dir(cfg), base_url, enabled_topics(cfg), tagline_map)
 
 
 def _topic_entry(tkey, tconf, *, tagline="", file=None, count=0, skipped=False) -> dict:

@@ -138,17 +138,42 @@ def _report_names(topics_cfg: dict) -> dict[str, str]:
     return {k: (v.get("name") or k) for k, v in topics_cfg.items()}
 
 
-def build_manifest(report_dir: Path, root: Path) -> None:
-    """生成 manifest.json：{generated, dates:[{date, reports}]}，新日期在前。"""
+def build_manifest(
+    report_dir: Path,
+    root: Path,
+    topics_cfg: dict,
+    tagline_map: dict[str, dict[str, str]] | None = None,
+) -> None:
+    """生成 manifest.json：{generated, topics, dates}，新日期在前。
+
+    - topics: {key: {name, icon}} 全量主题元信息（含追踪专题 ai-cli/ai-agents）
+    - dates:  [{date, reports:[{key, tagline}]}]，tagline 取自 .state/taglines.jsonl
+    """
     entries = scan_dates(report_dir)
+
+    # 主题元信息：优先用 config 的 name/icon，未在 config 的（追踪专题）给兜底
+    topics_meta: dict[str, dict] = {}
+    for k, v in (topics_cfg or {}).items():
+        topics_meta[k] = {"name": v.get("name", k), "icon": v.get("icon", "")}
+    for e in entries:
+        for rep in e["reports"]:
+            if rep not in topics_meta:
+                topics_meta[rep] = {"name": rep, "icon": ""}
+
+    tl = tagline_map or {}
+    for e in entries:
+        day_tl = tl.get(e["date"], {}) or {}
+        e["reports"] = [{"key": rep, "tagline": day_tl.get(rep, "")} for rep in e["reports"]]
+
     manifest = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "topics": topics_meta,
         "dates": list(reversed(entries)),
     }
     (root / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(f"→ manifest.json 更新：{len(entries)} 天")
+    print(f"→ manifest.json 更新：{len(entries)} 天 · {len(topics_meta)} 主题")
 
 
 def build_feed(report_dir: Path, root: Path, base_url: str, topics_cfg: dict) -> None:
@@ -214,7 +239,13 @@ def build_feed(report_dir: Path, root: Path, base_url: str, topics_cfg: dict) ->
     print(f"→ feed.xml 更新：{len(feed_items)} 条")
 
 
-def build_site(report_dir: Path, root: Path, base_url: str, topics_cfg: dict) -> None:
+def build_site(
+    report_dir: Path,
+    root: Path,
+    base_url: str,
+    topics_cfg: dict,
+    tagline_map: dict[str, dict[str, str]] | None = None,
+) -> None:
     root.mkdir(parents=True, exist_ok=True)
-    build_manifest(report_dir, root)
+    build_manifest(report_dir, root, topics_cfg, tagline_map)
     build_feed(report_dir, root, base_url, topics_cfg)
