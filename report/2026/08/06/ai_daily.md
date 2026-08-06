@@ -1,72 +1,88 @@
-# AI 深度日报
+# AI 深度日报 · 2026-08-06
+
+> 📅 2026年8月6日 | 🕐 5分钟掌握 AI 前沿
+
+---
+
 ## 今日概览
+
 | 主线 | 代表信号 | 类型/规模 |
-| --- | --- | --- |
-| AI模型评测与优化 | SocietyBench, WorldCup Arena, Test-Time Scaling in Reasoning LLMs | 多篇论文，规模较大 |
-| Agent与工具 | TurnSight, PAST-Bench | 两篇论文，规模中等 |
-| 模型与多模态 | unsloth/DeepSeek-V4-Flash-0731-GGUF, rajpurkar/squad | 两个模型，规模较小 |
-| 产业与生态 | string2string Studio, Can Large Language Models Recover Semantic Optimization Opportunities That Compilers Miss? | 两个研究，规模较小 |
-## 主题分组
-### 一、AI模型评测与优化
-#### 1. [SocietyBench: Forecasting Counterfactual Social-World Evolution](https://arxiv.org/abs/2608.04009v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文提出了一种评估大型语言模型在理解并预测社会事件发展方面的能力的新方法。
-- **深度洞察**:
-  * 创新点 / 方法：引入了预测反事实社会世界进化的基准。
-  * 影响 / 意义：有助于提高模型在社会事件理解方面的能力。
-#### 2. [WorldCup Arena: Prospective, Leakage-Free Evaluation of Frontier LLMs on a Live Tournament](https://arxiv.org/abs/2608.04008v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文提出了一种在真实比赛中对前沿LLM进行前瞻性、无泄露评估的方法。
-- **深度洞察**:
-  * 创新点 / 方法：在真实世界中评估LLM的能力。
-  * 影响 / 意义：有助于提高LLM在实际场景中的应用能力。
-#### 3. [Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility](https://arxiv.org/abs/2608.04001v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文探讨了在推理LLM中进行测试时间缩放的方法、评估和可重复性。
-- **深度洞察**:
-  * 创新点 / 方法：提出了测试时间缩放的概念。
-  * 影响 / 意义：有助于提高LLM在推理任务中的性能。
-### 二、Agent与工具
-#### 4. [TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning](https://arxiv.org/abs/2608.04007v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文提出了一种用于工具集成推理的回溯自我蒸馏方法。
-- **深度洞察**:
-  * 创新点 / 方法：引入了回溯自我蒸馏的概念。
-  * 影响 / 意义：有助于提高LLM在工具集成推理中的性能。
-#### 5. [PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents](https://arxiv.org/abs/2608.04003v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文提出了一种评估个人智能代理递归自我改进基础的方法。
-- **深度洞察**:
-  * 创新点 / 方法：引入了递归自我改进的概念。
-  * 影响 / 意义：有助于提高个人智能代理的性能。
-### 三、模型与多模态
-#### 6. [unsloth/DeepSeek-V4-Flash-0731-GGUF](https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF)
-- **来源**: HuggingFace Models | **时间**: 2026-07-31
-- **摘要**: 模型DeepSeek-V4-Flash-0731-GGUF在HuggingFace Models上发布。
-- **深度洞察**:
-  * 创新点 / 方法：模型的具体信息未知。
-  * 影响 / 意义：可能为特定任务提供高性能的解决方案。
-#### 7. [rajpurkar/squad](https://huggingface.co/datasets/rajpurkar/squad)
-- **来源**: HuggingFace Datasets | **时间**: 2024-03-04
-- **摘要**: 数据集rajpurkar/squad在HuggingFace Datasets上发布。
-- **深度洞察**:
-  * 创新点 / 方法：数据集的具体信息未知。
-  * 影响 / 意义：可能为问答系统提供高质量的数据。
-### 四、产业与生态
-#### 8. [string2string Studio: An Interactive, In-Browser Platform for String-to-String Algorithms](https://arxiv.org/abs/2608.03984v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文介绍了string2string Studio，一个用于字符串到字符串算法的交互式浏览器平台。
-- **深度洞察**:
-  * 创新点 / 方法：提供了一个交互式平台。
-  * 影响 / 意义：有助于研究和开发字符串到字符串算法。
-#### 9. [Can Large Language Models Recover Semantic Optimization Opportunities That Compilers Miss?](https://arxiv.org/abs/2608.03983v1)
-- **来源**: arXiv | **时间**: 2026-08-04
-- **摘要**: 论文探讨了大型语言模型是否能够恢复编译器错过的语义优化机会。
-- **深度洞察**:
-  * 创新点 / 方法：研究LLM在语义优化方面的能力。
-  * 影响 / 意义：有助于提高代码的性能。
+|---|---|---|
+| GPU 内核优化 | SparseDitto: LLM 驱动的稀疏矩阵内核定制 | arXiv 论文 |
+| 多模态预训练物理 | Towards Physics of Multimodal Pretraining | arXiv 论文 |
+| LLM 幻觉评估 | DelusionEval: 聊天机器人妄想行为测量 | arXiv 论文 |
+| AI 技能迁移 | Microsoft SkillOpt 跨模型技能迁移 | AIHOT 报道 |
+| 欧盟 AI 法案合规 | 德国电网负荷预测的 EU-AI Act 合规实践 | arXiv 论文 |
+
+---
+
+## 一、推理与评测
+
+#### 1. [SparseDitto: 用 LLM Agent 定制不同稀疏模式的 GPU 内核](https://arxiv.org/abs/2608.05033v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 提出 SparseDitto，一个基于 LLM 的 Agentic 系统，可为不同稀疏模式自动定制 GPU 内核。
+- **深度洞察**: 💡 **创新点**：将 LLM 引入 GPU 内核优化，通过 Agentic 系统自动分析稀疏模式并生成定制内核。**影响**：cuSPARSE 在 CSR 和 Blocked-EL 格式间存在 350 倍性能差距，自动内核选择可显著提升科学计算和图分析的性能。这一工作展示了 LLM 在系统级优化中的潜力。
+
+#### 2. [DelusionEval: 测量 AI 聊天机器人的妄想行为](https://arxiv.org/abs/2608.05004v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 提出 DelusionEval，用于评估 LLM 聊天机器人中可能导致心理伤害的"妄想螺旋"行为。
+- **深度洞察**: 💡 **创新点**：首次系统性地定义和测量 LLM 的"妄想行为"，关注人机交互中的心理安全风险。**影响**：随着 LLM 聊天机器人用户量增长，心理健康专业人士对其潜在危害的担忧日益增加。这一评估框架为安全对齐研究提供了新方向。
+
+#### 3. [Revealed Rationality: 基于表示定理的无标签 LLM 评估与正则化](https://arxiv.org/abs/2608.05015v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 利用决策论中的表示定理，提出无标签评估和正则化 LLM 的新方法。
+- **深度洞察**: 💡 **创新点**：将决策论的"当且仅当"结构引入 LLM 评估，无需人工标注即可判断模型行为是否符合理性公理。**影响**：为 LLM 的自动评估提供了理论基础，可能降低对齐研究对人工标注的依赖。
+
+---
+
+## 二、Agent 与工具
+
+#### 4. [Microsoft SkillOpt: 跨模型规模和工具链的技能迁移](https://aihot.virxact.com/items/cmsgsgz530fluro5qu0vnw8s0)
+- **来源**: AIHOT | **时间**: 今日
+- **摘要**: Microsoft 与上海交大、同济、复旦团队提出的 SkillOpt 通过文本空间优化训练单一技能文档，冻结目标模型，使优化后的技能工件可跨模型规模和跨工具链迁移。
+- **深度洞察**: 💡 **创新点**：在 Codex 上优化的 SpreadsheetBench 技能部署到 Claude Code 后得分 81.8，超过后者自行训练技能得到的 80.4。**影响**：全部 4 项跨模型、4 项跨工具链和 3 项跨基准迁移结果均高于目标的无技能基线，证明了"一次优化，多处部署"的可行性，为 Agent 技能生态的标准化奠定基础。
+
+#### 5. [ArtAnno: LLM Agent 驱动的艺术品隐式语义标注](https://arxiv.org/abs/2608.05026v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 提出 ArtAnno，通过 LLM Agent 驱动的双向人机协作，标注艺术品中的隐式语义。
+- **深度洞察**: 💡 **创新点**：将 LLM Agent 引入艺术研究，通过人机协作提取文化背景和深层语义。**影响**：当前 AI 辅助标注工具缺乏对文化语境的理解，这一方法为数字人文和艺术研究提供了新工具，也展示了 Agent 在专业知识领域的应用潜力。
+
+---
+
+## 三、模型与多模态
+
+#### 6. [Towards Physics of Multimodal Pretraining](https://arxiv.org/abs/2608.05000v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 研究多模态预训练中的知识流动、模态协同和早期统一机制。
+- **深度洞察**: 💡 **创新点**：首次从"物理学"角度分析多模态预训练，揭示模态间交互的基本规律。**影响**：为设计更高效的多模态模型提供理论指导，可能推动从"经验调参"到"科学设计"的转变。
+
+#### 7. [Language Models Generalize to Human-like Word Order Preferences](https://arxiv.org/abs/2608.05028v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 研究发现语言模型能泛化出类似人类的词序偏好。
+- **深度洞察**: 💡 **创新点**：揭示了 LLM 在语言习得中的涌现能力，与人类语言偏好趋同。**影响**：为理解 LLM 的内部表示和语言泛化机制提供了新证据，可能影响未来模型设计和评估方法。
+
+---
+
+## 四、产业与合规
+
+#### 8. [短期负荷预测的 EU-AI Act 合规实践](https://arxiv.org/abs/2608.05018v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 在德国输电网负荷预测中实践 EU-AI Act 的合规要求。
+- **深度洞察**: 💡 **创新点**：将 EU-AI Act 的确定性、可复现性和可审计性要求应用于实际的电力系统预测场景。**影响**：展示了高风险 AI 系统在合规框架下的工程实践，为其他关键基础设施领域的 AI 部署提供了参考。
+
+#### 9. [Canonical Joint Energy-Based Model: 失败模式与采样器比较](https://arxiv.org/abs/2608.05025v1)
+- **来源**: arXiv | **时间**: 近3天
+- **摘要**: 分析 Canonical JEM 在 CIFAR-10 上的失败模式，比较 Predictor-Corrector 和 SGLD 采样器。
+- **深度洞察**: 💡 **创新点**：深入分析了 JEM 的实际局限性，揭示了理论与实践的差距。**影响**：为能量模型的实际应用提供了诚实的评估，帮助开发者避免过度乐观的预期。
+
+---
+
 ## 🧭 今日趋势小结
-1. AI模型评测与优化成为研究热点，多方法被提出以提升模型在特定任务上的性能。
-2. Agent与工具的研究进展迅速，为LLM在复杂任务中的应用提供了新的思路。
-3. 模型与多模态的研究不断深入，为AI在多个领域的应用提供了新的可能性。
-4. 产业与生态方面，新的工具和平台不断涌现，为AI的发展提供了基础设施支持。
+
+1. **LLM 进入系统优化领域**：SparseDitto 展示了 LLM 在 GPU 内核优化中的潜力，从"写代码"到"优化系统"的转变标志着 LLM 能力边界的扩展。
+
+2. **技能迁移成为 Agent 生态关键**：Microsoft SkillOpt 的跨模型迁移实验表明，"一次优化，多处部署"是可行的，这将加速 Agent 技能生态的标准化和商业化。
+
+3. **AI 安全研究深化**：DelusionEval 关注心理安全、EU-AI Act 合规实践关注关键基础设施，安全研究从"技术对齐"扩展到"社会影响"层面。
+
+4. **多模态理解走向科学化**：从"经验调参"到"科学设计"的转变正在发生，多模态预训练的物理学分析为未来模型设计提供了理论基础。
