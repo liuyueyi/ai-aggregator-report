@@ -28,6 +28,31 @@ class StateStore:
         self.seen_path = self.dir / seen_file
         self.taglines_path = self.dir / taglines_file
         self.arch_dir = self.dir / "arch"
+        self._seen_records: list[dict] | None = None  # 懒加载缓存：解析后的 seen.jsonl 记录
+
+    # ---------- 内部缓存 ----------
+
+    @staticmethod
+    def _is_iso_date(s: str) -> bool:
+        """严格判断是否为可字典序比较的 YYYY-MM-DD 日期串（ISO 日期可直接用字符串比较）。"""
+        return (len(s) == 10 and s[4] == "-" and s[7] == "-"
+                and s[:4].isdigit() and s[5:7].isdigit() and s[8:10].isdigit())
+
+    def _load_seen_records(self) -> list[dict]:
+        """懒加载 seen.jsonl 并缓存解析结果；写入路径会同步更新缓存，避免重复读盘。"""
+        if self._seen_records is None:
+            records: list[dict] = []
+            if self.seen_path.exists():
+                for line in self.seen_path.read_text(encoding="utf-8").splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        records.append(json.loads(line))
+                    except json.JSONDecodeError:
+                        continue
+            self._seen_records = records
+        return self._seen_records
 
     # ---------- archive ----------
 
@@ -45,40 +70,26 @@ class StateStore:
         读取 seen.jsonl，将旧记录追加到月度归档文件，
         然后重写 seen.jsonl 只保留最近 window_days 天的记录。
         """
-        if not self.seen_path.exists():
+        records = self._load_seen_records()
+        if not records:
             return 0
 
-        today_date = datetime.strptime(today, "%Y-%m-%d").date()
-        cutoff_date = today_date - timedelta(days=self.window_days)
+        cutoff_str = (datetime.strptime(today, "%Y-%m-%d").date()
+                      - timedelta(days=self.window_days)).strftime("%Y-%m-%d")
 
-        # 读取所有记录并分类
+        # 读取所有记录并分类（ISO 日期直接字符串比较）
         keep_records: list[dict] = []
         archive_records: dict[str, list[dict]] = defaultdict(list)
 
-        for line in self.seen_path.read_text(encoding="utf-8").strip().splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                rec = json.loads(line)
-            except json.JSONDecodeError:
-                continue
+        for rec in records:
             d = rec.get("date", "")
-            if not d:
+            if not self._is_iso_date(d) or d >= cutoff_str:
+                # 保留：窗口内，或日期缺失/非法
                 keep_records.append(rec)
-                continue
-            try:
-                rec_date = datetime.strptime(d, "%Y-%m-%d").date()
-            except ValueError:
-                keep_records.append(rec)
-                continue
-            if rec_date < cutoff_date:
-                # 需要归档：按月份分组
-                month_key = rec_date.strftime("%Y%m")
-                archive_records[month_key].append(rec)
             else:
-                # 保留：在窗口内
-                keep_records.append(rec)
+                # 需要归档：按月份分组（YYYYMM 取日期串前 7 位去连字符）
+                month_key = f"{d[:4]}{d[5:7]}"
+                archive_records[month_key].append(rec)
 
         # 无旧记录则跳过
         if not archive_records:
@@ -89,17 +100,18 @@ class StateStore:
 
         # 追加到月度归档文件
         archived_count = 0
-        for month_key, records in archive_records.items():
+        for month_key, month_records in archive_records.items():
             archive_path = self.arch_dir / f"{month_key}-seen.jsonl"
             with archive_path.open("a", encoding="utf-8") as f:
-                for rec in records:
+                for rec in month_records:
                     f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-            archived_count += len(records)
+            archived_count += len(month_records)
 
-        # 重写主文件（只保留最近 window_days 天）
+        # 重写主文件（只保留最近 window_days 天），并同步缓存避免再次读盘
         with self.seen_path.open("w", encoding="utf-8") as f:
             for rec in keep_records:
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        self._seen_records = keep_records
 
         return archived_count
 
@@ -113,27 +125,16 @@ class StateStore:
         """
         if not self.seen_path.exists():
             return {}
-        cutoff = datetime.strptime(before_date, "%Y-%m-%d").date() - timedelta(
-            days=self.window_days
-        )
+        cutoff_str = (datetime.strptime(before_date, "%Y-%m-%d").date()
+                      - timedelta(days=self.window_days)).strftime("%Y-%m-%d")
         seen: dict[str, str] = {}
-        for line in self.seen_path.read_text(encoding="utf-8").strip().splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                rec = json.loads(line)
-            except json.JSONDecodeError:
-                continue
+        for rec in self._load_seen_records():
             d = rec.get("date", "")
             fp = rec.get("fingerprint", "")
-            if not d or not fp:
+            if not d or not fp or not self._is_iso_date(d):
                 continue
-            try:
-                d_date = datetime.strptime(d, "%Y-%m-%d").date()
-            except ValueError:
-                continue
-            if d_date < datetime.strptime(before_date, "%Y-%m-%d").date() and d_date >= cutoff:
+            # ISO 日期直接字符串比较：d < before_date 且 d >= cutoff
+            if d < before_date and d >= cutoff_str:
                 seen[fp] = d
         return seen
 
@@ -155,16 +156,12 @@ class StateStore:
         """
         self.dir.mkdir(parents=True, exist_ok=True)
         existing: set[str] = set()
-        if self.seen_path.exists():
-            for line in self.seen_path.read_text(encoding="utf-8").splitlines():
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    existing.add(json.loads(line).get("fingerprint", ""))
-                except json.JSONDecodeError:
-                    continue
+        for rec in self._load_seen_records():
+            fp = rec.get("fingerprint", "")
+            if fp:
+                existing.add(fp)
         added = 0
+        new_records: list[dict] = []
         with self.seen_path.open("a", encoding="utf-8") as f:
             for s in signals:
                 fp = fingerprint(s)
@@ -172,8 +169,12 @@ class StateStore:
                     continue
                 rec = {"date": date, "fingerprint": fp, "url": s.url, "title": s.title}
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                new_records.append(rec)
                 existing.add(fp)
                 added += 1
+        # 同步缓存，与文件保持一致
+        if new_records:
+            self._seen_records.extend(new_records)
         # 归档超过 window_days 天的旧记录
         archived = self._archive_old_records(date)
         return added, archived

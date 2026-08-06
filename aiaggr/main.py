@@ -5,6 +5,7 @@ import asyncio
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -38,6 +39,43 @@ _JSON_MODE = False
 
 def _today(tz_name: str) -> str:
     return datetime.now(ZoneInfo(tz_name)).strftime("%Y-%m-%d")
+
+
+def _fmt_duration(sec: float) -> str:
+    """将秒数格式化为可读的耗时字符串。"""
+    if sec < 0.001:
+        return f"{sec * 1000:.1f} ms"
+    if sec < 60:
+        return f"{sec:.2f} 秒"
+    return f"{sec / 60:.1f} 分钟"
+
+
+class _Stages:
+    """执行阶段计时器：记录各阶段耗时，结束时打印并支持汇总。"""
+
+    def __init__(self) -> None:
+        self._t0: dict[str, float] = {}
+        self._dur: dict[str, float] = {}
+        self._t0_global = time.perf_counter()
+
+    def start(self, name: str) -> None:
+        self._t0[name] = time.perf_counter()
+        print(f"→ 阶段开始: {name}")
+
+    def end(self, name: str, extra: str = "") -> float:
+        sec = time.perf_counter() - self._t0.pop(name, time.perf_counter())
+        self._dur[name] = sec
+        print(f"✓ 阶段结束: {name} · 耗时 {_fmt_duration(sec)}{extra}")
+        return sec
+
+    def summary(self) -> None:
+        if not self._dur:
+            return
+        print("== 各阶段耗时汇总 ==")
+        rows = [(n, s) for n, s in self._dur.items()]
+        rows.append(("运行总计", time.perf_counter() - self._t0_global))
+        for name, sec in sorted(rows, key=lambda kv: kv[1], reverse=True):
+            print(f"  - {name}: {_fmt_duration(sec)}")
 
 
 async def fetch_all(fetchers: dict) -> tuple[list[Signal], list[str]]:
@@ -196,6 +234,7 @@ async def _collect(topics, pools, state, date, cross_day_exclude: bool, base: di
 
 
 async def amain(args, cfg) -> dict:
+    stages = _Stages()
     tz = timezone_name(cfg)
     date = args.date or _today(tz)
     topics = _resolve_topics(args, cfg)
@@ -218,6 +257,7 @@ async def amain(args, cfg) -> dict:
     }
 
     # ---- 幂等：无待生成主题且未 --force 时直接结束（采集模式跳过该检查） ----
+    stages.start("幂等检查")
     pending = _pending_topics(topics, date, rdir, args.force)
     if not args.collect and not pending:
         entries = [
@@ -227,6 +267,8 @@ async def amain(args, cfg) -> dict:
             for k, v in topics.items()
         ]
         print(f"✓ {date} 所有主题日报已存在（{', '.join(topics)}）。用 --force 强制重跑。")
+        stages.end("幂等检查")
+        stages.summary()
         return {**base, "skipped": True, "topics": entries,
                 "message": "all topic reports already exist"}
 
@@ -237,22 +279,29 @@ async def amain(args, cfg) -> dict:
         print(f"→ 待生成主题: {', '.join(topics)}")
 
     print(f"=== AI 聚合日报 · {date} ===")
+    stages.end("幂等检查")
 
     # ---- 采集 ----
+    stages.start("数据抓取")
     requested_sources = (
         [s.strip() for s in args.source.split(",") if s.strip()] if args.source else None
     )
     fetchers = select_fetchers(cfg, requested_sources)
     if not fetchers:
+        stages.end("数据抓取", extra="（未选中数据源）")
         print("✗ 未选中任何数据源（检查 --source / config enabled）。")
+        stages.summary()
         return {**base, "exit_code": 2, "error": "no sources selected"}
     _apply_global_limit(fetchers, args.limit)
     print(f"→ 并行抓取 {len(fetchers)} 个数据源 ...")
     signals, sources_empty = await fetch_all(fetchers)
     print(f"✓ 抓取到 {len(signals)} 条原始信号")
     if not signals:
+        stages.end("数据抓取", extra="（空结果）")
+        stages.summary()
         return {**base, "exit_code": 1, "error": "no signals fetched",
                 "sources": len(fetchers), "sources_empty": sources_empty}
+    stages.end("数据抓取")
     base["sources"] = len(fetchers)
     base["sources_empty"] = sources_empty
 
@@ -263,6 +312,7 @@ async def amain(args, cfg) -> dict:
     }
 
     # ---- 同日去重 + 分数叠加 ----
+    stages.start("同日去重与聚合")
     date_obj = datetime.strptime(date, "%Y-%m-%d").date()
     aggregated = aggregate(
         signals,
@@ -272,24 +322,33 @@ async def amain(args, cfg) -> dict:
     print(f"✓ 聚合去重后 {len(aggregated)} 条唯一信号")
     base["fetched"] = len(signals)
     base["unique"] = len(aggregated)
+    stages.end("同日去重与聚合")
 
     # ---- 跨日去重 ----
+    stages.start("跨日去重")
     state = StateStore(
         state_dir(cfg),
         window_days=int(cfg.get("dedup", {}).get("window_days", 7)),
     )
     aggregated = state.mark_seen(aggregated, date)
+    stages.end("跨日去重")
 
     # ---- 主题分类 ----
+    stages.start("主题分类")
     pools = classify(aggregated, topics, settings, use_llm=(not args.no_llm and not args.collect))
     pool_counts = {k: len(v) for k, v in pools.items()}
     print(f"✓ 主题分类: {pool_counts}")
+    stages.end("主题分类")
 
     # ---- 采集模式：不生成日报，信号交给上层 ----
     if args.collect:
+        stages.start("采集模式")
         cross_day_exclude = cfg.get("dedup", {}).get("cross_day_exclude", True)
-        return await _collect(topics, pools, state, date, cross_day_exclude, base,
-                              tracking=tracking_signals, deep=args.deep)
+        result = await _collect(topics, pools, state, date, cross_day_exclude, base,
+                                tracking=tracking_signals, deep=args.deep)
+        stages.end("采集模式")
+        stages.summary()
+        return result
 
     # ---- 逐主题生成日报 ----
     cross_day_exclude = cfg.get("dedup", {}).get("cross_day_exclude", True)
@@ -298,6 +357,7 @@ async def amain(args, cfg) -> dict:
 
     # --deep：生成前为各主题 TOP-N 信号拉取正文（跨主题去重后并发），供 LLM 写深度洞察
     if args.deep:
+        stages.start("--deep 正文抓取")
         deep_picks: list[Signal] = []
         seen_ids: set[int] = set()
         for tkey in topics:
@@ -312,6 +372,7 @@ async def amain(args, cfg) -> dict:
         if deep_picks:
             print(f"→ --deep 正文抓取 {len(deep_picks)} 条信号（并发） ...")
             await enrich_with_content(deep_picks)
+        stages.end("--deep 正文抓取")
 
     saved_files = []
     topic_entries = []
@@ -347,6 +408,7 @@ async def amain(args, cfg) -> dict:
             tracking_signals, settings, date, prompts_dir, rdir, sem=sem
         )
 
+    stages.start("主题日报生成（含生态追踪）")
     print(f"→ 并发生成 {len(topics)} 份主题日报（LLM 并发上限 {llm_concurrency}）...")
     topic_gather = asyncio.gather(*[_gen_one(t) for t in topics])
     if tracking_task:
@@ -354,8 +416,10 @@ async def amain(args, cfg) -> dict:
         saved_files.extend(tracking_saved)
     else:
         topic_results = await topic_gather
+    stages.end("主题日报生成（含生态追踪）")
 
     # 按主题顺序落盘 + 更新状态，保证输出与 state 确定
+    stages.start("日报落盘与状态更新")
     for tkey, pool_sorted, result in topic_results:
         tconf = topics[tkey]
         if result is None:
@@ -382,7 +446,9 @@ async def amain(args, cfg) -> dict:
         print(f"✓ [{tkey}] 已保存到 {path.relative_to(ROOT)}")
 
     if not saved_files:
+        stages.end("日报落盘与状态更新", extra="（全部失败）")
         print("✗ 主题日报全部失败，不更新状态。")
+        stages.summary()
         return {**base, "exit_code": 1, "error": "all topic reports failed",
                 "topics": topic_entries}
 
@@ -397,13 +463,16 @@ async def amain(args, cfg) -> dict:
     index_path = save_index(date, topic_entries, rdir)
     print(f"✓ 当日索引已保存到 {date_path(rdir, date) / 'index.md'}")
     print(f"→ 完成：{len(saved_files)} 份主题日报写入 {rdir}")
+    stages.end("日报落盘与状态更新")
 
     # ---- 站点产物（manifest + RSS）与飞书推送 ----
     if not args.collect:
+        stages.start("站点产物与飞书推送")
         _build_site(cfg, rdir)
         if feishu_webhook_urls():
             title, content = build_feishu_card(date, topic_entries)
             await send_feishu(title, content)
+        stages.end("站点产物与飞书推送")
 
     # ---- 选题建议（读取已生成的日报，LLM 生成选题 + 前日 diff）----
     topic_suggestions_md = None
@@ -421,6 +490,7 @@ async def amain(args, cfg) -> dict:
                and any(e.get("key") == k and not e.get("skipped") for e in topic_entries)
         }
         if existing_topics:
+            stages.start("选题建议生成")
             print(f"→ 生成选题建议（{len(existing_topics)} 个主题）...")
             suggestions = await generate_topic_suggestions(
                 existing_topics, date, rdir, settings, prompts_dir
@@ -434,7 +504,9 @@ async def amain(args, cfg) -> dict:
                 ts_path.write_text(md, encoding="utf-8")
                 topic_suggestions_md = str(ts_path.relative_to(ROOT))
                 print(f"✓ 选题建议已保存: {topic_suggestions_md}")
+            stages.end("选题建议生成")
 
+    stages.summary()
     return {
         **base,
         "exit_code": 0,
