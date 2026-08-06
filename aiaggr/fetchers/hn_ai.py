@@ -15,6 +15,9 @@ AI_QUERIES = [
     "OpenAI",
     "Anthropic",
     "machine learning",
+    "AI agent",
+    "agentic",
+    "AI agents",
 ]
 
 ALGOLIA_URL = "https://hn.algolia.com/api/v1/search"

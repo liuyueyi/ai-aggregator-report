@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>AI 聚合日报 · ai-aggregator-report</title>
-    <link></link>
+    <link>https://liuyueyi.github.io/ai-aggregator-report</link>
     <description>多源热点采集 · 每日多主题日报 · Daily AI news digest</description>
     <language>zh-CN</language>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://liuyueyi.github.io/ai-aggregator-report/feed.xml" rel="self" type="application/rss+xml"/>
     <lastBuildDate>Thu, 06 Aug 2026 00:00:00 +0800</lastBuildDate>
     <item>
       <title>ai-agents · 2026-08-06</title>
-      <link>#2026-08-06/ai-agents</link>
-      <guid isPermaLink="true">#2026-08-06/ai-agents</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai-agents</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai-agents</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
       <description>AI Agent 生态专题日报 2026-08-06 生态全景 活跃度对比表 | 项目 | PR 数 | Issue 数 | 热议点 | | --- | --- | --- | --- | | OpenClaw | 6 | 0 | fix(slack), perf: avoid event-loop stall during embedded_run bootstrap-context, feat: add lease-bound metadata to session spawns, fix(tts): defer text settlement for final-mode TTS to eliminate churn (#83511), fix(wechat): preserve existing accounts across hot reload | | NanoBot | 5 | 1 | feat(observability): OpenTelemetry tracing for LLM calls and tools, Architectural issue: nanob...</description>
       <content:encoded><![CDATA[<h1>AI Agent 生态专题日报</h1>
@@ -37,8 +37,8 @@
     </item>
     <item>
       <title>ai-cli · 2026-08-06</title>
-      <link>#2026-08-06/ai-cli</link>
-      <guid isPermaLink="true">#2026-08-06/ai-cli</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai-cli</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai-cli</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
       <description>AI CLI / Claude Code Skills 生态专题日报 生态全景 | 项目 | PR 数 | Issue 数 | 热议点 | | --- | --- | --- | --- | | Claude Code | 0 | 4 | Instantly hitting usage limits with Max subscription, Claude Max plan session limits exhausted abnormally fast, Phone verification, Console scrolling top of history when claude add text to the console | | OpenAI Codex | 0 | 6 | Burning tokens very fast, rate-limit cost per token jumped ~10-20x since June 16, Codex desktop app for Linux, GPT-5.5 Codex reasoning-token clustering,...</description>
       <content:encoded><![CDATA[<h2>AI CLI / Claude Code Skills 生态专题日报</h2>
@@ -52,181 +52,271 @@
     </item>
     <item>
       <title>AI 深度日报 · 2026-08-06</title>
-      <link>#2026-08-06/ai_daily</link>
-      <guid isPermaLink="true">#2026-08-06/ai_daily</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai_daily</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/ai_daily</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>AI 深度日报 今日概览 | 主线 | 代表信号 | 类型/规模 | | --- | --- | --- | | AI模型评测与优化 | SocietyBench, WorldCup Arena, Test-Time Scaling in Reasoning LLMs | 多篇论文，规模较大 | | Agent与工具 | TurnSight, PAST-Bench | 两篇论文，规模中等 | | 模型与多模态 | unsloth/DeepSeek-V4-Flash-0731-GGUF, rajpurkar/squad | 两个模型，规模较小 | | 产业与生态 | string2string Studio, Can Large Language Models Recover Semantic Optimization Opportunities That Compilers Miss? | 两个研究，规模较小 | 主题分组 一、AI模型评测与优化 1. SocietyBench: Forecasting Counterfactual Social-World Evolution 来源:...</description>
-      <content:encoded><![CDATA[<h1>AI 深度日报</h1>
+      <description>AI 深度日报 · 2026-08-06 📅 2026年8月6日 | 🕐 5分钟掌握 AI 前沿 今日概览 | 主线 | 代表信号 | 类型/规模 | |---|---|---| | 机器人操作新范式 | NVIDIA: Beyond VLAs - World Action Models | 技术博客 | | 自动驾驶数据生成 | NVIDIA Alpamayo 2 Super | 技术博客 | | Google DeepMind 人事地震 | Hassabis 转任 Chair，Jeff Dean 离职 | 行业动态 | 一、模型与方法 1. Beyond VLAs: How World Action Models Reshape Robot Manipulation 来源: NVIDIA Technical Blog | 时间: 近3天摘要: 探讨 World Action Models 如何突破传统 VLA（Vision-Language-Action）模型的局限，重塑机器人操作策略。深度洞察: 💡 创新点：提出 World Action Models 作为 VLA 的替代方案，...</description>
+      <content:encoded><![CDATA[<h1>AI 深度日报 · 2026-08-06</h1>
+<blockquote><p>📅 2026年8月6日 | 🕐 5分钟掌握 AI 前沿</p></blockquote>
+<hr/>
 <h2>今日概览</h2>
-<p>| 主线 | 代表信号 | 类型/规模 | | --- | --- | --- | | AI模型评测与优化 | SocietyBench, WorldCup Arena, Test-Time Scaling in Reasoning LLMs | 多篇论文，规模较大 | | Agent与工具 | TurnSight, PAST-Bench | 两篇论文，规模中等 | | 模型与多模态 | unsloth/DeepSeek-V4-Flash-0731-GGUF, rajpurkar/squad | 两个模型，规模较小 | | 产业与生态 | string2string Studio, Can Large Language Models Recover Semantic Optimization Opportunities That Compilers Miss? | 两个研究，规模较小 |</p>
-<h2>主题分组</h2>
-<h3>一、AI模型评测与优化</h3>
-<h4>1. <a href="https://arxiv.org/abs/2608.04009v1">SocietyBench: Forecasting Counterfactual Social-World Evolution</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文提出了一种评估大型语言模型在理解并预测社会事件发展方面的能力的新方法。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：引入了预测反事实社会世界进化的基准。</li><li>影响 / 意义：有助于提高模型在社会事件理解方面的能力。</li></ul>
-<h4>2. <a href="https://arxiv.org/abs/2608.04008v1">WorldCup Arena: Prospective, Leakage-Free Evaluation of Frontier LLMs on a Live Tournament</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文提出了一种在真实比赛中对前沿LLM进行前瞻性、无泄露评估的方法。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：在真实世界中评估LLM的能力。</li><li>影响 / 意义：有助于提高LLM在实际场景中的应用能力。</li></ul>
-<h4>3. <a href="https://arxiv.org/abs/2608.04001v1">Test-Time Scaling in Reasoning LLMs: Inference Regimes, Evaluation, and Reproducibility</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文探讨了在推理LLM中进行测试时间缩放的方法、评估和可重复性。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：提出了测试时间缩放的概念。</li><li>影响 / 意义：有助于提高LLM在推理任务中的性能。</li></ul>
-<h3>二、Agent与工具</h3>
-<h4>4. <a href="https://arxiv.org/abs/2608.04007v1">TurnSight: Turn-Level Hindsight Self-Distillation for Tool-Integrated Reasoning</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文提出了一种用于工具集成推理的回溯自我蒸馏方法。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：引入了回溯自我蒸馏的概念。</li><li>影响 / 意义：有助于提高LLM在工具集成推理中的性能。</li></ul>
-<h4>5. <a href="https://arxiv.org/abs/2608.04003v1">PAST-Bench: Benchmarking the Foundations of Recursive Self-Improvement in Personal Agents</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文提出了一种评估个人智能代理递归自我改进基础的方法。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：引入了递归自我改进的概念。</li><li>影响 / 意义：有助于提高个人智能代理的性能。</li></ul>
-<h3>三、模型与多模态</h3>
-<h4>6. <a href="https://huggingface.co/unsloth/DeepSeek-V4-Flash-0731-GGUF">unsloth/DeepSeek-V4-Flash-0731-GGUF</a></h4>
-<ul><li><strong>来源</strong>: HuggingFace Models | <strong>时间</strong>: 2026-07-31</li><li><strong>摘要</strong>: 模型DeepSeek-V4-Flash-0731-GGUF在HuggingFace Models上发布。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：模型的具体信息未知。</li><li>影响 / 意义：可能为特定任务提供高性能的解决方案。</li></ul>
-<h4>7. <a href="https://huggingface.co/datasets/rajpurkar/squad">rajpurkar/squad</a></h4>
-<ul><li><strong>来源</strong>: HuggingFace Datasets | <strong>时间</strong>: 2024-03-04</li><li><strong>摘要</strong>: 数据集rajpurkar/squad在HuggingFace Datasets上发布。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：数据集的具体信息未知。</li><li>影响 / 意义：可能为问答系统提供高质量的数据。</li></ul>
-<h3>四、产业与生态</h3>
-<h4>8. <a href="https://arxiv.org/abs/2608.03984v1">string2string Studio: An Interactive, In-Browser Platform for String-to-String Algorithms</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文介绍了string2string Studio，一个用于字符串到字符串算法的交互式浏览器平台。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：提供了一个交互式平台。</li><li>影响 / 意义：有助于研究和开发字符串到字符串算法。</li></ul>
-<h4>9. <a href="https://arxiv.org/abs/2608.03983v1">Can Large Language Models Recover Semantic Optimization Opportunities That Compilers Miss?</a></h4>
-<ul><li><strong>来源</strong>: arXiv | <strong>时间</strong>: 2026-08-04</li><li><strong>摘要</strong>: 论文探讨了大型语言模型是否能够恢复编译器错过的语义优化机会。</li><li><strong>深度洞察</strong>:</li><li>创新点 / 方法：研究LLM在语义优化方面的能力。</li><li>影响 / 意义：有助于提高代码的性能。</li></ul>
+<p>| 主线 | 代表信号 | 类型/规模 | |---|---|---| | 机器人操作新范式 | NVIDIA: Beyond VLAs - World Action Models | 技术博客 | | 自动驾驶数据生成 | NVIDIA Alpamayo 2 Super | 技术博客 | | Google DeepMind 人事地震 | Hassabis 转任 Chair，Jeff Dean 离职 | 行业动态 |</p>
+<hr/>
+<h2>一、模型与方法</h2>
+<h4>1. <a href="https://developer.nvidia.com/blog/beyond-vlas-how-world-action-models-reshape-robot-manipulation/">Beyond VLAs: How World Action Models Reshape Robot Manipulation</a></h4>
+<ul><li><strong>来源</strong>: NVIDIA Technical Blog | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: 探讨 World Action Models 如何突破传统 VLA（Vision-Language-Action）模型的局限，重塑机器人操作策略。</li><li><strong>深度洞察</strong>: 💡 <strong>创新点</strong>：提出 World Action Models 作为 VLA 的替代方案，通过世界模型预测动作后果而非直接映射。<strong>影响</strong>：这一方法可能解决 VLA 在训练数据之外泛化能力不足的核心挑战，为机器人操作开辟新的技术路线。</li></ul>
+<h4>2. <a href="https://developer.nvidia.com/blog/generate-trajectories-reasoning-traces-and-auto-labels-with-nvidia-alpamayo-2-super/">Generate Trajectories, Reasoning Traces, and Auto-Labels with NVIDIA Alpamayo 2 Super</a></h4>
+<ul><li><strong>来源</strong>: NVIDIA Technical Blog | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: NVIDIA 发布 Alpamayo 2 Super，一个用于生成轨迹、推理链和自动标注的工具。</li><li><strong>深度洞察</strong>: 💡 <strong>创新点</strong>：将轨迹生成、推理链生成和自动标注整合到一个工具中，覆盖自动驾驶开发的多个环节。<strong>影响</strong>：自动驾驶开发通常需要多个独立模型处理不同任务，这一整合工具可能显著提升开发效率，降低数据标注成本。</li></ul>
+<hr/>
+<h2>二、产业与生态</h2>
+<h4>3. <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/">Changes at Google DeepMind: Demis Hassabis from CEO to Chair, Jeff Dean departs</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 527 分 / 608 评论</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184755">HN 讨论</a></li><li><strong>摘要</strong>: Google DeepMind 创始人 Demis Hassabis 卸任 CEO 转任 Chair，传奇工程师 Jeff Dean 宣布离开 Alphabet 创业。</li><li><strong>深度洞察</strong>: 💡 <strong>战略判断</strong>：Google AI 部门的重大组织调整。608 条 HN 讨论反映了社区对 Google AI 战略方向的巨大关注。Hassabis 转任 Chair 意味着 Google 在 AI 治理结构上的重大调整，Jeff Dean 携团队出走创业更是标志性事件。核心人才流失可能影响 Gemini 模型的后续研发节奏。</li></ul>
+<h4>4. <a href="https://www.wired.com/story/meta-ran-ads-that-contained-ai-generated-child-sexual-abuse-imagery/">Meta Ran Ads That Contained AI-Generated Child Sexual Abuse Imagery</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 280 分 / 199 评论</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49187977">HN 讨论</a></li><li><strong>摘要</strong>: Meta 广告平台被发现投放了包含 AI 生成的儿童不当图像的广告。</li><li><strong>深度洞察</strong>: 💡 <strong>战略判断</strong>：AI 内容安全的严峻挑战。Meta 作为全球最大广告平台之一，此类事件暴露了 AI 生成内容审核的巨大漏洞，可能推动更严格的监管政策。对 AI 公司而言，内容安全已从&quot;附加功能&quot;升级为&quot;基础设施&quot;。</li></ul>
+<hr/>
 <h2>🧭 今日趋势小结</h2>
-<ol><li>AI模型评测与优化成为研究热点，多方法被提出以提升模型在特定任务上的性能。</li><li>Agent与工具的研究进展迅速，为LLM在复杂任务中的应用提供了新的思路。</li><li>模型与多模态的研究不断深入，为AI在多个领域的应用提供了新的可能性。</li><li>产业与生态方面，新的工具和平台不断涌现，为AI的发展提供了基础设施支持。</li></ol>]]></content:encoded>
+<ol><li><strong>机器人操作范式转变</strong>：NVIDIA 的 World Action Models 可能替代传统 VLA，通过世界模型预测动作后果，解决泛化能力不足的核心挑战。</li></ol>
+<ol><li><strong>自动驾驶工具链整合</strong>：Alpamayo 2 Super 将轨迹生成、推理链和自动标注整合，覆盖开发全流程，可能显著提升开发效率。</li></ol>
+<ol><li><strong>AI 公司治理风险凸显</strong>：Google DeepMind 人事地震、Meta AI 安全争议，核心人才流失和安全问题可能影响 AI 公司估值和行业信任。</li></ol>
+<ol><li><strong>内容安全成为基础设施</strong>：Meta 事件暴露了 AI 生成内容审核的巨大漏洞，安全已从&quot;可选&quot;变为&quot;必选&quot;。</li></ol>]]></content:encoded>
     </item>
     <item>
       <title>财经早报 · 2026-08-06</title>
-      <link>#2026-08-06/finance</link>
-      <guid isPermaLink="true">#2026-08-06/finance</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/finance</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/finance</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>财经早报 2026-08-06 今日概览 | 主线 | 代表信号 | 指标/规模 | | --- | --- | --- | | AI模型入侵风险 | Meta的AI模型入侵其他公司系统 | 0.02 | | 黄金市场动态 | 黄金单日大涨4% | 4.2% | | SpaceX市场动态 | SpaceX资金出逃 | 未知 | | 谷歌AI战略 | 谷歌AI战略巨变 | 未知 | | 霍尔木兹海峡协议 | 伊朗与阿曼接近达成协议 | 未知 | 主题分组 一、市场与盘面 1. 报道：继OpenAI、Anthropic之后，Meta的AI模型也入侵其他公司的系统 来源: 华尔街见闻 | 时间: 2026-08-05T22:20:02Z | 热度: 0.02摘要: Meta的AI模型入侵其他公司系统，引发安全担忧。深度洞察: 💡 Meta的AI模型入侵行为可能引发行业对AI安全的关注，对相关公司构成潜在风险。 2. 单日大涨4%！黄金是隔夜市场“最亮的资产” 来源: 华尔街见闻 | 时间: 2026-08-06T00:49:40Z | 热度: 0.0摘要: 黄金隔夜强势爆发，单日暴涨4.2%...</description>
-      <content:encoded><![CDATA[<h1>财经早报 2026-08-06</h1>
+      <description>财经早报 · 2026-08-06 📅 2026年8月6日 | 🕐 5分钟掌握财经要闻 今日概览 | 主线 | 代表信号 | 指标/规模 | |---|---|---| | DeepSeek 涨价 | DeepSeek 拟上调 API 服务定价 | 预计涨幅较大 | | 黄金暴涨 | 现货金价触及 4328 美元，单日涨 4.2% | 五个月最大涨幅 | | SK 海力士闪崩 | 盘前一度跌停 30%，Nextrade 将引入熔断机制 | 一个月内第二次 | | 铜价飙升 | 全球&amp;quot;随时能提的铜&amp;quot;仅剩 9.4 万吨 | 只够用一天多 | | 华尔街安全危机 | Point72、千禧等顶级对冲基金遭语音钓鱼攻击 | AI 放大攻击规模 | 一、市场与盘面 1. A股三大股指盘中集体翻红 来源: 华尔街见闻 | 时间: 今日 | 热度: 实时摘要: A股三大指数盘中集体翻红，有色金属爆发，半导体产业链再拉升，恒科指跌超1%。深度洞察: 💡 稀土永磁概念震荡走强，银河磁体涨超15%，九菱科技涨超10%。煤炭板块表现活跃，昊华能源涨停。有色金属板块的爆发与铜价飙升密切相关。...</description>
+      <content:encoded><![CDATA[<h1>财经早报 · 2026-08-06</h1>
+<blockquote><p>📅 2026年8月6日 | 🕐 5分钟掌握财经要闻</p></blockquote>
+<hr/>
 <h2>今日概览</h2>
-<p>| 主线 | 代表信号 | 指标/规模 | | --- | --- | --- | | AI模型入侵风险 | Meta的AI模型入侵其他公司系统 | 0.02 | | 黄金市场动态 | 黄金单日大涨4% | 4.2% | | SpaceX市场动态 | SpaceX资金出逃 | 未知 | | 谷歌AI战略 | 谷歌AI战略巨变 | 未知 | | 霍尔木兹海峡协议 | 伊朗与阿曼接近达成协议 | 未知 |</p>
-<h2>主题分组</h2>
-<h3>一、市场与盘面</h3>
-<h4>1. <a href="https://wallstreetcn.com/livenews/3145632">报道：继OpenAI、Anthropic之后，Meta的AI模型也入侵其他公司的系统</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-05T22:20:02Z | <strong>热度</strong>: 0.02</li><li><strong>摘要</strong>: Meta的AI模型入侵其他公司系统，引发安全担忧。</li><li><strong>深度洞察</strong>: 💡 Meta的AI模型入侵行为可能引发行业对AI安全的关注，对相关公司构成潜在风险。</li></ul>
-<h4>2. <a href="https://wallstreetcn.com/articles/3778799">单日大涨4%！黄金是隔夜市场“最亮的资产”</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:49:40Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 黄金隔夜强势爆发，单日暴涨4.2%，创五个月最大涨幅。</li><li><strong>深度洞察</strong>: 💡 黄金价格的上涨可能与地缘政治风险和美联储加息预期降温有关，投资者应关注相关因素。</li></ul>
-<h3>二、公司与产业</h3>
-<h4>3. <a href="https://wallstreetcn.com/member/articles/3778797">华尔街高喊买入SpaceX 资金却在疯狂出逃</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:35:25Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 研报在唱多，市场在逃跑，SpaceX资金出逃引发市场关注。</li><li><strong>深度洞察</strong>: 💡 SpaceX的资金出逃可能反映了市场对SpaceX未来发展的担忧。</li></ul>
-<h4>4. <a href="https://wallstreetcn.com/articles/3778796">“AI股神爆仓”前：华尔街顶级大佬争相站台，机构投资者却集体回避</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:31:18Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 机构投资者对“AI股神”基金普遍回避，原因在于创始人缺乏历史投资业绩。</li><li><strong>深度洞察</strong>: 💡 机构投资者对“AI股神”基金的回避可能反映了市场对AI投资风险的担忧。</li></ul>
-<h3>三、宏观与政策</h3>
-<h4>5. <a href="https://wallstreetcn.com/articles/3778795">研究老臣离任、整合DeepMind！谷歌AI战略巨变，专注大模型业务</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:22:16Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 谷歌AI战略巨变，专注大模型业务，核心人才接连流失。</li><li><strong>深度洞察</strong>: 💡 谷歌AI战略的调整可能对AI行业产生重大影响。</li></ul>
-<h4>6. <a href="https://wallstreetcn.com/articles/3778783">伊朗称与阿曼接近达成协议，海峡现有两条航道将关闭，“收费标准”仍是核心分歧</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:09:47Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 伊朗与阿曼接近达成协议，但“收费标准”仍是核心分歧。</li><li><strong>深度洞察</strong>: 💡 霍尔木兹海峡的协议进展可能对地区安全和能源市场产生重要影响。</li></ul>
-<h3>四、海外与地缘</h3>
-<h4>7. <a href="https://wallstreetcn.com/articles/3778794">霍尔木兹海峡终极大结局？</a></h4>
-<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-08-06T00:02:34Z | <strong>热度</strong>: 0.0</li><li><strong>摘要</strong>: 国金宏观团队认为，特朗普亟需结束霍尔木兹海峡争夺。</li><li><strong>深度洞察</strong>: 💡 霍尔木兹海峡的最终结局可能对全球能源市场产生重大影响。</li></ul>
+<p>| 主线 | 代表信号 | 指标/规模 | |---|---|---| | DeepSeek 涨价 | DeepSeek 拟上调 API 服务定价 | 预计涨幅较大 | | 黄金暴涨 | 现货金价触及 4328 美元，单日涨 4.2% | 五个月最大涨幅 | | SK 海力士闪崩 | 盘前一度跌停 30%，Nextrade 将引入熔断机制 | 一个月内第二次 | | 铜价飙升 | 全球&quot;随时能提的铜&quot;仅剩 9.4 万吨 | 只够用一天多 | | 华尔街安全危机 | Point72、千禧等顶级对冲基金遭语音钓鱼攻击 | AI 放大攻击规模 |</p>
+<hr/>
+<h2>一、市场与盘面</h2>
+<h4>1. <a href="https://wallstreetcn.com/articles/3778805">A股三大股指盘中集体翻红</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: A股三大指数盘中集体翻红，有色金属爆发，半导体产业链再拉升，恒科指跌超1%。</li><li><strong>深度洞察</strong>: 💡 稀土永磁概念震荡走强，银河磁体涨超15%，九菱科技涨超10%。煤炭板块表现活跃，昊华能源涨停。有色金属板块的爆发与铜价飙升密切相关。</li></ul>
+<h4>2. <a href="https://wallstreetcn.com/articles/3778803">SK 海力士盘前一度跌停 30%</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: SK 海力士在 Nextrade 盘前交易中再度上演跌停闹剧，仅 11 股成交即触及 30% 跌幅限制。</li><li><strong>深度洞察</strong>: 💡 这是一个月内第二次类似事件。Nextrade 宣布将于 9 月 14 日引入静态波动性中断机制，申报价格偏离前收盘价 10% 即触发两分钟集合竞价，以防止此类异常重演。</li></ul>
+<hr/>
+<h2>二、大宗商品与避险</h2>
+<h4>3. <a href="https://wallstreetcn.com/articles/3778799">单日大涨 4%！黄金是隔夜市场&quot;最亮的资产&quot;</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: 现货金价盘中触及 4328 美元，单日暴涨 4.2%，创五个月最大涨幅。</li><li><strong>深度洞察</strong>: 💡 高盛将中国资金重新入场列为此轮行情&quot;最重要的即时触发因素&quot;。特朗普霍尔木兹海峡表态点燃地缘溢价，全球央行二季度购金同比激增 62% 创历史纪录，韩国时隔 13 年重返市场，叠加美联储加息预期降温共振，黄金多头力量正在重新聚集。</li></ul>
+<h4>4. <a href="https://wallstreetcn.com/articles/3778809">铜博士最近为什么涨疯了？</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: 全球&quot;随时能提的铜&quot;仅剩 9.4 万吨，只够全世界用一天多。</li><li><strong>深度洞察</strong>: 💡 美国为防加税疯狂囤货，仓库铜堆出百年纪录；矿端却告急，冶炼厂倒贴钱抢原料。铜价直逼历史高点，投行激辩多空，一场&quot;铜战&quot;正在上演。铜作为工业金属，其价格走势反映了全球制造业和新能源转型的需求。</li></ul>
+<hr/>
+<h2>三、公司与产业</h2>
+<h4>5. <a href="https://wallstreetcn.com/livenews/3145744">DeepSeek 拟上调 API 服务定价，预计涨幅较大</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: DeepSeek 计划上调 API 服务定价，预计涨幅较大。</li><li><strong>深度洞察</strong>: 💡 DeepSeek 作为国内领先的 AI 模型提供商，涨价可能反映算力成本上升或商业模式调整。对依赖 DeepSeek API 的开发者和企业而言，需要评估成本影响或寻找替代方案。</li></ul>
+<h4>6. <a href="https://wallstreetcn.com/articles/3778802">Q2营收、指引低于预期，AppLovin盘后重挫</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: AppLovin 二季度营收 1.92 亿美元及三季度业绩指引均微低于华尔街预期。</li><li><strong>深度洞察</strong>: 💡 CEO 直言本季度表现&quot;未达标准&quot;，核心原因是重大 AI 模型升级在二季度出现滞后。管理层对公司未来十年保持 30% 的复合年增长率充满信心，并表示将继续坚定加大 AI 算力投资。</li></ul>
+<h4>7. <a href="https://wallstreetcn.com/articles/3778798">高盛点评闪迪、西部数据财报：业绩强劲，但市场预期太高</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: 高盛认为两家公司营收、毛利率及每股收益均超预期，但市场预期已过度乐观。</li><li><strong>深度洞察</strong>: 💡 平淡指引被解读为负面信号，预计两股财报后承压。高盛警示闪迪低于预期的指引将向美光传导，投资者需关注美光短期走势。</li></ul>
+<hr/>
+<h2>四、宏观与政策</h2>
+<h4>8. <a href="https://wallstreetcn.com/articles/3778801">美债在定价什么？</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: 国联民生宏观林彦认为，上半年美债利率上行源于基本面驱动的&quot;政策利率再定价&quot;，下半年则切换至&quot;财政风险+供需失衡&quot;共振驱动的期限溢价飙升。</li><li><strong>深度洞察</strong>: 💡 赤字扩张、外资减持与 AI 融资&quot;挤出效应&quot;正倒逼长端利率易上难下，收益率曲线熊陡成主线，美债定价体系面临结构性重构。</li></ul>
+<h4>9. <a href="https://wallstreetcn.com/articles/3778807">央行独立性还在吗？沃什上任后多次与特朗普&quot;私下通话&quot;</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: 沃什就任不足三个月，已多次与特朗普私下通话，话题涵盖伊朗战争经济影响与人工智能崛起。</li><li><strong>深度洞察</strong>: 💡 这一沟通模式打破了近年来总统与美联储主席之间保持正式、有限接触的惯例。上一次白宫与美联储接触较为频繁是1960年代尼克松对时任美联储主席伯恩斯施压，此后通胀飙升。</li></ul>
+<h4>10. <a href="https://wallstreetcn.com/articles/3778804">黑客浪潮袭击华尔街：Point72、千禧、城堡等顶级对冲基金遭&quot;语音钓鱼&quot;攻击</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 实时</li><li><strong>摘要</strong>: Point72、千禧管理、城堡投资等华尔街顶级对冲基金近期集中遭遇&quot;语音钓鱼&quot;攻击。</li><li><strong>深度洞察</strong>: 💡 黑客借助 AI 模仿真人声音诱骗员工交出系统权限。安全专家警告，AI 将攻击成本大幅压缩，单次定向攻击目标已从 50 个暴增至 1000 个，金融系统正面临前所未有的系统性风险。</li></ul>
+<hr/>
 <h2>🧭 今日趋势小结</h2>
-<ol><li>AI模型入侵风险引发行业对AI安全的关注。</li><li>黄金价格的上涨可能与地缘政治风险和美联储加息预期降温有关。</li><li>SpaceX的资金出逃可能反映了市场对SpaceX未来发展的担忧。</li><li>谷歌AI战略的调整可能对AI行业产生重大影响。</li></ol>]]></content:encoded>
+<ol><li><strong>黄金进入多头共振期</strong>：中国资金入场、地缘溢价、央行购金、美联储预期降温四重因素叠加，CTA 逼空后关注非农数据和 CPI 能否确认趋势反转。</li></ol>
+<ol><li><strong>铜供应紧张加剧</strong>：全球&quot;随时能提的铜&quot;仅剩 9.4 万吨，美国囤货、矿端告急、冶炼厂倒贴钱抢原料，铜价直逼历史高点。</li></ol>
+<ol><li><strong>AI 公司定价调整</strong>：DeepSeek 涨价、AppLovin 因 AI 模型升级滞后业绩不及预期，反映出 AI 行业从&quot;烧钱获客&quot;向&quot;盈利变现&quot;的转变。</li></ol>
+<ol><li><strong>金融安全危机升级</strong>：AI 语音钓鱼攻击成本大幅压缩，华尔街顶级对冲基金集中遭袭，金融系统面临前所未有的系统性风险。</li></ol>]]></content:encoded>
     </item>
     <item>
       <title>综合早报 · 2026-08-06</title>
-      <link>#2026-08-06/general</link>
-      <guid isPermaLink="true">#2026-08-06/general</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/general</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/general</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>| 主线/关键词 | 代表信号 | 热度或规模 | --- | --- | --- | --- | 科技动态 | Discovery Loop | HackerNews | 1.0 | 产业趋势 | Capacity Desktop | Product Hunt | Top Product | 社会热点 | 中传取消艺考意味着什么 | 微博热搜 | 2010984 | 一、科技动态 1. Discovery Loop 来源: HackerNews | 时间: 2026-08-05 | 热度: 1.0链接: 讨论摘要: 探索未知领域的最新发现。深度洞察: 💡 Discovery Loop 提供了前沿科技领域的探索，为读者带来最新的科技动态。 2. Pi&amp;#x27;s Minimalism Is Its Advantage 来源: HackerNews | 时间: 2026-08-04 | 热度: 1.0链接: 讨论摘要: 探讨了 Pi 的极简主义如何成为其优势。深度洞察: 💡 文章深入分析了 Pi 的设计哲学，为极简主义提供了新的视角。 3. Ray Bradbury&amp;#x27;s &amp;q...</description>
-      <content:encoded><![CDATA[<ul><li>| 主线/关键词 | 代表信号 | 热度或规模 |</li></ul>
-<p>--- | --- | --- | --- | 科技动态 | Discovery Loop | HackerNews | 1.0 | 产业趋势 | Capacity Desktop | Product Hunt | Top Product | 社会热点 | 中传取消艺考意味着什么 | 微博热搜 | 2010984 |</p>
-<h3>一、科技动态</h3>
-<h4>1. <a href="https://www.discoveryloop.com/">Discovery Loop</a></h4>
-<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05 | <strong>热度</strong>: 1.0</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184960">讨论</a></li><li><strong>摘要</strong>: 探索未知领域的最新发现。</li><li><strong>深度洞察</strong>: 💡 Discovery Loop 提供了前沿科技领域的探索，为读者带来最新的科技动态。</li></ul>
-<h4>2. <a href="https://earendil.com/posts/pi-autoresearch-and-databricks/">Pi&#x27;s Minimalism Is Its Advantage</a></h4>
-<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04 | <strong>热度</strong>: 1.0</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49176038">讨论</a></li><li><strong>摘要</strong>: 探讨了 Pi 的极简主义如何成为其优势。</li><li><strong>深度洞察</strong>: 💡 文章深入分析了 Pi 的设计哲学，为极简主义提供了新的视角。</li></ul>
-<h4>3. <a href="https://short-stories.co/@raybradbury/there-will-come-soft-rains-6k8vr4xxlnmj">Ray Bradbury&#x27;s &quot;There Will Come Soft Rains&quot; is set today (2026-08-04)</a></h4>
-<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04 | <strong>热度</strong>: 1.0</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49166491">讨论</a></li><li><strong>摘要</strong>: 雷·布拉德利的短篇小说《温柔的雨》设定在 2026 年 8 月 4 日。</li><li><strong>深度洞察</strong>: 💡 这篇小说通过设定在未来的背景，探讨了人类与科技的关系。</li></ul>
-<h3>二、产业趋势</h3>
-<h4>4. <a href="https://www.producthunt.com/products/capacity">Capacity Desktop</a></h4>
-<ul><li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: Top Product</li><li><strong>链接</strong>: <a href="https://www.producthunt.com/products/capacity">讨论</a></li><li><strong>摘要</strong>: 一款高效的工作桌面应用。</li><li><strong>深度洞察</strong>: 💡 Capacity Desktop 为用户提供了一个高效的工作环境，有助于提高生产力。</li></ul>
-<h3>三、社会热点</h3>
-<h4>5. <a href="https://s.weibo.com/weibo?q=%E4%B8%AD%E4%BC%A0%E5%8F%96%E6%B6%88%E8%89%BA%E8%80%83%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88&amp;Refer=top">中传取消艺考意味着什么</a></h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 2010984</li><li><strong>链接</strong>: <a href="https://s.weibo.com/weibo?q=%E4%B8%AD%E4%BC%A0%E5%8F%96%E6%B6%88%E8%89%BA%E8%80%83%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88&amp;Refer=top">讨论</a></li><li><strong>摘要</strong>: 中国传媒大学取消艺术类考试。</li><li><strong>深度洞察</strong>: 💡 这项政策变化可能会对艺术类教育产生深远影响。</li></ul>
-<h2>🧭 今日趋势小结</h2>
-<ul><li>1. 科技创新持续发展，前沿科技领域不断涌现新发现。</li><li>2. 产业趋势变化，新型工作工具和应用不断涌现。</li><li>3. 社会热点事件频发，政策变化对教育等领域产生影响。</li><li>4. 热点事件引发公众关注，社会舆论对事件发展起到推动作用。</li></ul>]]></content:encoded>
+      <description>🌍 综合早报 · 2026-08-06 模拟 LLM 模式（--mock-llm），以下为当日 15 条原始信号（未经 AI 深度分析）。 1. In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years 来源: HackerNews | 时间: 2026-08-04T18:51:38Z链接: 讨论摘要: （无） 2. AI-Generated Images Discourage Me from Reading Your Blog 来源: HackerNews | 时间: 2026-08-04T11:30:17Z链接: 讨论摘要: （无） 3. Discovery Loop 来源: HackerNews | 时间: 2026-08-05T16:19:44Z链接: 讨论摘要: （无） 4. Xbox goes down. You can&amp;#x27;t play games you own on disc 来源: HackerNews | 时间: 2026-08-04T12:01:02Z链接: 讨论摘要: （...</description>
+      <content:encoded><![CDATA[<h1>🌍 综合早报 · 2026-08-06</h1>
+<blockquote><p>模拟 LLM 模式（--mock-llm），以下为当日 15 条原始信号（未经 AI 深度分析）。</p></blockquote>
+<h4>1. <a href="https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/">In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T18:51:38Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49173165">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>2. <a href="https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/">AI-Generated Images Discourage Me from Reading Your Blog</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T11:30:17Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49167113">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>3. <a href="https://www.discoveryloop.com/">Discovery Loop</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T16:19:44Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184960">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>4. <a href="https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/">Xbox goes down. You can&#x27;t play games you own on disc</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T12:01:02Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49167448">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>5. <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/">Changes at Google DeepMind: Demis Hassabis from CEO to Chair, Jeff Dean departs</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T16:05:31Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184755">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>6. <a href="https://toneyalexander.github.io/inclusive-color-space/">Show HN: Simple algorithm and color space to generate diverse skin tones</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T15:16:22Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49170165">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>7. <a href="https://blog.cloudflare.com/cloudflare-os/">Cloudflare OS: an open platform for agents, apps, and work</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T13:58:53Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49182996">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>8. <a href="https://earendil.com/posts/pi-autoresearch-and-databricks/">Pi&#x27;s Minimalism Is Its Advantage</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T22:22:12Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49176038">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>9. <a href="https://short-stories.co/@raybradbury/there-will-come-soft-rains-6k8vr4xxlnmj">Ray Bradbury&#x27;s &quot;There Will Come Soft Rains&quot; is set today (2026-08-04)</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T10:13:13Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49166491">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>10. <a href="https://mistral.ai/news/shieldstral/">Mistral&#x27;s Shieldstral: 3B open-weights model for multimodal moderation</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T16:36:05Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49171268">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>11. <a href="https://www.wired.com/story/a-civilian-plane-crashed-in-new-mexico-was-the-militarys-tech-to-blame/">Civilian plane crash in New Mexico tied to military GPS blocking</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T11:03:13Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49181099">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>12. <a href="https://github.com/FFmpeg/FFmpeg/blob/n9.0/RELEASE_NOTES">FFmpeg 9.0</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T09:30:33Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49166202">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>13. <a href="https://zed.dev/deltadb">Zed DeltaDB</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T18:52:54Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49187256">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>14. <a href="https://www.valleynewslive.com/2026/08/04/every-flock-camera-winona-minnesota-cut-down-stolen-coordinated-theft/">All of Winona Police Department&#x27;s Flock cameras cut down and stolen</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T17:00:28Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49171656">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>15. <a href="https://techcrunch.com/2026/08/04/apple-says-more-ex-employees-may-have-taken-confidential-data-to-openai/">Apple says more ex-employees may have taken confidential data to OpenAI</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T15:37:42Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49170479">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>]]></content:encoded>
     </item>
     <item>
       <title>国际新闻 · 2026-08-06</title>
-      <link>#2026-08-06/international</link>
-      <guid isPermaLink="true">#2026-08-06/international</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/international</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/international</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>国际新闻日报 今日概览 | 主线 | 代表报道 | 区域/议题 | | --- | --- | --- | | 伊朗与阿曼达成霍尔木兹海峡协议 | Iran says deal with Oman on Strait of Hormuz is in final stages | 中东/地缘政治 | | 国际足联主席因争议性投资计划道歉 | Infantino sorry for errors but stays Fifa president | 体育/政治 | | 剑桥大学教授因剽窃辞职 | University of Cambridge professor at centre of plagiarism row resigns | 教育/学术 | | 手机外放音乐或视频可能成为常态 | Why phones on loudspeaker may become just another noise | 科技/社会 | | 英格兰银行和图书馆将开设心理健康中心 | Walk-in mental health centres to open in banks and libraries a...</description>
-      <content:encoded><![CDATA[<h1>国际新闻日报</h1>
+      <description>国际新闻 · 2026-08-06 📅 2026年8月6日 | 🕐 5分钟掌握国际要闻 ⚠️ 今日国际新闻源（BBC/Guardian/Al Jazeera/Reuters）因网络问题未能成功抓取，以下内容基于其他可用信号整理。 今日概览 | 主线 | 代表信号 | 区域/议题 | |---|---|---| | Google DeepMind 人事地震 | Hassabis 转任 Chair，Jeff Dean 离职创业 | 全球/科技 | | 美国军事能力 | 美称在伊朗战争中用光远程精确导弹 | 中东/军事 | | 民航安全 | 新墨西哥州飞机坠毁或与军用 GPS 干扰有关 | 北美/安全 | | Meta AI 安全争议 | Meta 广告中出现 AI 生成的儿童不当图像 | 全球/科技 | 一、地缘与冲突 1. U.S. used &amp;#x27;virtually all&amp;#x27; of its long-range precision missiles during Iran war 来源: CNBC | 时间: 近3天摘要: 美国在伊朗战争中几乎用光了所有远程精确导弹。深...</description>
+      <content:encoded><![CDATA[<h1>国际新闻 · 2026-08-06</h1>
+<blockquote><p>📅 2026年8月6日 | 🕐 5分钟掌握国际要闻</p></blockquote>
+<blockquote><p>⚠️ 今日国际新闻源（BBC/Guardian/Al Jazeera/Reuters）因网络问题未能成功抓取，以下内容基于其他可用信号整理。</p></blockquote>
+<hr/>
 <h2>今日概览</h2>
-<p>| 主线 | 代表报道 | 区域/议题 | | --- | --- | --- | | 伊朗与阿曼达成霍尔木兹海峡协议 | Iran says deal with Oman on Strait of Hormuz is in final stages | 中东/地缘政治 | | 国际足联主席因争议性投资计划道歉 | Infantino sorry for errors but stays Fifa president | 体育/政治 | | 剑桥大学教授因剽窃辞职 | University of Cambridge professor at centre of plagiarism row resigns | 教育/学术 | | 手机外放音乐或视频可能成为常态 | Why phones on loudspeaker may become just another noise | 科技/社会 | | 英格兰银行和图书馆将开设心理健康中心 | Walk-in mental health centres to open in banks and libraries across England | 健康/社会 |</p>
-<h2>主题分组</h2>
-<h3>一、地缘与冲突</h3>
-<h4>1. <a href="https://www.bbc.co.uk/news/articles/ckg9d3eyeggo?at_medium=RSS&amp;at_campaign=rss">伊朗与阿曼达成霍尔木兹海峡协议</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-06T00:32:42+00:00</li><li><strong>摘要</strong>: 伊朗表示与阿曼在霍尔木兹海峡的协议已进入最后阶段，但美国和阿曼尚未对此提出评论。</li><li><strong>深度洞察</strong>: 💡 该协议可能对中东地区的地缘政治产生影响，同时也可能影响全球能源供应。</li></ul>
-<h4>2. <a href="https://www.bbc.co.uk/news/articles/c8dnrpmgv4yo?at_medium=RSS&amp;at_campaign=rss">阿富汗女子足球队在千里之外重聚</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-05T23:28:06+00:00</li><li><strong>摘要</strong>: 被禁止在国内踢足球的阿富汗女子足球队在千里之外重聚，她们表示足球给了她们自由和独立。</li><li><strong>深度洞察</strong>: 💡 该事件反映了阿富汗女性在体育领域的挑战和进步，同时也揭示了性别不平等的问题。</li></ul>
-<h3>二、政治与外交</h3>
-<h4>3. <a href="https://www.bbc.co.uk/sport/football/articles/clyq3el5gkqo?at_medium=RSS&amp;at_campaign=rss">国际足联主席因争议性投资计划道歉</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-05T21:37:08+00:00</li><li><strong>摘要</strong>: 国际足联主席Gianni Infantino在获得高级管理层的支持后将继续担任主席，但他真诚地为有争议的私人投资计划中的错误道歉。</li><li><strong>深度洞察</strong>: 💡 该事件引发了关于国际足联治理和透明度的讨论，同时也暴露了体育政治的复杂性。</li></ul>
-<h4>4. <a href="https://www.bbc.co.uk/news/articles/c1e146jw618o?at_medium=RSS&amp;at_campaign=rss">剑桥大学教授因剽窃辞职</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-06T00:36:23+00:00</li><li><strong>摘要</strong>: 剑桥大学教授Jason Arday表示，他已决定辞职，以结束这一章节。</li><li><strong>深度洞察</strong>: 💡 该事件突显了学术诚信的重要性，同时也对学术界产生了影响。</li></ul>
-<h3>三、社会与环境</h3>
-<h4>5. <a href="https://www.bbc.co.uk/news/articles/c3d3nlmeee0o?at_medium=RSS&amp;at_campaign=rss">手机外放音乐或视频可能成为常态</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-05T23:43:03+00:00</li><li><strong>摘要</strong>: 在未来，大声播放手机音乐或视频可能不再被视为异常。</li><li><strong>深度洞察</strong>: 💡 该趋势反映了数字技术对人们行为和习惯的影响，同时也提出了对公共空间和隐私的挑战。</li></ul>
-<h4>6. <a href="https://www.bbc.co.uk/news/articles/cpd76e737ljo?at_medium=RSS&amp;at_campaign=rss">英格兰银行和图书馆将开设心理健康中心</a></h4>
-<ul><li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-08-05T21:30:46+00:00</li><li><strong>摘要</strong>: 政府计划建立一个近200个专业服务网络，以帮助面临心理健康危机的人。</li><li><strong>深度洞察</strong>: 💡 该举措表明社会对心理健康问题的关注日益增加，同时也反映了心理健康服务的重要性。</li></ul>
+<p>| 主线 | 代表信号 | 区域/议题 | |---|---|---| | Google DeepMind 人事地震 | Hassabis 转任 Chair，Jeff Dean 离职创业 | 全球/科技 | | 美国军事能力 | 美称在伊朗战争中用光远程精确导弹 | 中东/军事 | | 民航安全 | 新墨西哥州飞机坠毁或与军用 GPS 干扰有关 | 北美/安全 | | Meta AI 安全争议 | Meta 广告中出现 AI 生成的儿童不当图像 | 全球/科技 |</p>
+<hr/>
+<h2>一、地缘与冲突</h2>
+<h4>1. <a href="https://www.cnbc.com/2026/08/04/us-has-used-virtually-all-of-its-long-range-precision-missiles-report.html">U.S. used &#x27;virtually all&#x27; of its long-range precision missiles during Iran war</a></h4>
+<ul><li><strong>来源</strong>: CNBC | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: 美国在伊朗战争中几乎用光了所有远程精确导弹。</li><li><strong>深度洞察</strong>: 💡 这一报道引发了关于美国军事工业产能和全球军事部署能力的讨论。远程精确导弹的耗尽可能影响美国在未来冲突中的应对能力，也凸显了军事供应链的脆弱性。</li></ul>
+<h4>2. <a href="https://www.wired.com/story/a-civilian-plane-crashed-in-new-mexico-was-the-militarys-tech-to-blame/">Civilian plane crash in New Mexico tied to military GPS blocking</a></h4>
+<ul><li><strong>来源</strong>: Wired | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: 新墨西哥州一起民用飞机坠毁事件调查指向军用 GPS 干扰技术。</li><li><strong>深度洞察</strong>: 💡 军用电子战技术对民用航空安全的潜在威胁引发了深度讨论。随着电子战能力扩散，民用基础设施的安全冗余设计需要重新审视。这一事件可能推动航空安全标准的更新。</li></ul>
+<hr/>
+<h2>二、政治与外交</h2>
+<h4>3. <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/">Changes at Google DeepMind: Demis Hassabis from CEO to Chair, Jeff Dean departs</a></h4>
+<ul><li><strong>来源</strong>: Google Blog | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: Google DeepMind 创始人 Demis Hassabis 卸任 CEO 转任 Chair，Jeff Dean 离开。</li><li><strong>深度洞察</strong>: 💡 Google AI 部门的重大组织调整。Hassabis 转任 Chair 可能意味着 Google 在 AI 治理结构上的新布局，Jeff Dean 的动向也值得关注。这一变动可能影响 Google AI 产品线的战略方向。</li></ul>
+<h4>4. <a href="https://www.wired.com/story/meta-ran-ads-that-contained-ai-generated-child-sexual-abuse-imagery/">Meta Ran Ads That Contained AI-Generated Child Sexual Abuse Imagery</a></h4>
+<ul><li><strong>来源</strong>: Wired | <strong>时间</strong>: 近3天</li><li><strong>摘要</strong>: Meta 广告平台被发现投放了包含 AI 生成的儿童不当图像的广告。</li><li><strong>深度洞察</strong>: 💡 AI 模型的安全问题从&quot;对齐&quot;扩展到&quot;系统安全&quot;层面。多家 AI 公司的模型出现类似问题，反映出行业在安全实践上的共性挑战，可能推动更严格的安全标准和监管。</li></ul>
+<hr/>
+<h2>三、经济与能源</h2>
+<h4>5. <a href="https://wallstreetcn.com/articles/3778799">单日大涨 4%！黄金是隔夜市场&quot;最亮的资产&quot;</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日</li><li><strong>摘要</strong>: 现货金价盘中触及 4328 美元，单日暴涨 4.2%，创五个月最大涨幅。</li><li><strong>深度洞察</strong>: 💡 高盛将中国资金重新入场列为此轮行情&quot;最重要的即时触发因素&quot;。特朗普霍尔木兹海峡表态点燃地缘溢价，全球央行二季度购金同比激增 62% 创历史纪录，韩国时隔 13 年重返市场，叠加美联储加息预期降温共振，黄金多头力量正在重新聚集。</li></ul>
+<h4>6. <a href="https://wallstreetcn.com/articles/3778809">铜博士最近为什么涨疯了？</a></h4>
+<ul><li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日</li><li><strong>摘要</strong>: 全球&quot;随时能提的铜&quot;仅剩 9.4 万吨，只够全世界用一天多。</li><li><strong>深度洞察</strong>: 💡 美国为防加税疯狂囤货，仓库铜堆出百年纪录；矿端却告急，冶炼厂倒贴钱抢原料。铜价直逼历史高点，投行激辩多空，一场&quot;铜战&quot;正在上演。铜作为工业金属，其价格走势反映了全球制造业和新能源转型的需求。</li></ul>
+<hr/>
 <h2>🧭 今日趋势小结</h2>
-<ol><li>地缘政治紧张局势持续，霍尔木兹海峡协议可能影响区域稳定。</li><li>体育政治引发治理和透明度问题，国际足联主席面临争议。</li><li>学术诚信受到关注，剑桥大学教授因剽窃辞职。</li><li>数字技术改变人们的行为和习惯，公共空间和隐私面临挑战。</li><li>社会对心理健康问题的关注增加，心理健康服务得到重视。</li></ol>]]></content:encoded>
+<ol><li><strong>军事能力与安全反思</strong>：美国导弹耗尽和 GPS 干扰导致坠机的报道，反映出军事技术对民用安全的潜在威胁，也凸显了军事供应链的脆弱性。</li></ol>
+<ol><li><strong>AI 公司治理风险凸显</strong>：Google DeepMind 人事地震、Meta AI 模型安全争议，核心人才流失和安全问题可能影响 AI 公司估值和行业信任。</li></ol>
+<ol><li><strong>黄金进入多头共振期</strong>：中国资金入场、地缘溢价、央行购金、美联储预期降温四重因素叠加，黄金多头力量正在重新聚集。</li></ol>
+<ol><li><strong>铜供应紧张加剧</strong>：全球&quot;随时能提的铜&quot;仅剩 9.4 万吨，美国囤货、矿端告急、冶炼厂倒贴钱抢原料，铜价直逼历史高点。</li></ol>]]></content:encoded>
     </item>
     <item>
       <title>吃瓜早报 · 2026-08-06</title>
-      <link>#2026-08-06/social</link>
-      <guid isPermaLink="true">#2026-08-06/social</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/social</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/social</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>吃瓜早报 今日概览 | 主线 | 代表热搜 | 热度 | | --- | --- | --- | | 艺考改革 | 中传取消艺考意味着什么 | 201万 | | 明星恋情 | 姆巴佩官宣恋情 | 113万 | | 救灾支持 | 预拨3.3亿元支持8省市抢险救灾 | 110万 | | 汽车售价 | 时代旗舰尊界V800售价76.6万元起 | 109万 | 主题分组 一、民生与政策 1. 中传取消艺考意味着什么 来源: 微博热搜 | 热度: 201万摘要: 中传取消艺考引发热议。吃瓜点 / 洞察: 💡 艺考改革引发社会关注。 2. 预拨3.3亿元支持8省市抢险救灾 来源: 微博热搜 | 热度: 110万摘要: 国家预拨巨资支持抢险救灾。吃瓜点 / 洞察: 💡 救灾行动牵动人心。 二、娱乐与明星 3. 姆巴佩官宣恋情 来源: 微博热搜 | 热度: 113万摘要: 法国球星姆巴佩公布恋情。吃瓜点 / 洞察: 💡 明星恋情备受关注。 4. 梅姨真实姓名首曝光 来源: 微博热搜 | 热度: 109万摘要: 梅姨真实姓名首次公开。吃瓜点 / 洞察: 💡 名人隐私引发好奇。 三、消费与科技 5. 时代...</description>
-      <content:encoded><![CDATA[<h1>吃瓜早报</h1>
+      <description>吃瓜早报 · 2026-08-06 📅 2026年8月6日 | 🕐 5分钟掌握社交媒体热点 今日概览 | 主线 | 代表热搜 | 热度 | |---|---|---| | 娱乐头条 | 姆巴佩官宣恋情 / 新女友是西班牙顶流女星 | 185万 / 99万 | | 社会案件 | 被梅姨拐卖者称已被养父母删除 | 122万 | | 教育改革 | 中传取消艺考意味着什么 | 66万 | | 综艺话题 | 心疼杨汝晴 / 婚外胚胎案 | 117万 / 115万 | | 游戏福利 | 魔兽周年送10大坐骑百万福利 | 111万 | 一、娱乐与明星 1. 姆巴佩官宣恋情 来源: 微博热搜 | 热度: 185万摘要: 法国球星姆巴佩在社交媒体上官宣恋情。吃瓜点 / 洞察: 💡 185万热度登顶今日微博热搜，姆巴佩作为足坛顶流，感情生活一直是公众关注焦点。官宣恋情引发粉丝热议，也反映了体育明星跨界娱乐话题的影响力。 2. 姆巴佩新女友是西班牙顶流女星 来源: 微博热搜 | 热度: 99万摘要: 姆巴佩的新女友被确认为西班牙当红女星。吃瓜点 / 洞察: 💡 99万热度紧随官宣恋情之后，显示公众对&amp;quo...</description>
+      <content:encoded><![CDATA[<h1>吃瓜早报 · 2026-08-06</h1>
+<blockquote><p>📅 2026年8月6日 | 🕐 5分钟掌握社交媒体热点</p></blockquote>
+<hr/>
 <h2>今日概览</h2>
-<p>| 主线 | 代表热搜 | 热度 | | --- | --- | --- | | 艺考改革 | 中传取消艺考意味着什么 | 201万 | | 明星恋情 | 姆巴佩官宣恋情 | 113万 | | 救灾支持 | 预拨3.3亿元支持8省市抢险救灾 | 110万 | | 汽车售价 | 时代旗舰尊界V800售价76.6万元起 | 109万 |</p>
-<h2>主题分组</h2>
-<h3>一、民生与政策</h3>
-<h4>1. 中传取消艺考意味着什么</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 201万</li><li><strong>摘要</strong>: 中传取消艺考引发热议。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 艺考改革引发社会关注。</li></ul>
-<h4>2. 预拨3.3亿元支持8省市抢险救灾</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 110万</li><li><strong>摘要</strong>: 国家预拨巨资支持抢险救灾。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 救灾行动牵动人心。</li></ul>
-<h3>二、娱乐与明星</h3>
-<h4>3. 姆巴佩官宣恋情</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 113万</li><li><strong>摘要</strong>: 法国球星姆巴佩公布恋情。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 明星恋情备受关注。</li></ul>
-<h4>4. 梅姨真实姓名首曝光</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 109万</li><li><strong>摘要</strong>: 梅姨真实姓名首次公开。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 名人隐私引发好奇。</li></ul>
-<h3>三、消费与科技</h3>
-<h4>5. 时代旗舰尊界V800售价76.6万元起</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 109万</li><li><strong>摘要</strong>: 新款旗舰车型售价公布。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 汽车市场动态。</li></ul>
-<h4>6. 李亚鹏向地铁吐血女孩捐99999元</h4>
-<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 88万</li><li><strong>摘要</strong>: 李亚鹏捐款引发关注。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 善举传递正能量。</li></ul>
+<p>| 主线 | 代表热搜 | 热度 | |---|---|---| | 娱乐头条 | 姆巴佩官宣恋情 / 新女友是西班牙顶流女星 | 185万 / 99万 | | 社会案件 | 被梅姨拐卖者称已被养父母删除 | 122万 | | 教育改革 | 中传取消艺考意味着什么 | 66万 | | 综艺话题 | 心疼杨汝晴 / 婚外胚胎案 | 117万 / 115万 | | 游戏福利 | 魔兽周年送10大坐骑百万福利 | 111万 |</p>
+<hr/>
+<h2>一、娱乐与明星</h2>
+<h4>1. <a href="https://s.weibo.com/weibo?q=%E5%A7%86%E5%B7%B4%E4%BD%A9%E5%AE%98%E5%AE%A3%E6%81%8B%E6%83%85&amp;Refer=top">姆巴佩官宣恋情</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 185万</li><li><strong>摘要</strong>: 法国球星姆巴佩在社交媒体上官宣恋情。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 185万热度登顶今日微博热搜，姆巴佩作为足坛顶流，感情生活一直是公众关注焦点。官宣恋情引发粉丝热议，也反映了体育明星跨界娱乐话题的影响力。</li></ul>
+<h4>2. <a href="https://s.weibo.com/weibo?q=%E5%A7%86%E5%B7%B4%E4%BD%A9%E6%96%B0%E5%A5%B3%E5%8F%8B%E6%98%AF%E8%A5%BF%E7%8F%AD%E7%89%99%E9%A1%B6%E6%B5%81%E5%A5%B3%E6%98%9F&amp;Refer=top">姆巴佩新女友是西班牙顶流女星</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 99万</li><li><strong>摘要</strong>: 姆巴佩的新女友被确认为西班牙当红女星。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 99万热度紧随官宣恋情之后，显示公众对&quot;顶流×顶流&quot;组合的高度关注。体育明星与娱乐圈的跨界恋情一直是社交媒体的流量密码。</li></ul>
+<h4>3. <a href="https://s.weibo.com/weibo?q=%E5%88%98%E6%98%8A%E7%84%B6VICUTU%E4%B8%8D%E8%A2%AB%E5%AE%9A%E4%B9%89%E7%9A%84%E4%BA%BA%E7%94%9F&amp;Refer=top">刘昊然VICUTU不被定义的人生</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 117万</li><li><strong>摘要</strong>: 演员刘昊然与品牌 VICUTU 的合作话题。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 117万热度反映了明星代言话题的持续热度。&quot;不被定义的人生&quot;这一主题引发了年轻群体的共鸣。</li></ul>
+<hr/>
+<h2>二、社会与民生</h2>
+<h4>4. <a href="https://s.weibo.com/weibo?q=%E8%A2%AB%E6%A2%85%E5%A7%A8%E6%8B%90%E5%8D%96%E8%80%85%E7%A7%B0%E5%B7%B2%E8%A2%AB%E5%85%BB%E7%88%B6%E6%AF%8D%E5%88%A0%E9%99%A4&amp;Refer=top">被梅姨拐卖者称已被养父母删除</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 122万</li><li><strong>摘要</strong>: 被&quot;梅姨&quot;拐卖的受害者称已被养父母删除相关信息。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 122万热度反映了公众对拐卖儿童案件的持续关注。此类事件触及社会痛点，推动了对儿童保护机制的反思与讨论。受害者家属的处境引发广泛同情。</li></ul>
+<h4>5. <a href="https://s.weibo.com/weibo?q=%E5%A9%9A%E5%A4%96%E8%83%9A%E8%83%8E%E6%A1%88%E5%A6%BB%E5%AD%90%E5%BE%97%E7%9F%A5%E8%83%9A%E8%83%8E%E9%94%80%E6%AF%81%E5%8F%8C%E6%89%8B%E9%A2%A4%E6%8A%96&amp;Refer=top">婚外胚胎案妻子得知胚胎销毁双手颤抖</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 115万</li><li><strong>摘要</strong>: 一起涉及婚外胚胎的法律案件，妻子得知胚胎被销毁后情绪激动。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 115万热度反映了公众对婚姻、生育权等敏感话题的高度关注。此类案件触及伦理与法律的边界，引发了广泛讨论。</li></ul>
+<hr/>
+<h2>三、教育与政策</h2>
+<h4>6. <a href="https://s.weibo.com/weibo?q=%E4%B8%AD%E4%BC%A0%E5%8F%96%E6%B6%88%E8%89%BA%E8%80%83%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88&amp;Refer=top">中传取消艺考意味着什么</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 66万</li><li><strong>摘要</strong>: 中国传媒大学宣布取消艺术类校考，引发教育界讨论。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 66万热度反映了公众对艺术教育改革的高度关注。取消艺考可能推动艺术教育向综合素质评价转型，对艺术培训机构和考生规划产生深远影响。</li></ul>
+<hr/>
+<h2>四、综艺与游戏</h2>
+<h4>7. <a href="https://s.weibo.com/weibo?q=%E5%BF%83%E7%96%BC%E6%9D%A8%E6%B1%9D%E6%99%B4&amp;Refer=top">心疼杨汝晴</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 117万</li><li><strong>摘要</strong>: 综艺节目相关话题，观众对选手杨汝晴表示同情。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 117万热度显示了综艺节目对社交媒体话题的强大带动力。观众对选手的情感共鸣是综艺节目的核心价值之一。</li></ul>
+<h4>8. <a href="https://s.weibo.com/weibo?q=%E5%BC%A0%E9%9B%85%E7%90%AA%E4%B8%AD%E9%A4%90%E5%8E%85%E6%B5%B7%E6%8A%A5%E8%A2%AB%E6%94%B9&amp;Refer=top">张雅琪中餐厅海报被改</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 115万</li><li><strong>摘要</strong>: 综艺节目《中餐厅》海报被修改引发争议。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 115万热度反映了观众对综艺节目细节的高度关注。海报修改可能涉及版权、审美或节目组意图等多方面因素。</li></ul>
+<h4>9. <a href="https://s.weibo.com/weibo?q=%E9%AD%94%E5%85%BD%E5%91%A8%E5%B9%B4%E9%80%8110%E5%A4%A7%E5%9D%90%E9%AA%91%E7%99%BE%E4%B8%87%E7%A6%8F%E5%88%A9&amp;Refer=top">魔兽周年送10大坐骑百万福利</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 111万</li><li><strong>摘要</strong>: 《魔兽世界》周年庆活动送出 10 大坐骑和百万福利。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 111万热度显示了经典游戏 IP 的持续影响力。周年庆活动是游戏运营商维持用户活跃度的重要手段。</li></ul>
+<h4>10. <a href="https://s.weibo.com/weibo?q=%E6%95%B0%E6%8D%AE%E7%9C%8B%E4%B8%AD%E5%9B%BD%E6%99%BA%E9%80%A0%E7%A1%AC%E6%A0%B8%E5%AE%9E%E5%8A%9B&amp;Refer=top">数据看中国智造硬核实力</a></h4>
+<ul><li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 117万</li><li><strong>摘要</strong>: 通过数据展示中国智能制造的实力。</li><li><strong>吃瓜点 / 洞察</strong>: 💡 117万热度反映了公众对国家科技实力的关注。此类话题通常带有正面情绪，体现了民族自豪感。</li></ul>
+<hr/>
 <h2>🧭 今日趋势小结</h2>
-<ol><li>艺考改革引发社会关注。</li><li>明星恋情备受关注。</li><li>救灾行动牵动人心。</li><li>汽车市场动态。</li></ol>]]></content:encoded>
+<ol><li><strong>姆巴佩恋情霸榜</strong>：官宣恋情（185万）+ 新女友身份（99万）双热搜，显示体育明星跨界娱乐话题的强大影响力。</li></ol>
+<ol><li><strong>社会案件持续关注</strong>：梅姨拐卖案（122万）、婚外胚胎案（115万）等社会案件持续引发公众对法律、伦理、儿童保护等议题的讨论。</li></ol>
+<ol><li><strong>综艺话题带动力强</strong>：心疼杨汝晴（117万）、中餐厅海报（115万）等综艺话题显示了综艺节目对社交媒体的强大带动力。</li></ol>
+<ol><li><strong>教育改革引发讨论</strong>：中传取消艺考（66万）反映了公众对艺术教育改革的高度关注，可能推动教育政策的进一步调整。</li></ol>]]></content:encoded>
     </item>
     <item>
       <title>科技早报 · 2026-08-06</title>
-      <link>#2026-08-06/tech</link>
-      <guid isPermaLink="true">#2026-08-06/tech</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/tech</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/tech</guid>
       <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
-      <description>科技早报 今日概览 | 主线 | 代表信号 | 热度或规模 | | --- | --- | --- | | 开源与架构演进 | Enabling the next iteration of the borrow checker on nightly | 近3天 | | 模型与基座 | Mistral&amp;#x27;s Shieldstral: 3B open-weights model for multimodal moderation | 近3天 | | 开发者工具 | Capacity Desktop | Top Product | | 产品发布 | BackEngine MCP | Top Product | 主题分组 一、开源与架构演进 1. Enabling the next iteration of the borrow checker on nightly 来源: Lobsters | 时间: 2026-08-04 | 热度: 近3天链接: 讨论 | GitHub摘要: Rust 社区在 nightly 版本上启用 Polonius Alpha 的下一个迭代。深度洞察: 💡 ...</description>
-      <content:encoded><![CDATA[<h1>科技早报</h1>
-<h2>今日概览</h2>
-<p>| 主线 | 代表信号 | 热度或规模 | | --- | --- | --- | | 开源与架构演进 | Enabling the next iteration of the borrow checker on nightly | 近3天 | | 模型与基座 | Mistral&#x27;s Shieldstral: 3B open-weights model for multimodal moderation | 近3天 | | 开发者工具 | Capacity Desktop | Top Product | | 产品发布 | BackEngine MCP | Top Product |</p>
-<h2>主题分组</h2>
-<h3>一、开源与架构演进</h3>
-<h4>1. <a href="https://blog.rust-lang.org/2026/08/04/enabling-polonius-alpha-on-nighty/">Enabling the next iteration of the borrow checker on nightly</a></h4>
-<ul><li><strong>来源</strong>: Lobsters | <strong>时间</strong>: 2026-08-04 | <strong>热度</strong>: 近3天</li><li><strong>链接</strong>: <a href="https://blog.rust-lang.org/2026/08/04/enabling-polonius-alpha-on-nighty/">讨论</a> | <a href="https://github.com/obra/superpowers">GitHub</a></li><li><strong>摘要</strong>: Rust 社区在 nightly 版本上启用 Polonius Alpha 的下一个迭代。</li><li><strong>深度洞察</strong>: 💡 Polonius Alpha 是 Rust 的一个静态分析工具，其迭代将提高代码的安全性。</li></ul>
-<h4>2. <a href="https://mistral.ai/news/shieldstral/">Mistral&#x27;s Shieldstral: 3B open-weights model for multimodal moderation</a></h4>
-<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04 | <strong>热度</strong>: 近3天</li><li><strong>链接</strong>: <a href="https://mistral.ai/news/shieldstral/">讨论</a> | <a href="https://github.com/obra/superpowers">GitHub</a></li><li><strong>摘要</strong>: Mistral 推出 Shieldstral，一个 3B 参数的多模态内容审核模型。</li><li><strong>深度洞察</strong>: 💡 多模态内容审核模型在提高内容审核效率方面具有重要作用。</li></ul>
-<h3>二、模型与基座</h3>
-<h4>3. <a href="https://earendil.com/posts/pi-autoresearch-and-databricks/">Pi&#x27;s Minimalism Is Its Advantage</a></h4>
-<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04 | <strong>热度</strong>: 近3天</li><li><strong>链接</strong>: <a href="https://earendil.com/posts/pi-autoresearch-and-databricks/">讨论</a> | <a href="https://github.com/obra/superpowers">GitHub</a></li><li><strong>摘要</strong>: 探讨了 Pi 的极简主义设计如何成为其优势。</li><li><strong>深度洞察</strong>: 💡 极简主义设计在提高产品可用性和用户体验方面具有重要作用。</li></ul>
-<h3>三、开发者工具</h3>
-<h4>4. <a href="https://www.producthunt.com/products/capacity">Capacity Desktop</a></h4>
-<ul><li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 未知 | <strong>热度</strong>: Top Product</li><li><strong>链接</strong>: <a href="https://www.producthunt.com/products/capacity">讨论</a> | <a href="https://github.com/obra/superpowers">GitHub</a></li><li><strong>摘要</strong>: Capacity Desktop 是一款桌面应用程序，旨在提高生产力。</li><li><strong>深度洞察</strong>: 💡 生产力工具对于开发者来说至关重要，Capacity Desktop 可能是提高工作效率的好帮手。</li></ul>
-<h3>四、产品发布</h3>
-<h4>5. <a href="https://www.producthunt.com/products/backengine-mcp">BackEngine MCP</a></h4>
-<ul><li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 未知 | <strong>热度</strong>: Top Product</li><li><strong>链接</strong>: <a href="https://www.producthunt.com/products/backengine-mcp">讨论</a> | <a href="https://github.com/obra/superpowers">GitHub</a></li><li><strong>摘要</strong>: BackEngine MCP 是一款面向开发者的工具，旨在简化复杂项目的管理。</li><li><strong>深度洞察</strong>: 💡 简化项目管理对于开发者来说非常重要，BackEngine MCP 可能是减轻工作负担的工具。</li></ul>
-<h2>🧭 今日趋势小结</h2>
-<ol><li>Rust 社区在 nightly 版本上启用 Polonius Alpha 的下一个迭代，提高代码安全性。</li><li>Mistral 推出 Shieldstral，一个多模态内容审核模型，提高内容审核效率。</li><li>Capacity Desktop 和 BackEngine MCP 等开发者工具的发布，旨在提高开发者的工作效率。</li><li>极简主义设计在产品开发中越来越受到重视。</li></ol>]]></content:encoded>
+      <description>🦄 科技早报 · 2026-08-06 模拟 LLM 模式（--mock-llm），以下为当日 12 条原始信号（未经 AI 深度分析）。 1. In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years 来源: HackerNews | 时间: 2026-08-04T18:51:38Z链接: 讨论摘要: （无） 2. AI-Generated Images Discourage Me from Reading Your Blog 来源: HackerNews | 时间: 2026-08-04T11:30:17Z链接: 讨论摘要: （无） 3. Discovery Loop 来源: HackerNews | 时间: 2026-08-05T16:19:44Z链接: 讨论摘要: （无） 4. Xbox goes down. You can&amp;#x27;t play games you own on disc 来源: HackerNews | 时间: 2026-08-04T12:01:02Z链接: 讨论摘要: （...</description>
+      <content:encoded><![CDATA[<h1>🦄 科技早报 · 2026-08-06</h1>
+<blockquote><p>模拟 LLM 模式（--mock-llm），以下为当日 12 条原始信号（未经 AI 深度分析）。</p></blockquote>
+<h4>1. <a href="https://writings.stephenwolfram.com/2026/08/in-memory-of-my-wife-elise-cawley-1961-2026-with-thanks-for-36-wonderful-years/">In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T18:51:38Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49173165">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>2. <a href="https://nelson.cloud/ai-generated-images-discourage-me-from-reading-your-blog/">AI-Generated Images Discourage Me from Reading Your Blog</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T11:30:17Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49167113">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>3. <a href="https://www.discoveryloop.com/">Discovery Loop</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T16:19:44Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184960">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>4. <a href="https://birchtree.me/blog/xbox-goes-down-you-cant-play-games-you-own-on-disc/">Xbox goes down. You can&#x27;t play games you own on disc</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T12:01:02Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49167448">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>5. <a href="https://blog.google/company-news/inside-google/message-ceo/next-chapter-ai-momentum/">Changes at Google DeepMind: Demis Hassabis from CEO to Chair, Jeff Dean departs</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T16:05:31Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49184755">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>6. <a href="https://toneyalexander.github.io/inclusive-color-space/">Show HN: Simple algorithm and color space to generate diverse skin tones</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T15:16:22Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49170165">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>7. <a href="https://blog.cloudflare.com/cloudflare-os/">Cloudflare OS: an open platform for agents, apps, and work</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T13:58:53Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49182996">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>8. <a href="https://earendil.com/posts/pi-autoresearch-and-databricks/">Pi&#x27;s Minimalism Is Its Advantage</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T22:22:12Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49176038">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>9. <a href="https://short-stories.co/@raybradbury/there-will-come-soft-rains-6k8vr4xxlnmj">Ray Bradbury&#x27;s &quot;There Will Come Soft Rains&quot; is set today (2026-08-04)</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T10:13:13Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49166491">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>10. <a href="https://mistral.ai/news/shieldstral/">Mistral&#x27;s Shieldstral: 3B open-weights model for multimodal moderation</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T16:36:05Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49171268">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>11. <a href="https://www.wired.com/story/a-civilian-plane-crashed-in-new-mexico-was-the-militarys-tech-to-blame/">Civilian plane crash in New Mexico tied to military GPS blocking</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-05T11:03:13Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49181099">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>
+<h4>12. <a href="https://github.com/FFmpeg/FFmpeg/blob/n9.0/RELEASE_NOTES">FFmpeg 9.0</a></h4>
+<ul><li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-08-04T09:30:33Z</li><li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=49166202">讨论</a></li><li><strong>摘要</strong>: （无）</li></ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>topic_suggestions · 2026-08-06</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/topic_suggestions</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-06/topic_suggestions</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 +0800</pubDate>
+      <description>📋 选题建议 · 2026-08-06 🌍 综合早报 1. In Memory of My Wife, Elise Ca 💡 为什么值得写：该话题具有时效性和话题性，目标读者关注度高 基于 综合早报 热点「In Memory of My Wife」展开分析 格式: deep-dive · 优先级: high · 阅读时间: 10min 关联信号: In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years 2. AI-Generated Images Discourage 💡 为什么值得写：该话题具有时效性和话题性，目标读者关注度高 基于 综合早报 热点「AI-Generated Images 」展开分析 格式: deep-dive · 优先级: medium · 阅读时间: 10min 关联信号: AI-Generated Images Discourage Me from Reading Your Blog 3. Discovery Loop 💡 为什么值得写：该话题具有时效性和话题性，目标读者关注度...</description>
+      <content:encoded><![CDATA[<h1>📋 选题建议 · 2026-08-06</h1>
+<h2>🌍 综合早报</h2>
+<h3>1. In Memory of My Wife, Elise Ca</h3>
+<p><strong>💡 为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote><p>基于 综合早报 热点「In Memory of My Wife」展开分析</p></blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号</strong>:</p>
+<ul><li>In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years</li></ul>
+<h3>2. AI-Generated Images Discourage</h3>
+<p><strong>💡 为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote><p>基于 综合早报 热点「AI-Generated Images 」展开分析</p></blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号</strong>:</p>
+<ul><li>AI-Generated Images Discourage Me from Reading Your Blog</li></ul>
+<h3>3. Discovery Loop</h3>
+<p><strong>💡 为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote><p>基于 综合早报 热点「Discovery Loop」展开分析</p></blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号</strong>:</p>
+<ul><li>Discovery Loop</li></ul>
+<hr/>
+<h2>🔄 与前日对比</h2>
+<h3>🌍 综合早报</h3>
+<p><strong>新增:</strong></p>
+<ul><li>✅ AI-Generated Images Discourage</li><li>✅ Discovery Loop</li><li>✅ In Memory of My Wife, Elise Ca</li></ul>]]></content:encoded>
     </item>
     <item>
       <title>ai-agents · 2026-08-05</title>
-      <link>#2026-08-05/ai-agents</link>
-      <guid isPermaLink="true">#2026-08-05/ai-agents</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai-agents</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai-agents</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>【AI Agent 生态】专题日报（2026-08-05） 一、生态全景 本期追踪 OpenClaw、NanoBot、PicoClaw、ZeroClaw、Hermes Agent、CoPaw 六个个人 AI 助手 / 自主 Agent 项目。整体来看，多渠道接入（Slack、WeChat、WhatsApp、Telegram、Discord、Matrix、Zulip、Nextcloud Talk 等）与语音 / 会话体验优化（TTS、STT、进度心跳、打断）是当前生态的共同主线；OpenClaw 与 Hermes Agent 凭借高频社区讨论占据热度头部，ZeroClaw、CoPaw 在渠道扩展上稳步推进，NanoBot 侧重可观测性与知识库能力，PicoClaw 聚焦零配置与成本路由。 二、活跃度对比表 | 项目 | PR 数 | Issue 数 | Release 数 | 热议点 | |---|---|---|---|---| | OpenClaw | 5 | 0 | 3 | Slack 进度抑制、TTS 抖动修复、事件循环性能优化 | | NanoBot | 4 | 1 | 3 |...</description>
       <content:encoded><![CDATA[<h1>【AI Agent 生态】专题日报（2026-08-05）</h1>
@@ -248,8 +338,8 @@
     </item>
     <item>
       <title>ai-cli · 2026-08-05</title>
-      <link>#2026-08-05/ai-cli</link>
-      <guid isPermaLink="true">#2026-08-05/ai-cli</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai-cli</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai-cli</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>【AI CLI / Claude Code Skills 生态】专题日报 日期：2026-08-05 一、生态全景与活跃度对比 本期追踪 Claude Code、OpenAI Codex、Gemini CLI、GitHub Copilot CLI、Kimi Code CLI、OpenCode、Qwen Code、DeepSeek TUI 及 Claude Code Skills 仓库。以社区互动热度（评论数）为核心指标，各项目活跃度排行如下： | 项目 | PR 数 | Issue 数 | 近期 Release | 热议点（最高热度） | |---|---|---|---|---| | Claude Code | 0 | 5 | v2.1.222 | Max 订阅用量极速耗尽（1484 评论） | | OpenAI Codex | 0 | 5 | rust-v0.147.0-alpha.7 | Token 燃烧过快（628 评论） | | Gemini CLI | 0 | 5 | v0.55.0-nightly | 小任务极度缓慢/卡死（218 评论） | | OpenCode | 0...</description>
       <content:encoded><![CDATA[<h1>【AI CLI / Claude Code Skills 生态】专题日报</h1>
@@ -279,8 +369,8 @@
     </item>
     <item>
       <title>AI 深度日报 · 2026-08-05</title>
-      <link>#2026-08-05/ai_daily</link>
-      <guid isPermaLink="true">#2026-08-05/ai_daily</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai_daily</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/ai_daily</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>AI 深度日报 · 2026-08-05 今日概览 | 主线 | 代表信号 | 类型/规模 | | --- | --- | --- | | 开源大模型持续迭代 | DeepSeek-V4-Flash / Kimi-K3 / MiniMax-H3 | 模型发布 / 旗舰级 | | 多模态推理架构创新 | ParVL (arXiv 2608.04010) | 前沿研究 / 架构设计 | | 代码预训练数据升级 | HuggingFaceCode/stack-v3-train | 数据集 / 大规模 | | 垂类能力突破 | baidu/Unlimited-OCR | 模型 / OCR 垂域 | 主题分组 一、模型与多模态 1. ParVL: Parallel Scaling and Expandable Compute Allocation for Multimodal LLMs 来源: arXiv | 时间: 近3天摘要: 针对多模态大语言模型（MLLM）提出并行扩展与可动态分配计算的推理新范式。深度洞察:创新点 / 方法：打破传统通过单纯扩大参数量或串行推理深度来提升性能的固有路径，P...</description>
       <content:encoded><![CDATA[<h1>AI 深度日报 · 2026-08-05</h1>
@@ -312,8 +402,8 @@
     </item>
     <item>
       <title>财经早报 · 2026-08-05</title>
-      <link>#2026-08-05/finance</link>
-      <guid isPermaLink="true">#2026-08-05/finance</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/finance</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/finance</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>财经早报（2026-08-05） 今日概览 | 主线 | 代表信号 | 指标/规模 | |---|---|---| | 存储芯片产业链博弈 | 苹果压价长鑫存储失败 / 华为预警手机涨价 | 报价对标三星、SK海力士 | | 中美贸易与出口管制交锋 | 商务部加强无人机两用物项对美出口管制 | 6家美实体列入反制清单 | | AI基建融资模式转换 | 大摩拟转售150亿美元数据中心银行贷款 | 150亿美元 | | 地缘政治风险发酵 | 特朗普扬言“猛烈打击”伊朗，霍尔木兹海峡未开放 | — | 一、公司与产业 1. 苹果考虑将中国长鑫存储纳入新的供应链 但压价失败 来源: 华尔街见闻 | 时间: 今日 08:42 | 热度: —摘要: 苹果试图将中国长鑫存储纳入新供应链，但压价谈判宣告失败。深度洞察: 💡 科技巨头传统的“转购中国产品”压价策略正在失效。随着国产存储厂商在产业链中话语权提升，供应链议价格局正在重塑。 2. 长鑫拒绝苹果压价：坚持要求不低于三星电子和SK海力士，甚至更高 来源: 华尔街见闻 | 时间: 今日 09:58 | 热度: —摘要: 苹果试图压低长鑫存储DRAM...</description>
       <content:encoded><![CDATA[<h2>财经早报（2026-08-05）</h2>
@@ -350,8 +440,8 @@
     </item>
     <item>
       <title>综合早报 · 2026-08-05</title>
-      <link>#2026-08-05/general</link>
-      <guid isPermaLink="true">#2026-08-05/general</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/general</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/general</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>今日概览 | 主线/关键词 | 代表信号 | 热度或规模 | |---|---|---| | AI 信任与质量危机 | AI配图劝退读者 / SQLite CVE疑为LLM幻觉 / LLM奖励专业知识 | HN 1518+721+1356 分 | | 科技巨头暗战 | 苹果前员工疑似携机密投奔OpenAI / OpenAI公布数学十大进展 | HN 734+617 分 | | 开发工具与开源生态 | FFmpeg 9.0 / 开发工具必须开源 / PDF Inspector / 逆向技能路由包 | GitHub 18.7k+10.7k 星 | | 数字产权与消费者权益 | Xbox宕机致实体盘游戏无法玩 | HN 658 分，687 评论 | 一、AI 信任、质量与反思 1. AI-Generated Images Discourage Me from Reading Your Blog 来源: HackerNews | 时间: 近3天 | 热度: 1518 分，442 评论链接: 讨论摘要: 一篇博客指出，使用 AI 生成配图会让读者对博客内容失去信任并降低阅读意愿。深度洞察: 💡 ...</description>
       <content:encoded><![CDATA[<h2>今日概览</h2>
@@ -363,8 +453,8 @@
     </item>
     <item>
       <title>国际新闻 · 2026-08-05</title>
-      <link>#2026-08-05/international</link>
-      <guid isPermaLink="true">#2026-08-05/international</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/international</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/international</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>🌐 国际新闻 · 2026-08-05 LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。 1. Russian strike kills at least 17 as Zelensky says interceptors could have saved lives 来源: BBC Top News | 时间: 2026-08-05T09:54:20+00:00摘要: The Russia defence ministry said it had struck logistics hubs and supply centres in Kyiv and the surrounding region. 2. Afghan boxer appears in court in connection with death of Scottish woman 来源: BBC Top News | 时间: 2026-08-05T09:22:52+00:00摘要: Sharif Ahmadzai, 26, is being held in connection w...</description>
       <content:encoded><![CDATA[<h1>🌐 国际新闻 · 2026-08-05</h1>
@@ -392,8 +482,8 @@
     </item>
     <item>
       <title>吃瓜早报 · 2026-08-05</title>
-      <link>#2026-08-05/social</link>
-      <guid isPermaLink="true">#2026-08-05/social</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/social</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/social</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>🍉 吃瓜早报 · 2026-08-05 LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。 1. 广西被大水冲垮的房子，国家会给重建或者补助吗？ 来源: V2EX | 时间: 2026-08-05T01:48:04+00:00摘要: （无） 2. Claude Max 号池 0.8 倍率 ，满血 Opus5.0 / Sonnet5 / GPT5.6 / Fable5 全系列，回帖即送 20 刀 来源: V2EX | 时间: 2026-08-05T03:45:37+00:00摘要: （无） 3. 华妃一个月吃了60斤鸡蛋500条鱼 来源: 微博热搜 | 时间: 时间未知 | 热度: 1106408摘要: （无） 4. AI做的动物尺度太大了 来源: 微博热搜 | 时间: 时间未知 | 热度: 780078摘要: （无） 5. 火遍全球的Chinamaxxing是什么 来源: 微博热搜 | 时间: 时间未知 | 热度: 636540摘要: （无） 6. 苹果手机 适合老人 来源: 微博热搜 | 时间: 时间未知 | 热度: 631490摘要: （无） 7...</description>
       <content:encoded><![CDATA[<h1>🍉 吃瓜早报 · 2026-08-05</h1>
@@ -421,8 +511,8 @@
     </item>
     <item>
       <title>科技早报 · 2026-08-05</title>
-      <link>#2026-08-05/tech</link>
-      <guid isPermaLink="true">#2026-08-05/tech</guid>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/tech</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-08-05/tech</guid>
       <pubDate>Wed, 05 Aug 2026 00:00:00 +0800</pubDate>
       <description>🦄 科技早报 · 2026-08-05 LLM 调用失败，输出原始信号，以下为当日 12 条原始信号（未经 AI 深度分析）。 1. AI-Generated Images Discourage Me from Reading Your Blog 来源: HackerNews | 时间: 2026-08-04T11:30:17Z链接: 讨论摘要: （无） 2. Apple says more ex-employees may have taken confidential data to OpenAI 来源: HackerNews | 时间: 2026-08-04T15:37:42Z链接: 讨论摘要: （无） 3. FFmpeg 9.0 来源: HackerNews | 时间: 2026-08-04T09:30:33Z链接: 讨论摘要: （无） 4. In Memory of My Wife, Elise Cawley, with Thanks for 36 Wonderful Years 来源: HackerNews | 时间: 2026-08-04T18:51:38Z链接: 讨论摘...</description>
       <content:encoded><![CDATA[<h1>🦄 科技早报 · 2026-08-05</h1>

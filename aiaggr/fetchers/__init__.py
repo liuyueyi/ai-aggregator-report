@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from ..config import enabled_sources, opml_config, rss_feeds
+from ..config import enabled_sources, opml_config, rss_feeds, rsshub_sources
 from .base import BaseFetcher, Signal
+from .dailydawn import DailyDawnFetcher
 from .devto import DevToFetcher
 from .github_trending import GitHubTrendingFetcher
 from .github_tracker import RepoTrackerFetcher
@@ -14,7 +15,10 @@ from .lobsters import LobstersFetcher
 from .producthunt import ProductHuntFetcher
 from .reddit import RedditFetcher
 from .rss import RssFetcher
+from .rsshub import RsshubFetcher
 from .tencent import TencentFetcher
+from .toutiao import ToutiaoHotFetcher
+from .twitter import TwitterFetcher
 from .user_opml import UserOpmlFetcher
 from .v2ex import V2EXFetcher
 from .wallstreetcn import WallStreetCNFetcher
@@ -24,6 +28,7 @@ from .weibo import WeiboFetcher
 _API_CLASSES: dict[str, type[BaseFetcher]] = {
     "hackernews": HackerNewsFetcher,
     "hn_ai": HnAiFetcher,
+    "dailydawn": DailyDawnFetcher,
     "github": GitHubTrendingFetcher,
     "v2ex": V2EXFetcher,
     "producthunt": ProductHuntFetcher,
@@ -35,6 +40,8 @@ _API_CLASSES: dict[str, type[BaseFetcher]] = {
     "lobsters": LobstersFetcher,
     "devto": DevToFetcher,
     "reddit": RedditFetcher,
+    "toutiao": ToutiaoHotFetcher,
+    "twitter": TwitterFetcher,
 }
 
 TREND_KEY = "google_trends"
@@ -46,6 +53,7 @@ def _all_keys(cfg: dict) -> list[str]:
     if enabled_sources(cfg).get(TREND_KEY, {}).get("enabled", True):
         keys.append(TREND_KEY)
     keys.extend(rss_feeds(cfg).keys())
+    keys.extend(rsshub_sources(cfg).keys())
     keys.append(USER_KEY)
     return keys
 
@@ -65,6 +73,9 @@ def build_fetchers(cfg: dict) -> dict[str, BaseFetcher]:
 
     for key, feed in rss_feeds(cfg).items():
         fetchers[key] = RssFetcher(config=feed, source_key=key)
+
+    for key, conf in rsshub_sources(cfg).items():
+        fetchers[key] = RsshubFetcher(config=conf, source_key=key)
 
     for key, f in RepoTrackerFetcher.build_fetchers(cfg).items():
         fetchers[key] = f

@@ -11,6 +11,7 @@ from pathlib import Path
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEED_ITEMS = 30
+_SPECIAL_FILES = {"topic_suggestions"}  # 非主题的特殊 md 文件，不纳入 topics
 
 _DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -157,13 +158,17 @@ def build_manifest(
         topics_meta[k] = {"name": v.get("name", k), "icon": v.get("icon", "")}
     for e in entries:
         for rep in e["reports"]:
-            if rep not in topics_meta:
+            if rep not in topics_meta and rep not in _SPECIAL_FILES:
                 topics_meta[rep] = {"name": rep, "icon": ""}
 
     tl = tagline_map or {}
     for e in entries:
         day_tl = tl.get(e["date"], {}) or {}
-        e["reports"] = [{"key": rep, "tagline": day_tl.get(rep, "")} for rep in e["reports"]]
+        e["reports"] = [
+            {"key": rep, "tagline": day_tl.get(rep, "")}
+            for rep in e["reports"]
+            if rep not in _SPECIAL_FILES
+        ]
 
     manifest = {
         "generated": dt.datetime.now(dt.timezone.utc).isoformat(),
