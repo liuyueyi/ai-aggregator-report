@@ -35,6 +35,10 @@ SEED_KEYWORDS = [
 _BATCH_SIZE = 5
 _INTER_BATCH_SLEEP = 2.0
 
+# 连通性探测：在不可达网络（如 GFW 环境）下快速失败，避免 pytrends 逐 batch 重试拖慢管线
+_PROBE_URL = "https://trends.google.com/trends/explore"
+_PROBE_TIMEOUT = 3.0
+
 
 class GoogleTrendsFetcher(BaseFetcher):
     """pytrends 查 Google Trends 关键词 7 日搜索增幅。
@@ -48,7 +52,19 @@ class GoogleTrendsFetcher(BaseFetcher):
     timeout = 30.0
 
     async def fetch(self, client) -> list[Signal]:
+        if not await self._reachable(client):
+            return []
         return await asyncio.to_thread(self._fetch_sync)
+
+    async def _reachable(self, client) -> bool:
+        """短超时探测 trends.google.com；连不通说明网络不可达，直接跳过。"""
+        try:
+            async with client.stream("GET", _PROBE_URL, timeout=_PROBE_TIMEOUT) as resp:
+                ok = resp.status_code < 500
+            return ok
+        except Exception as err:
+            print(f"[Google Trends] 连通性探测失败，跳过: {type(err).__name__}")
+            return False
 
     def _fetch_sync(self) -> list[Signal]:
         _patch_urllib3_retry_alias()
@@ -58,7 +74,7 @@ class GoogleTrendsFetcher(BaseFetcher):
         min_growth_pct = float(conf.get("min_growth_pct", 20.0))
 
         try:
-            py = TrendReq(hl="en-US", tz=0, retries=2, backoff_factor=0.5)
+            py = TrendReq(hl="en-US", tz=0, timeout=(3, 6), retries=1, backoff_factor=0.3)
         except Exception as err:
             print(f"[Google Trends] init failed: {err}")
             return []
