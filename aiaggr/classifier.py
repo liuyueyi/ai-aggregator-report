@@ -8,6 +8,10 @@ from .llm import call_json, is_mock
 
 SYSTEM = "你是精准的新闻信号主题分类器。严格输出 JSON，不要解释。"
 
+# LLM 精修最多送入的信号数（按 score 取前 N）。全量 500+ 条一起送会导致
+# prompt 过大、触发上游限流(429)/超时；低分信号本就不会进入主题 top-N，精修价值低。
+_REFINE_CAP = 120
+
 
 def rule_assign(signals: list[Signal], topics_cfg: dict[str, dict]) -> None:
     """规则分配：按源白名单 + 抓取器预分配（user OPML）填充 signal.topics。"""
@@ -25,6 +29,11 @@ def rule_assign(signals: list[Signal], topics_cfg: dict[str, dict]) -> None:
 def _llm_refine(signals: list[Signal], topics_cfg: dict[str, dict], settings: dict) -> None:
     """LLM 精修：HN/GitHub 等通用源可能命中规则之外的更深层主题。失败时忽略。"""
     topics_desc = "\n".join(f"- {k}: {v.get('name')}" for k, v in topics_cfg.items())
+    if len(signals) > _REFINE_CAP:
+        ranked = sorted(range(len(signals)), key=lambda i: signals[i].score, reverse=True)[:_REFINE_CAP]
+        payload = [(i, signals[i]) for i in ranked]
+    else:
+        payload = list(enumerate(signals))
     signals_json = json.dumps(
         [
             {
@@ -34,7 +43,7 @@ def _llm_refine(signals: list[Signal], topics_cfg: dict[str, dict], settings: di
                 "summary": (s.summary or "")[:200],
                 "tags": s.tags,
             }
-            for i, s in enumerate(signals)
+            for i, s in payload
         ],
         ensure_ascii=False,
         indent=1,

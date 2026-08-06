@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 import re
 
-from openai import OpenAI
-from tenacity import retry, stop_after_attempt, wait_exponential
+from openai import APIConnectionError, APITimeoutError, OpenAI, RateLimitError
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_random_exponential
 
 SYSTEM = "你是资深中文媒体编辑，严格输出 JSON，不要解释。"
 
@@ -43,8 +43,16 @@ def _extract_json(text: str) -> str:
     return match.group(1) if match else text
 
 
+# 瞬时类错误才重试：超时 / 连接失败 / 限流(429) 退避后可自愈；4xx 业务错误、解析错误不重试
+_TRANSIENT = (APITimeoutError, APIConnectionError, RateLimitError)
+
+
 def _retrier(max_retries: int):
-    return retry(stop=stop_after_attempt(max_retries), wait=wait_exponential(multiplier=1, max=30))
+    return retry(
+        stop=stop_after_attempt(max_retries),
+        wait=wait_random_exponential(multiplier=1, max=30),
+        retry=retry_if_exception_type(_TRANSIENT),
+    )
 
 
 def _json_call(system: str, user: str, settings: dict, temperature: float) -> dict | list:

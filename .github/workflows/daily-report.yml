@@ -8,6 +8,9 @@ on:
 
 permissions:
   contents: write
+  # 用于 push 成功后显式触发 pages.yml 的 workflow_dispatch
+  #（GITHUB_TOKEN 触发的 on: push 不会连锁启动其他工作流，但 workflow_dispatch 是官方豁免项）
+  actions: write
 
 concurrency:
   group: daily-report
@@ -65,12 +68,14 @@ jobs:
           fi
 
       - name: Commit reports and state
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add report .state site
           if git diff --cached --quiet; then
             echo "No changes to commit"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "daily report: $(date -u +%Y-%m-%d)"
@@ -79,6 +84,7 @@ jobs:
             if git pull --rebase --autostash; then
               if git push; then
                 echo "Pushed successfully"
+                echo "pushed=true" >> "$GITHUB_OUTPUT"
                 exit 0
               fi
             else
@@ -89,3 +95,9 @@ jobs:
           done
           echo "Failed to push after retries"
           exit 1
+
+      # GITHUB_TOKEN 的 push 不会触发 pages.yml 的 on: push，
+      # 这里显式派发 workflow_dispatch 触发 GitHub Pages 部署（官方豁免该项限制）
+      - name: Trigger GitHub Pages deploy
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh workflow run "Deploy GitHub Pages" --ref "${{ github.ref }}"
