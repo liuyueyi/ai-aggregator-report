@@ -100,4 +100,6 @@ jobs:
       # 这里显式派发 workflow_dispatch 触发 GitHub Pages 部署（官方豁免该项限制）
       - name: Trigger GitHub Pages deploy
         if: steps.commit.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: gh workflow run "Deploy GitHub Pages" --ref "${{ github.ref }}"
