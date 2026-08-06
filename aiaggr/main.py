@@ -300,21 +300,52 @@ async def amain(args, cfg) -> dict:
     saved_files = []
     topic_entries = []
     emitted: list[Signal] = []
-    for tkey in topics:
+
+    # 主题日报生成并行化：LLM 调用受并发上限约束（信号量），落盘/状态更新在主流程顺序执行
+    llm_concurrency = int(settings.get("max_concurrency", 4))
+    sem = asyncio.Semaphore(llm_concurrency)
+
+    async def _gen_one(tkey: str) -> tuple[str, list[Signal], dict | None]:
+        """并发受限地为单个主题生成日报。返回 (tkey, pool_sorted, result)，无信号时 result=None。"""
+        async with sem:
+            tconf = topics[tkey]
+            pool = pools.get(tkey, [])
+            if cross_day_exclude:
+                pool = [s for s in pool if not s.seen_on]
+            if not pool:
+                return tkey, [], None
+            limit = int(tconf.get("limit", 15))
+            pool_sorted = sorted(pool, key=lambda s: s.score, reverse=True)[:limit]
+            recent = tagline_map.get(tkey, [])
+            result = await generate_topic_report(
+                tkey, tconf, pool_sorted, date, recent, settings, prompts_dir
+            )
+            return tkey, pool_sorted, result
+
+    # ---- 生态追踪专题报告（ai-cli / ai-agents），与主题日报同一批并发 ----
+    tracking_task = None
+    if not args.collect:
+        from .tracking import generate_tracking_reports
+
+        tracking_task = generate_tracking_reports(
+            tracking_signals, settings, date, prompts_dir, rdir, sem=sem
+        )
+
+    print(f"→ 并发生成 {len(topics)} 份主题日报（LLM 并发上限 {llm_concurrency}）...")
+    topic_gather = asyncio.gather(*[_gen_one(t) for t in topics])
+    if tracking_task:
+        tracking_saved, topic_results = await asyncio.gather(tracking_task, topic_gather)
+        saved_files.extend(tracking_saved)
+    else:
+        topic_results = await topic_gather
+
+    # 按主题顺序落盘 + 更新状态，保证输出与 state 确定
+    for tkey, pool_sorted, result in topic_results:
         tconf = topics[tkey]
-        pool = pools.get(tkey, [])
-        if cross_day_exclude:
-            pool = [s for s in pool if not s.seen_on]
-        if not pool:
+        if result is None:
             print(f"✗ [{tkey}] 无可用信号（可能已被跨日去重排除），跳过")
             topic_entries.append(_topic_entry(tkey, tconf, tagline="（无信号）", skipped=True))
             continue
-        limit = int(tconf.get("limit", 15))
-        pool_sorted = sorted(pool, key=lambda s: s.score, reverse=True)[:limit]
-        recent = tagline_map.get(tkey, [])
-        result = await generate_topic_report(
-            tkey, tconf, pool_sorted, date, recent, settings, prompts_dir
-        )
         markdown = result.get("markdown")
         if not markdown:
             print(f"✗ [{tkey}] 生成失败且兜底为空，跳过")
@@ -333,14 +364,6 @@ async def amain(args, cfg) -> dict:
         state.append_tagline(date, tkey, result.get("tagline", ""))
         emitted.extend(pool_sorted)
         print(f"✓ [{tkey}] 已保存到 {path.relative_to(ROOT)}")
-
-    # ---- 生态追踪专题报告（ai-cli / ai-agents）----
-    if not args.collect:
-        from .tracking import generate_tracking_reports
-
-        saved_files.extend(
-            await generate_tracking_reports(tracking_signals, settings, date, prompts_dir, rdir)
-        )
 
     if not saved_files:
         print("✗ 主题日报全部失败，不更新状态。")

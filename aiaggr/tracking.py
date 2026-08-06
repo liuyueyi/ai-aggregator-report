@@ -53,27 +53,35 @@ def _fallback(kind: str, date: str, signals: list[Signal], reason: str) -> str:
 
 
 async def _generate(kind: str, signals: list[Signal], date: str,
-                    settings: dict, prompts_dir: Path, rdir: Path) -> tuple[Path | None, int]:
+                    settings: dict, prompts_dir: Path, rdir: Path,
+                    sem: asyncio.Semaphore | None = None) -> tuple[Path | None, int]:
     report_key = REPORTS[kind]["report"]
     tpl = (prompts_dir / f"tracking.{kind}.md").read_text(encoding="utf-8")
     user = (
         tpl.replace("{{date}}", date)
         .replace("{{signals_json}}", json.dumps([_sig(s) for s in signals], ensure_ascii=False, indent=1))
     )
-    if is_mock(settings):
-        md = _fallback(kind, date, signals, "模拟 LLM 模式（--mock-llm）")
-    else:
-        try:
-            result = await asyncio.to_thread(call_json, SYSTEM, user, settings)
-        except Exception as err:
-            md = _fallback(kind, date, signals, f"LLM 调用失败，输出原始信号（{err}）")
+
+    async def _run() -> tuple[Path | None, int]:
+        if is_mock(settings):
+            md = _fallback(kind, date, signals, "模拟 LLM 模式（--mock-llm）")
         else:
-            md = (result.get("markdown") or "").strip() if isinstance(result, dict) else ""
-            if not md:
-                md = _fallback(kind, date, signals, "LLM 输出为空，输出原始信号")
-    path = save_report(md, report_key, date, rdir)
-    print(f"✓ [{report_key}] 已保存到 {path.relative_to(ROOT) if path.exists() else path}")
-    return path, len(signals)
+            try:
+                result = await asyncio.to_thread(call_json, SYSTEM, user, settings)
+            except Exception as err:
+                md = _fallback(kind, date, signals, f"LLM 调用失败，输出原始信号（{err}）")
+            else:
+                md = (result.get("markdown") or "").strip() if isinstance(result, dict) else ""
+                if not md:
+                    md = _fallback(kind, date, signals, "LLM 输出为空，输出原始信号")
+        path = save_report(md, report_key, date, rdir)
+        print(f"✓ [{report_key}] 已保存到 {path.relative_to(ROOT) if path.exists() else path}")
+        return path, len(signals)
+
+    if sem is not None:
+        async with sem:
+            return await _run()
+    return await _run()
 
 
 async def generate_tracking_reports(
@@ -82,14 +90,19 @@ async def generate_tracking_reports(
     date: str,
     prompts_dir: Path,
     rdir: Path,
+    sem: asyncio.Semaphore | None = None,
 ) -> list[Path]:
     """为追踪信号生成 ai-cli.md / ai-agents.md 专题报告，返回已保存文件列表。"""
-    saved: list[Path] = []
+    tasks = []
     for kind, report_key in (("cli", "cli_tracker"), ("agents", "agents_tracker")):
         signals = tracking.get(report_key, [])
         if not signals:
             continue
-        path, _ = await _generate(kind, signals, date, settings, prompts_dir, rdir)
+        tasks.append(_generate(kind, signals, date, settings, prompts_dir, rdir, sem))
+    if not tasks:
+        return []
+    saved: list[Path] = []
+    for path, _ in await asyncio.gather(*tasks):
         if path:
             saved.append(path)
     return saved

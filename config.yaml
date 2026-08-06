@@ -8,10 +8,11 @@ llm:
   api_key_env: LLM_API_KEY
   base_url_env: LLM_BASE_URL
   model_env: LLM_MODEL
-  timeout: 60            # 单次请求超时（秒）
+  timeout: 120           # 单次请求超时（秒）：日报生成含大段 markdown，60s 易误超时触发重试风暴
   temperature: 0.55      # 日报生成温度
   mock: false            # 设 true（或环境变量 AGGR_MOCK_LLM=1）可无 key 跑通管线
-  max_retries: 4         # tenacity 指数退避重试次数
+  max_retries: 2         # tenacity 指数退避重试次数（超时/失败后仍会走确定性 fallback，无需过多重试）
+  max_concurrency: 4     # LLM 调用并发上限（主题日报 + tracking 报告并行，降低整轮耗时）
 
 # ---- 时区（日报按本地日期归属）----
 timezone: Asia/Shanghai

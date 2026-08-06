@@ -34,6 +34,7 @@ def llm_settings(cfg: dict) -> dict:
         "timeout": llm.get("timeout", 60),
         "temperature": llm.get("temperature", 0.55),
         "max_retries": llm.get("max_retries", 4),
+        "max_concurrency": max(1, int(llm.get("max_concurrency", 4))),
         "mock": bool(llm.get("mock", False)) or env("AGGR_MOCK_LLM") == "1",
     }
 
