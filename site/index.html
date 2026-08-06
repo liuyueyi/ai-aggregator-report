@@ -299,12 +299,27 @@ function loadFollowed() {
   try { return new Set(JSON.parse(localStorage.getItem(LS_FOLLOW) || "null")); }
   catch { return null; }
 }
-function saveFollowed(s) { localStorage.setItem(LS_FOLLOW, JSON.stringify([...s])); }
+function allKeys() { return Object.keys(manifest.topics); }
+function loadFollowed() {
+  // null = 默认关注全部；Set = 显式选择（空 Set = 都不关注）
+  const raw = localStorage.getItem(LS_FOLLOW);
+  if (raw === null) return null;
+  try {
+    const v = JSON.parse(raw);
+    return v === null ? null : new Set(v);
+  } catch { return null; }
+}
+function saveFollowed(s) {
+  // null 或已覆盖全部主题 → 记为"全选"（存 null 哨兵），否则存显式数组
+  if (s === null || s.size === allKeys().length) localStorage.setItem(LS_FOLLOW, "null");
+  else localStorage.setItem(LS_FOLLOW, JSON.stringify([...s]));
+}
 function loadDays() { return parseInt(localStorage.getItem(LS_DAYS) || "7", 10); }
 function saveDays(n) { localStorage.setItem(LS_DAYS, String(n)); }
 
-let followed = loadFollowed();   // null = 全选（未初始化）
+let followed = loadFollowed();   // null = 默认关注全部
 let daysN = loadDays();
+let selectedDate = null;         // null = 聚合关注流；否则按该日期浏览
 
 // ---------- 工具 ----------
 function topicMeta(key) {
@@ -384,7 +399,11 @@ function renderSidebar() {
   const daysRow = document.getElementById("daysRow");
   daysRow.querySelectorAll("button").forEach(b => {
     b.classList.toggle("active", parseInt(b.dataset.d, 10) === daysN);
-    b.onclick = () => { daysN = parseInt(b.dataset.d, 10); saveDays(daysN); renderSidebar(); route(); };
+    b.onclick = () => {
+      daysN = parseInt(b.dataset.d, 10); saveDays(daysN);
+      selectedDate = null; renderSidebar();
+      if (location.hash !== "") location.hash = ""; else renderHome();
+    };
   });
 
   const dates = document.getElementById("dates");
@@ -400,13 +419,17 @@ function renderSidebar() {
 
 function isFollowed(key) { return followed === null || followed.has(key); }
 function toggleFollow(key) {
-  if (followed === null) followed = new Set(Object.keys(manifest.topics));
+  if (followed === null) followed = new Set(allKeys());
   if (followed.has(key)) followed.delete(key); else followed.add(key);
-  if (followed.size === Object.keys(manifest.topics).length) followed = null; // 全选则恢复默认
-  saveFollowed(followed || new Set());
+  saveFollowed(followed);
   renderSidebar();
-  if (!location.hash || location.hash === "#") route();
+  // 正在阅读某篇报告详情时不打断，仅刷新左侧高亮；否则让右侧关注流/日期视图立即跟随
+  const parts = location.hash.replace(/^#/, "").split("/");
+  if (parts.length !== 2) renderRight();
 }
+
+// 右侧统一渲染：有选中日期→该日视图，否则→聚合关注流
+function renderRight() { if (selectedDate) renderDay(selectedDate); else renderHome(); }
 
 // ---------- 首页：聚合关注流 ----------
 async function renderHome() {
@@ -414,12 +437,13 @@ async function renderHome() {
   const windowDates = manifest.dates.slice(0, daysN);
   const totalTopics = windowDates.reduce((n, e) => n + e.reports.filter(r => isFollowed(r.key)).length, 0);
   const latest = manifest.dates[0];
+  const followedCount = allKeys().filter(isFollowed).length;
 
   main.innerHTML = `
     <div class="hero">
       <div>
         <div class="big">每日 <span>AI 热点</span> 一站看</div>
-        <div class="desc">已关注 ${Object.keys(manifest.topics).filter(isFollowed).length} 个主题 · 显示最近 ${daysN} 天</div>
+        <div class="desc">已关注 ${followedCount} 个主题 · 显示最近 ${daysN} 天</div>
       </div>
       <div class="stats">
         <div class="stat"><div class="n">${manifest.dates.length}</div><div class="l">累计天数</div></div>
@@ -448,39 +472,81 @@ async function renderHome() {
     const grid = dayEl.querySelector(".topic-cards");
     feed.appendChild(dayEl);
 
-    // 并行抓取当日关注的报告
     const results = await Promise.all(repKeys.map(async (key) => {
       try { return { key, ok: true, md: await getMD(e.date, key), tagline: (e.reports.find(r => r.key === key) || {}).tagline || "" }; }
       catch { return { key, ok: false }; }
     }));
-
     for (const r of results) {
       if (!r.ok) continue;
-      const meta = topicMeta(r.key);
-      const items = parseItems(r.md).slice(0, 5);
-      const itemHtml = items.map(it => `
-        <li class="item">
-          <a class="item-title" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a>
-          <div class="item-meta">
-            ${it.source ? `<span class="badge src">${esc(it.source)}</span>` : ""}
-            ${it.heat ? `<span class="badge heat">🔥 ${esc(it.heat)}</span>` : ""}
-            ${it.time && it.time !== "时间未知" ? `<span class="badge">${esc(it.time)}</span>` : ""}
-          </div>
-          ${it.summary ? `<p class="item-sum">${esc(it.summary)}</p>` : ""}
-        </li>`).join("");
-      const card = document.createElement("article");
-      card.className = "topic-card";
-      card.onclick = (ev) => { if (ev.target.closest("a")) return; location.hash = "#" + e.date + "/" + r.key; };
-      card.innerHTML = `
-        <div class="tc-head"><span class="ic">${esc(meta.icon)}</span><span class="nm">${esc(meta.name)}</span></div>
-        <div class="tc-tag">${esc(r.tagline)}</div>
-        <ul class="items">${itemHtml || '<li class="item"><div class="item-sum">（无条目）</div></li>'}</ul>
-        <div class="tc-foot">查看完整日报 →</div>`;
-      grid.appendChild(card);
+      grid.appendChild(topicCardEl(e.date, r.key, r.tagline, r.md));
     }
   }
   if (!feed.children.length) {
     feed.innerHTML = '<div class="empty"><div class="big">没有关注的主题</div>在左侧「我的关注」里勾选一些标签吧。</div>';
+  }
+}
+
+// 单张主题卡片（首页与日期视图共用）
+function topicCardEl(date, key, tagline, md) {
+  const meta = topicMeta(key);
+  const items = parseItems(md).slice(0, 5);
+  const itemHtml = items.map(it => `
+    <li class="item">
+      <a class="item-title" href="${esc(it.url)}" target="_blank" rel="noopener">${esc(it.title)}</a>
+      <div class="item-meta">
+        ${it.source ? `<span class="badge src">${esc(it.source)}</span>` : ""}
+        ${it.heat ? `<span class="badge heat">🔥 ${esc(it.heat)}</span>` : ""}
+        ${it.time && it.time !== "时间未知" ? `<span class="badge">${esc(it.time)}</span>` : ""}
+      </div>
+      ${it.summary ? `<p class="item-sum">${esc(it.summary)}</p>` : ""}
+    </li>`).join("");
+  const card = document.createElement("article");
+  card.className = "topic-card";
+  card.onclick = (ev) => { if (ev.target.closest("a")) return; location.hash = "#" + date + "/" + key; };
+  card.innerHTML = `
+    <div class="tc-head"><span class="ic">${esc(meta.icon)}</span><span class="nm">${esc(meta.name)}</span></div>
+    <div class="tc-tag">${esc(tagline)}</div>
+    <ul class="items">${itemHtml || '<li class="item"><div class="item-sum">（无条目）</div></li>'}</ul>
+    <div class="tc-foot">查看完整日报 →</div>`;
+  return card;
+}
+
+// ---------- 按日期浏览某一天 ----------
+async function renderDay(date) {
+  const main = document.getElementById("content");
+  main.innerHTML = `
+    <div class="day-head" style="position:static;margin:0 0 16px">
+      <a class="icon-btn" href="#" id="backHome">← 返回关注流</a>
+      <span class="d">${esc(date)}</span><span class="rel">${esc(relDate(date))}</span><span class="line"></span>
+    </div>
+    <div id="feed"><div class="empty"><div class="skeleton" style="height:200px"></div></div></div>`;
+  document.getElementById("backHome").onclick = (e) => { e.preventDefault(); selectedDate = null; location.hash = ""; };
+
+  const entry = manifest.dates.find(e => e.date === date);
+  if (!entry) {
+    document.getElementById("feed").innerHTML = '<div class="empty"><div class="big">该日暂无报告</div></div>';
+    return;
+  }
+  const repKeys = entry.reports.map(r => r.key).filter(isFollowed);
+  if (!repKeys.length) {
+    document.getElementById("feed").innerHTML = '<div class="empty"><div class="big">没有关注的主题</div>在左侧「我的关注」里勾选一些标签吧。</div>';
+    return;
+  }
+
+  const feed = document.getElementById("feed");
+  const dayEl = document.createElement("section");
+  dayEl.className = "day";
+  dayEl.innerHTML = `<div class="topic-cards"></div>`;
+  const grid = dayEl.querySelector(".topic-cards");
+  feed.appendChild(dayEl);
+
+  const results = await Promise.all(repKeys.map(async (key) => {
+    try { return { key, ok: true, md: await getMD(date, key), tagline: (entry.reports.find(r => r.key === key) || {}).tagline || "" }; }
+    catch { return { key, ok: false }; }
+  }));
+  for (const r of results) {
+    if (!r.ok) continue;
+    grid.appendChild(topicCardEl(date, r.key, r.tagline, r.md));
   }
 }
 
@@ -513,15 +579,19 @@ async function renderReport(date, key) {
 function route() {
   document.querySelectorAll(".date-link").forEach(a => a.classList.remove("active"));
   const hash = location.hash.replace(/^#/, "");
-  if (!hash) { renderSidebar(); renderHome(); return; }
+  if (!hash) { selectedDate = null; renderSidebar(); renderHome(); return; }
   const parts = hash.split("/");
   if (parts.length === 2) {
     const link = document.querySelector(`.date-link[href="#${parts[0]}"]`);
     if (link) link.classList.add("active");
     renderReport(parts[0], parts[1]);
-  } else {
-    renderHome();
+    return;
   }
+  // 单段：按日期浏览该日（左侧日期点击即进入此视图）
+  selectedDate = parts[0];
+  const link = document.querySelector(`.date-link[href="#${parts[0]}"]`);
+  if (link) link.classList.add("active");
+  renderDay(parts[0]);
 }
 
 // ---------- 主题切换 ----------
@@ -536,10 +606,10 @@ document.getElementById("themeBtn").onclick = () => {
 
 // ---------- 启动 ----------
 document.getElementById("selAll").onclick = () => {
-  followed = null; saveFollowed(new Set()); renderSidebar(); if (!location.hash || location.hash === "#") route();
+  followed = null; saveFollowed(null); renderSidebar(); renderRight();
 };
 document.getElementById("selNone").onclick = () => {
-  followed = new Set(); saveFollowed(followed); renderSidebar(); if (!location.hash || location.hash === "#") route();
+  followed = new Set(); saveFollowed(followed); renderSidebar(); renderRight();
 };
 
 applyTheme(localStorage.getItem(LS_THEME) || "dark");
@@ -551,7 +621,7 @@ applyTheme(localStorage.getItem(LS_THEME) || "dark");
     document.getElementById("content").innerHTML = '<div class="empty"><div class="big">无法加载 manifest.json</div>' + esc(e.message) + "</div>";
     return;
   }
-  if (followed === null) followed = new Set(Object.keys(manifest.topics));
+  // 默认关注全部；localStorage 中无记录或存 null 哨兵时保持 null
   renderSidebar();
   route();
 })();
