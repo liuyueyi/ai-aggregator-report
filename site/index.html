@@ -296,6 +296,10 @@ const LS_FOLLOW = "aiagg_followed";
 const LS_DAYS = "aiagg_days";
 const LS_THEME = "aiagg_theme";
 
+// 选题建议是特殊报告：仅作侧边栏「选题建议」入口，不参与关注流/日期视图卡片
+const SUGGEST_KEY = "topic_suggestions";
+function feedKeys(keys) { return keys.filter(k => k !== SUGGEST_KEY); }
+
 let manifest = { topics: {}, dates: [] };
 const mdCache = new Map(); // `${date}/${key}` -> markdown text
 
@@ -484,7 +488,7 @@ async function renderHome() {
 
   const feed = document.getElementById("feed");
   for (const e of windowDates) {
-    const repKeys = e.reports.map(r => r.key).filter(isFollowed);
+    const repKeys = feedKeys(e.reports.map(r => r.key)).filter(isFollowed);
     if (!repKeys.length) continue;
 
     const dayEl = document.createElement("section");
@@ -550,7 +554,7 @@ async function renderDay(date) {
     document.getElementById("feed").innerHTML = '<div class="empty"><div class="big">该日暂无报告</div></div>';
     return;
   }
-  const repKeys = entry.reports.map(r => r.key).filter(isFollowed);
+  const repKeys = feedKeys(entry.reports.map(r => r.key)).filter(isFollowed);
   if (!repKeys.length) {
     document.getElementById("feed").innerHTML = '<div class="empty"><div class="big">没有关注的主题</div>在左侧「我的关注」里勾选一些标签吧。</div>';
     return;

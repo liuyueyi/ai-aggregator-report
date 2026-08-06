@@ -11,7 +11,7 @@ from pathlib import Path
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MAX_FEED_ITEMS = 30
-_SPECIAL_FILES = {"topic_suggestions"}  # 非主题的特殊 md 文件，不纳入 topics
+_SPECIAL_FILES = {"topic_suggestions"}  # 非主题的特殊 md 文件：纳入 reports（Web 选题入口）但不注册为主题
 
 _DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -167,7 +167,6 @@ def build_manifest(
         e["reports"] = [
             {"key": rep, "tagline": day_tl.get(rep, "")}
             for rep in e["reports"]
-            if rep not in _SPECIAL_FILES
         ]
 
     manifest = {
