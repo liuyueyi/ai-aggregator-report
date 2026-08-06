@@ -2,9 +2,9 @@
 
 > 当日按主题生成的各份日报。
 
-- [🌍 综合早报](report/2026/08/06/general.md.md) — AI与科技动态，洞察未来趋势
-- [🦄 科技早报](report/2026/08/06/tech.md.md) — 技术动态聚焦AI与架构演进，产品创新持续涌现
-- [🧠 AI 深度日报](report/2026/08/06/ai_daily.md.md) — AI工具与模型创新并行，行业应用加速落地
-- [📈 财经早报](report/2026/08/06/finance.md.md) — 市场波动加剧，AI应用持续升温
-- [🍉 吃瓜早报](report/2026/08/06/social.md.md) — 科技与民生热议，情感话题引发共鸣
-- [🌐 国际新闻](report/2026/08/06/international.md.md) — 科技安全、地缘政治与内部问题交织
+- [🌍 综合早报](report/2026/08/06/general.md.md) — DeepMind重组、Cloudflare OS发布、AI CLI工具激战，科技安全引关注
+- [🦄 科技早报](report/2026/08/06/tech.md.md) — 科技早报 · 12 条信号
+- [🧠 AI 深度日报](report/2026/08/06/ai_daily.md.md) — AI 深度日报 · 12 条信号
+- [📈 财经早报](report/2026/08/06/finance.md.md) — A股周期股大涨，AI大模型竞争加剧，苹果DRAM短缺
+- [🍉 吃瓜早报](report/2026/08/06/social.md.md) — 吃瓜早报 · 10 条信号
+- [🌐 国际新闻](report/2026/08/06/international.md.md) — AI安全、中东地缘、俄乌冲突与英国社会问题交织

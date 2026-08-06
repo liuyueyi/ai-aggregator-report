@@ -1,53 +1,69 @@
-## AI Agent 生态专题日报
+# AI Agent 生态 · 2026-08-06
 
-### 生态全景
+> LLM 调用失败，输出原始信号（RetryError[<Future at 0x7f136c5916d0 state=finished raised APITimeoutError>]），以下为当日追踪到社区动态（未经 AI 深度分析）。
 
-AI Agent 生态是一个快速发展的领域，众多项目如 OpenClaw、NanoBot、PicoClaw、ZeroClaw、Hermes Agent 和 CoPaw 等都在积极开发中。
+## CoPaw
+- PRs: 5 · Issues: 0 · Releases: 3
+- **feat(channels): add WhatsApp channel via neonize-qwenpaw**  (10 评论)  [CoPaw (PR)](https://github.com/agentscope-ai/QwenPaw/pull/3498)
+- **fix(agents): sanitize local paths in formatter normalization**  (20 评论)  [CoPaw (PR)](https://github.com/agentscope-ai/QwenPaw/pull/1206)
+- **feat(nextcloud_talk): add Nextcloud Talk channel integration**  (9 评论)  [CoPaw (PR)](https://github.com/agentscope-ai/QwenPaw/pull/1478)
+- **Add French (fr-CA) language support**  (8 评论)  [CoPaw (PR)](https://github.com/agentscope-ai/QwenPaw/pull/534)
+- **Feat/semantic skill routing**  (12 评论)  [CoPaw (PR)](https://github.com/agentscope-ai/QwenPaw/pull/3117)
+- **CoPaw 发布 v2.1.0-beta.1**  (v2.1.0-beta.1)  [CoPaw](https://github.com/agentscope-ai/QwenPaw/releases/tag/v2.1.0-beta.1)
+- **CoPaw 发布 v2.0.1**  (v2.0.1)  [CoPaw](https://github.com/agentscope-ai/QwenPaw/releases/tag/v2.0.1)
+- **CoPaw 发布 v2.0.1-beta.3**  (v2.0.1-beta.3)  [CoPaw](https://github.com/agentscope-ai/QwenPaw/releases/tag/v2.0.1-beta.3)
 
-### 活跃度对比表
+## Hermes Agent
+- PRs: 5 · Issues: 0 · Releases: 3
+- **feat(discord): add conservative voice barge-in**  (592 评论)  [Hermes Agent (PR)](https://github.com/NousResearch/hermes-agent/pull/75325)
+- **feat(gateway): make still-working heartbeats configurable**  (63 评论)  [Hermes Agent (PR)](https://github.com/NousResearch/hermes-agent/pull/7446)
+- **feat(gateway): add Zulip integration and messaging support**  (46 评论)  [Hermes Agent (PR)](https://github.com/NousResearch/hermes-agent/pull/3335)
+- **feat(session_context): add set/reset_current_turn_session_key public wrappers**  (1 评论)  [Hermes Agent (PR)](https://github.com/NousResearch/hermes-agent/pull/32927)
+- **Handle WhatsApp Cloud calls with a sidecar**  (45 评论)  [Hermes Agent (PR)](https://github.com/NousResearch/hermes-agent/pull/45863)
+- **Hermes Agent 发布 v2026.8.3**  (Hermes Agent v0.20.0 (2026.8.3))  [Hermes Agent](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.8.3)
+- **Hermes Agent 发布 v2026.7.30**  (Hermes Agent v0.19.1 (v2026.7.30))  [Hermes Agent](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.7.30)
+- **Hermes Agent 发布 v2026.7.20**  (Hermes Agent v0.19.0 (2026.7.20) — The Quicksilver Release)  [Hermes Agent](https://github.com/NousResearch/hermes-agent/releases/tag/v2026.7.20)
 
-| 项目       | PR 数 | Issue 数 | 热议点                                       |
-|------------|-------|----------|----------------------------------------------|
-| OpenClaw   | 5     | 0        | fix(slack), perf, feat, fix(context-engine), release |
-| NanoBot    | 5     | 1        | feat(observability), Architectural issue, Endpoint channel, feat(llm-wiki), feat(tools), release |
-| PicoClaw   | 3     | 3        | chore, Feature, Added simplex channel type, [Feature], [Feature], release |
-| ZeroClaw   | 5     | 0        | feat(gateway), feat(matrix), fix(tools), feat(channels/telegram), fix(channels), release |
-| Hermes Agent | 5     | 0        | feat(discord), feat(gateway), feat(gateway), feat(session_context), Handle WhatsApp Cloud calls, release |
-| CoPaw      | 5     | 0        | feat(channels), fix(agents), feat(nextcloud_talk), Add French (fr-CA) language support, Feat/semantic skill routing, release |
+## NanoBot
+- PRs: 4 · Issues: 1 · Releases: 3
+- **feat(observability): OpenTelemetry tracing for LLM calls and tools**  (10 评论)  [NanoBot (PR)](https://github.com/HKUDS/nanobot/pull/3173)
+- **Architectural issue: nanobot does not preserve the exact prompt prefix it previously sent**  (14 评论)  [NanoBot (Issue)](https://github.com/HKUDS/nanobot/issues/2463)
+- **Endpoint channel**  (14 评论)  [NanoBot (PR)](https://github.com/HKUDS/nanobot/pull/1861)
+- **feat(llm-wiki): enhance llm-wiki functionality with auto-archiving and management commands**  (13 评论)  [NanoBot (PR)](https://github.com/HKUDS/nanobot/pull/3052)
+- **feat(tools): add read-only search_history tool**  (8 评论)  [NanoBot (PR)](https://github.com/HKUDS/nanobot/pull/4439)
+- **NanoBot 发布 v0.3.0**  (v0.3.0)  [NanoBot](https://github.com/HKUDS/nanobot/releases/tag/v0.3.0)
+- **NanoBot 发布 v0.2.2**  (v0.2.2)  [NanoBot](https://github.com/HKUDS/nanobot/releases/tag/v0.2.2)
+- **NanoBot 发布 v0.2.1**  (v0.2.1)  [NanoBot](https://github.com/HKUDS/nanobot/releases/tag/v0.2.1)
 
-### 共同技术方向
+## OpenClaw
+- PRs: 5 · Issues: 0 · Releases: 3
+- **fix(slack): suppress progress chrome sends**  (574 评论)  [OpenClaw (PR)](https://github.com/openclaw/openclaw/pull/102082)
+- **perf: avoid event-loop stall during embedded_run bootstrap-context**  (363 评论)  [OpenClaw (PR)](https://github.com/openclaw/openclaw/pull/89040)
+- **feat: add lease-bound metadata to session spawns**  (23 评论)  [OpenClaw (PR)](https://github.com/openclaw/openclaw/pull/112589)
+- **fix(wechat): preserve existing accounts across hot reload**  (43 评论)  [OpenClaw (PR)](https://github.com/openclaw/openclaw/pull/82540)
+- **fix(context-engine): keep background maintenance from blocking new messages**  (164 评论)  [OpenClaw (PR)](https://github.com/openclaw/openclaw/pull/97175)
+- **OpenClaw 发布 v2026.7.1-2**  (openclaw 2026.7.1-2)  [OpenClaw](https://github.com/openclaw/openclaw/releases/tag/v2026.7.1-2)
+- **OpenClaw 发布 v2026.7.1-1**  (openclaw 2026.7.1-1)  [OpenClaw](https://github.com/openclaw/openclaw/releases/tag/v2026.7.1-1)
+- **OpenClaw 发布 v2026.7.2-beta.7**  (openclaw 2026.7.2-beta.7)  [OpenClaw](https://github.com/openclaw/openclaw/releases/tag/v2026.7.2-beta.7)
 
-这些项目共同关注的技术方向包括：可观测性、性能优化、功能增强、错误修复、社区集成和语言支持。
+## PicoClaw
+- PRs: 2 · Issues: 3 · Releases: 3
+- **chore: move installation scripts from docs repo to here**  (6 评论)  [PicoClaw (PR)](https://github.com/sipeed/picoclaw/pull/1951)
+- **Feature: Intelligent Model Routing for Cost & Performance Optimization**  (10 评论)  [PicoClaw (Issue)](https://github.com/sipeed/picoclaw/issues/295)
+- **Added simplex channel type**  (12 评论)  [PicoClaw (PR)](https://github.com/sipeed/picoclaw/pull/3193)
+- **[Feature]: Add webUI support (Refactoring now)**  (8 评论)  [PicoClaw (Issue)](https://github.com/sipeed/picoclaw/issues/806)
+- **[Feature] Interactive CLI Wizard for Zero-Config Onboarding**  (8 评论)  [PicoClaw (Issue)](https://github.com/sipeed/picoclaw/issues/350)
+- **PicoClaw 发布 nightly**  (Nightly Build)  [PicoClaw](https://github.com/sipeed/picoclaw/releases/tag/nightly)
+- **PicoClaw 发布 v0.3.1**  (v0.3.1)  [PicoClaw](https://github.com/sipeed/picoclaw/releases/tag/v0.3.1)
+- **PicoClaw 发布 v0.2.9**  (v0.2.9)  [PicoClaw](https://github.com/sipeed/picoclaw/releases/tag/v0.2.9)
 
-### 差异化定位
-
-- OpenClaw：专注于提供强大的 AI Agent 功能，支持多种集成和扩展。
-- NanoBot：注重易用性和可扩展性，提供丰富的工具和功能。
-- PicoClaw：专注于轻量级和高效能，适用于资源受限的环境。
-- ZeroClaw：提供全面的通信和集成能力，支持多种渠道。
-- Hermes Agent：强调跨平台和集成能力，支持多种通信协议。
-- CoPaw：提供丰富的语言支持和社区集成，适用于多语言环境。
-
-### 社区热度与成熟度
-
-根据评论数，社区热度排序如下：
-
-1. OpenClaw
-2. Hermes Agent
-3. ZeroClaw
-4. NanoBot
-5. PicoClaw
-6. CoPaw
-
-这些项目的成熟度较高，社区活跃，用户反馈积极。
-
-### 趋势信号
-
-- OpenClaw 的 fix(slack) 和 perf 优化表明项目在持续改进用户体验和性能。
-- NanoBot 的 feat(observability) 表明项目在可观测性方面有所进展。
-- PicoClaw 的 chore 和 Feature 表明项目在架构和功能上有所增强。
-- ZeroClaw 的 feat(gateway) 和 fix(tools) 表明项目在集成和工具方面有所提升。
-- Hermes Agent 的 feat(discord) 和 feat(gateway) 表明项目在通信协议方面有所扩展。
-- CoPaw 的 Feat/semantic skill routing 表明项目在技能路由方面有所创新。
-
-[完整 markdown 专题日报正文](#)
+## ZeroClaw
+- PRs: 5 · Issues: 0 · Releases: 3
+- **feat(gateway): add OpenAI chat completions endpoint**  (30 评论)  [ZeroClaw (PR)](https://github.com/zeroclaw-labs/zeroclaw/pull/8486)
+- **feat(matrix): add single-message progress drafts**  (30 评论)  [ZeroClaw (PR)](https://github.com/zeroclaw-labs/zeroclaw/pull/8443)
+- **fix(tools): add allowed_private_hosts opt-in to file_download SSRF gate**  (22 评论)  [ZeroClaw (PR)](https://github.com/zeroclaw-labs/zeroclaw/pull/8713)
+- **feat(channels/telegram): add multi_message streaming mode**  (21 评论)  [ZeroClaw (PR)](https://github.com/zeroclaw-labs/zeroclaw/pull/8561)
+- **fix(channels): cap Telegram bot commands and repair truncation WARN for #8950**  (15 评论)  [ZeroClaw (PR)](https://github.com/zeroclaw-labs/zeroclaw/pull/8963)
+- **ZeroClaw 发布 v0.8.4**  (v0.8.4)  [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw/releases/tag/v0.8.4)
+- **ZeroClaw 发布 v0.8.3**  (v0.8.3)  [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw/releases/tag/v0.8.3)
+- **ZeroClaw 发布 v0.8.2**  (v0.8.2)  [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw/releases/tag/v0.8.2)
