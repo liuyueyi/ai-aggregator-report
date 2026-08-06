@@ -14,13 +14,18 @@
       "title": "具体的文章标题（≤30字）",
       "angle": "写作角度（50-100字，说明切入点和价值）",
       "why_write": "为什么这个选题值得写（30-50字，说明时效性、独特视角或读者价值）",
-      "signals": ["信号1标题", "信号2标题"],
+      "signals": [{"title": "信号标题", "url": "信号原文链接"}, {"title": "信号标题", "url": "信号原文链接"}],
       "format": "deep-dive | opinion | how-to | trend",
       "priority": "high | medium | low",
       "read_time": "5min | 10min | 20min"
     }
   ]
 }
+
+## 信号链接要求
+1. signals 中每条必须同时给出 title 和 url（url 为日报中该信号的原文链接，如 hackernews / github / 微博 / 原文网站地址）
+2. url 必须来自下方日报内容里的真实链接，禁止编造
+3. 日报中若无对应链接，url 可为空字符串，但 title 必须有
 
 ## 选题原则
 1. 优先选择有冲突性、话题性、时效性的信号

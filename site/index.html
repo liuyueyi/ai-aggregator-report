@@ -221,6 +221,8 @@
   .report-body hr { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
   .report-body ul, .report-body ol { padding-left: 22px; }
   .report-body img { max-width: 100%; border-radius: 10px; }
+  .suggest-panel { margin-bottom: 22px; }
+  .suggest-panel .report-body { max-height: 480px; overflow-y: auto; padding-right: 8px; }
 
   /* ---------- responsive ---------- */
   @media (max-width: 880px) {
@@ -478,6 +480,7 @@ async function renderHome() {
         <div class="stat"><div class="n">${latest ? latest.date.slice(5) : "-"}</div><div class="l">最新日期</div></div>
       </div>
     </div>
+    <div id="todaySuggest"></div>
     <div id="feed"><div class="empty"><div class="skeleton" style="height:200px"></div></div></div>
   `;
 
@@ -486,7 +489,31 @@ async function renderHome() {
     return;
   }
 
+  // 首页顶部「今日选题建议」面板：最新日期存在 topic_suggestions 则渲染该日全文
+  const suggestBox = document.getElementById("todaySuggest");
+  const latestEntry = manifest.dates[0];
+  if (latestEntry && latestEntry.reports.some(r => r.key === SUGGEST_KEY)) {
+    try {
+      const md = await getMD(latestEntry.date, SUGGEST_KEY);
+      // 首页仅展示前部「主题 × 推荐选题」汇总表；完整详情见详情页
+      const body = md.split(/\r?\n## /)[0];
+      const html = marked.parse(body);
+      suggestBox.innerHTML = `
+        <div class="report-wrap suggest-panel">
+          <div class="report-head">
+            <span class="ic">📋</span>
+            <h2>今日选题建议</h2>
+            <span class="report-meta">${esc(latestEntry.date)}</span>
+            <a class="icon-btn back" href="#${esc(latestEntry.date)}/topic_suggestions">查看详情 →</a>
+          </div>
+          <div class="report-body">${html}</div>
+        </div>`;
+      suggestBox.querySelectorAll(".report-body a").forEach(a => { a.target = "_blank"; a.rel = "noopener"; });
+    } catch { suggestBox.innerHTML = ""; }
+  }
+
   const feed = document.getElementById("feed");
+  feed.innerHTML = "";   // 移除加载骨架，开始渲染真实内容
   for (const e of windowDates) {
     const repKeys = feedKeys(e.reports.map(r => r.key)).filter(isFollowed);
     if (!repKeys.length) continue;
@@ -561,6 +588,7 @@ async function renderDay(date) {
   }
 
   const feed = document.getElementById("feed");
+  feed.innerHTML = "";   // 移除加载骨架，开始渲染该日内容
   const dayEl = document.createElement("section");
   dayEl.className = "day";
   dayEl.innerHTML = `<div class="topic-cards"></div>`;

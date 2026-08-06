@@ -15,12 +15,13 @@ def _fallback_topics(
     tkey: str, tconf: dict, report_content: str, date: str
 ) -> dict:
     """mock/LLM 失败时的确定性兜底选题：基于日报内容提取前 3 个标题。"""
-    titles = re.findall(r"#### \d+\.\s*\[(.+?)\]", report_content)
+    items = re.findall(r"#### \d+\.\s*\[(.+?)\]\((.+?)\)", report_content)
+    sigs = [{"title": t[:50], "url": u} for t, u in items[:3]]
     suggestions = []
-    for i, t in enumerate(titles[:3], 1):
+    for i, t in enumerate(sigs, 1):
         suggestions.append({
-            "title": t[:30],
-            "angle": f"基于 {tconf.get('name', tkey)} 热点「{t[:20]}」展开分析",
+            "title": t["title"][:30],
+            "angle": f"基于 {tconf.get('name', tkey)} 热点「{t['title'][:20]}」展开分析",
             "why_write": "该话题具有时效性和话题性，目标读者关注度高",
             "signals": [t],
             "format": "deep-dive",
@@ -160,6 +161,26 @@ def render_topics_md(
     """将选题建议渲染为 Markdown 字符串。"""
     lines = [f"# 📋 选题建议 · {date}", ""]
 
+    # 前部汇总表：按主题列出各主题下的推荐选题
+    lines.append("| 主题 | 推荐选题 |")
+    lines.append("|---|---|")
+    for tkey, data in suggestions.items():
+        icon = data.get("icon", "")
+        name = data.get("topic_name", tkey)
+        sugs = data.get("suggestions", [])
+        label = f"{icon} {name}".strip() or tkey
+        if not sugs:
+            lines.append(f"| {label} | （无选题建议） |")
+            continue
+        cells = []
+        for i, s in enumerate(sugs, 1):
+            _t = str(s.get("title", "")).replace("|", "\\|")
+            cells.append(f"{i}. {_t}")
+        lines.append(f"| {label} | {'<br>'.join(cells)} |")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+
     for tkey, data in suggestions.items():
         icon = data.get("icon", "")
         name = data.get("topic_name", tkey)
@@ -181,7 +202,7 @@ def render_topics_md(
             lines.append(f"### {i}. {title}")
             lines.append("")
             if why_write:
-                lines.append(f"**💡 为什么值得写：**{why_write}")
+                lines.append(f"💡 **为什么值得写：**{why_write}")
                 lines.append("")
             lines.append(f"> {angle}")
             lines.append("")
@@ -196,9 +217,19 @@ def render_topics_md(
                 lines.append(" · ".join(meta_parts))
                 lines.append("")
             if signals:
-                lines.append("**关联信号**:")
+                lines.append("**关联信号（点击查看原文）**:")
                 for sig in signals:
-                    lines.append(f"- {sig}")
+                    if isinstance(sig, dict):
+                        st = str(sig.get("title", "") or "").strip()
+                        su = str(sig.get("url", "") or "").strip()
+                        if st and su:
+                            lines.append(f"- [{st}]({su})")
+                        elif st:
+                            lines.append(f"- {st}")
+                        elif su:
+                            lines.append(f"- <{su}>")
+                    else:
+                        lines.append(f"- {sig}")
                 lines.append("")
 
     # 差异对比

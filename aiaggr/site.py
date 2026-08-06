@@ -119,6 +119,26 @@ def _md_to_html_simple(text: str) -> str:
             out.append("<hr/>")
             i += 1
             continue
+        if line.lstrip().startswith("|"):
+            flush_para()
+            rows: list[list[str]] = []
+            while i < len(lines) and lines[i].lstrip().startswith("|"):
+                raw = lines[i].strip()
+                cells = [c.strip() for c in raw.strip("|").split("|")]
+                if all(set(c) <= set("-: ") for c in cells):
+                    i += 1
+                    continue
+                rows.append(cells)
+                i += 1
+            if rows:
+                cell_html = lambda c: inline(c).replace("&lt;br&gt;", "<br>")
+                thead = "<tr>" + "".join(f"<th>{cell_html(c)}</th>" for c in rows[0]) + "</tr>"
+                tbody = "".join(
+                    "<tr>" + "".join(f"<td>{cell_html(c)}</td>" for c in row) + "</tr>"
+                    for row in rows[1:]
+                )
+                out.append(f"<table><thead>{thead}</thead><tbody>{tbody}</tbody></table>")
+            continue
         para.append(inline(line))
         i += 1
     flush_para()
