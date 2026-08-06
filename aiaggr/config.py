@@ -75,6 +75,21 @@ def rss_feeds(cfg: dict) -> dict[str, dict]:
     return {k: v for k, v in feeds.items() if v.get("enabled", True)}
 
 
+def rsshub_sources(cfg: dict) -> dict[str, dict]:
+    """返回启用的 RSSHub 社交源 {key: {name,path,hours,enabled}}（公众号/小红书/头条/Twitter 等）。
+    RSS 源段位（sources.rss）里那些标记了 `rsshub: true` 的条目也按 RSSHub 处理。"""
+    out: dict[str, dict] = {}
+    for key, v in cfg.get("sources", {}).get("rsshub", {}).items():
+        if isinstance(v, dict) and v.get("enabled", True):
+            out[key] = v
+    for key, v in cfg.get("sources", {}).get("rss", {}).items():
+        if isinstance(v, dict) and v.get("rsshub"):
+            v = dict(v)
+            v.setdefault("path", v.get("url", ""))
+            out[key] = v
+    return out
+
+
 def opml_config(cfg: dict) -> dict[str, Any]:
     return cfg.get("opml", {})
 
@@ -91,3 +106,8 @@ def promp_dir(cfg: dict) -> Path:
 def site_dir(cfg: dict) -> Path:
     """站点交付目录：统一收纳 index.html / manifest.json / feed.xml。"""
     return ROOT / cfg.get("site", {}).get("dir", "site")
+
+
+def article_dir(cfg: dict) -> Path:
+    """文章工作流产物目录 article/YYYY/MM/DD/{slug}.md + .html。"""
+    return ROOT / cfg.get("article", {}).get("output", {}).get("dir", "article")

@@ -15,6 +15,7 @@ from .config import (
     enabled_topics,
     llm_settings,
     load_config,
+    promp_dir,
     report_dir,
     state_dir,
     timezone_name,
@@ -166,8 +167,9 @@ async def _collect(topics, pools, state, date, cross_day_exclude: bool, base: di
     }
 
     new_fps = 0
+    archived_fps = 0
     if emitted:
-        new_fps = state.record_emitted(emitted, date)
+        new_fps, archived_fps = state.record_emitted(emitted, date)
     total = sum(len(v) for v in topic_signals.values())
     for tkey, sigs in topic_signals.items():
         print(f"→ [{tkey}] 采集 {len(sigs)} 条信号")
@@ -386,9 +388,12 @@ async def amain(args, cfg) -> dict:
 
     # ---- 幂等状态落盘 + 索引 ----
     new_fps = 0
+    archived_fps = 0
     if emitted:
-        new_fps = state.record_emitted(emitted, date)
+        new_fps, archived_fps = state.record_emitted(emitted, date)
         print(f"✓ 记录 {new_fps} 条新信号指纹到 seen（跨日去重）")
+        if archived_fps > 0:
+            print(f"✓ 归档 {archived_fps} 条旧指纹到 .state/arch/")
     index_path = save_index(date, topic_entries, rdir)
     print(f"✓ 当日索引已保存到 {date_path(rdir, date) / 'index.md'}")
     print(f"→ 完成：{len(saved_files)} 份主题日报写入 {rdir}")
@@ -400,6 +405,36 @@ async def amain(args, cfg) -> dict:
             title, content = build_feishu_card(date, topic_entries)
             await send_feishu(title, content)
 
+    # ---- 选题建议（读取已生成的日报，LLM 生成选题 + 前日 diff）----
+    topic_suggestions_md = None
+    if not args.collect:
+        from .topics import (
+            _compute_diff,
+            _load_prev_suggestions,
+            generate_topic_suggestions,
+            render_topics_md,
+        )
+
+        existing_topics = {
+            k: v for k, v in topics.items()
+            if not any(e.get("key") == k and e.get("skipped") for e in topic_entries)
+               and any(e.get("key") == k and not e.get("skipped") for e in topic_entries)
+        }
+        if existing_topics:
+            print(f"→ 生成选题建议（{len(existing_topics)} 个主题）...")
+            suggestions = await generate_topic_suggestions(
+                existing_topics, date, rdir, settings, prompts_dir
+            )
+            if suggestions:
+                prev = _load_prev_suggestions(rdir, date, topics)
+                curr_sugs = {k: v.get("suggestions", []) for k, v in suggestions.items()}
+                diff = _compute_diff(prev, curr_sugs)
+                md = render_topics_md(date, suggestions, diff)
+                ts_path = date_path(rdir, date) / "topic_suggestions.md"
+                ts_path.write_text(md, encoding="utf-8")
+                topic_suggestions_md = str(ts_path.relative_to(ROOT))
+                print(f"✓ 选题建议已保存: {topic_suggestions_md}")
+
     return {
         **base,
         "exit_code": 0,
@@ -407,6 +442,7 @@ async def amain(args, cfg) -> dict:
         "index": str(index_path.relative_to(ROOT)),
         "report_dir": str(rdir.relative_to(ROOT)),
         "new_fingerprints": new_fps,
+        "topic_suggestions": topic_suggestions_md,
     }
 
 

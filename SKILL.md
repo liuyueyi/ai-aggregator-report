@@ -20,7 +20,7 @@ CLI 进度日志一律走 stderr；stdout 只输出结构化 JSON，适合 AI Ag
 
 ## 🔄 工作流
 
-**每次日报请求都走同一流程**：采集信号 → 写日报 → 保存归档 → 展示。
+**每次日报请求都走同一流程**：采集信号 → 写日报 → 保存归档 → 选题建议 → 展示。
 
 ### 方式 A：采集模式（无需 LLM，推荐）
 
@@ -49,6 +49,25 @@ CLI 进度日志一律走 stderr；stdout 只输出结构化 JSON，适合 AI Ag
 # 无 key 冒烟（验证管线）
 .venv/Scripts/python.exe -m aiaggr.main --json --mock-llm --source hackernews --topic general
 ```
+
+### 方式 C：选题参考模式（读取已有日报，生成选题建议）
+
+不抓取、不生成日报，仅读取 `report/YYYY/MM/DD/` 下已有的日报，逐主题调 LLM 生成选题建议，输出 Markdown 文档 + 与前日差异对比。
+
+```bash
+# 所有主题
+.venv/Scripts/python.exe -m aiaggr.article_cli --topics-only
+
+# 指定主题
+.venv/Scripts/python.exe -m aiaggr.article_cli --topics-only --topic general,tech
+
+# mock 冒烟
+.venv/Scripts/python.exe -m aiaggr.article_cli --topics-only --mock-llm --topic general
+```
+
+输出 `report/YYYY/MM/DD/topic_suggestions.md`（Markdown 文档，含前日 diff + 每条选题的「为什么值得写」）。
+
+> **自动触发**：方式 B 生成日报后会自动附带生成选题建议（无需额外参数）。首次运行无前日数据时跳过差异对比。
 
 ---
 
@@ -142,6 +161,12 @@ CLI 进度日志一律走 stderr；stdout 只输出结构化 JSON，适合 AI Ag
 | `--list-sources` | 列出所有数据源 key | — |
 | `--config PATH` | 指定 config.yaml | `config.yaml` |
 
+> **article_cli.py 专用参数**（`python -m aiaggr.article_cli`）：
+
+| 参数 | 说明 | 默认 |
+|---|---|---|
+| `--topics-only` | 选题参考模式：读取已有日报 → LLM 选题 → Markdown + diff | 否 |
+
 > Windows 上把 stdout 落盘且保持 UTF-8 用 `cmd /c "... > out.json"`；PowerShell 的 `1>` 会转成 UTF-16。
 
 ---
@@ -173,10 +198,11 @@ CLI 进度日志一律走 stderr；stdout 只输出结构化 JSON，适合 AI Ag
 ```
 report/
 └── YYYY/MM/DD/
-    ├── index.md          # 当日索引（各主题速览 + tagline）
+    ├── index.md                  # 当日索引（各主题速览 + tagline）
     ├── general.md
     ├── tech.md
-    └── ...               # 每主题一份
+    ├── ...                       # 每主题一份
+    └── topic_suggestions.md      # 选题建议（Markdown，含前日 diff + 为什么值得写）
 ```
 
 ---

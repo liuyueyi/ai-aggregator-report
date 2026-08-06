@@ -39,7 +39,7 @@ state:
 site:
   enabled: true
   dir: site                    # 站点交付目录：统一收纳 index.html / manifest.json / feed.xml
-  base_url: ""                # 部署根 URL，如 https://<user>.github.io/<repo>；也可用 PAGES_URL env
+  base_url: "https://liuyueyi.github.io/ai-aggregator-report"                # 部署根 URL，如 https://<user>.github.io/<repo>；也可用 PAGES_URL env
 
 # ---- GitHub 生态追踪（专题报告 ai-cli.md / ai-agents.md）----
 # 抓取 AI CLI 工具 + Claude Code Skills + OpenClaw/AI Agent 生态的 Issues/PRs/Releases。
@@ -51,6 +51,33 @@ tracking:
   skills_repo: {}             # {repo: anthropics/skills, name: Claude Code Skills}
   agents_repos: []            # 同赛道 Agent 项目列表
 
+# ---- 文章生产工作流（--article）----
+# 从选题信号池生产"值得发布"的文章：选题 → 排序 → 编辑决策 → 证据补全 → 文章计划
+# → 草稿 → 标题 → 审稿 → 门禁 → 修订 → 排版 → 配图方案。
+article:
+  enabled: true
+  dry_run: true              # 默认 dry-run：只产出 md+html+配图方案，不发布
+  input_limit: 40            # 进入工作流的信号上限（按 score 取前 N）
+  profiles:                  # 每个 profile = 一套提示词风格 + 目标读者 + 语气
+    general:
+      label: 综合科技观察
+      audience: 独立开发者 / 技术产品人 / AI 从业者
+      tone: 客观克制、少用营销腔，给判断而非堆料
+      preferred_topics: [AI 模型, 开源工具, 产品与商业, 产业资本]
+      title_format: 观点 + 关键事实 + 悬念，避免"AI速递/重磅/炸裂"等栏目腔
+  quality_gate:
+    enabled: true
+    min_score: 70            # overallScore 低于此值发布被拦截（dry-run 不受限）
+    block_on_high_fact_issue: true
+    max_revision_rounds: 1   # 审稿→修订循环轮数（0 关闭）
+  evidence:
+    enabled: true
+    max_items: 5             # 证据包最大条数
+    max_hydration: 3         # 正文过短时的深度补抓上限
+    noisy_hosts: []          # 追加的不信任证据域（内置 zhihu/csdn/weixin.qq.com 等）
+  output:
+    dir: article             # 产物目录 article/YYYY/MM/DD/{slug}.md + .html + plan.json
+
 # ==========================================================================
 # 主题日报配置（可增删；每个主题 = 一个源白名单 + 一份日报 + 一个 prompt）
 # ==========================================================================
@@ -60,7 +87,55 @@ topics:
     icon: 🌍
     prompt: report.general.md
     limit: 15
-    sources: [hackernews, hn_ai, github, v2ex, producthunt, weibo, 36kr, tencent, user]
+    sources:
+      - hackernews
+      - hn_ai
+      - github
+      - v2ex
+      - producthunt
+      - weibo
+      - 36kr
+      - tencent
+      - user
+      - agentradar
+      # HN Popularity Contest - 综合/文化类博客
+      - jeffgeerling
+      - mitchellh
+      - dynomight
+      - pluralistic
+      - jamesclear
+      - farnamstreet
+      - derekthompson
+      - experimental-history
+      - anildash
+      - tedium
+      - construction-physics
+      - dwarkesh
+      - simonwillison
+      - shkspr
+      - ericmigi
+      - maurycyz
+      - joanwestenberg
+      - rakhim
+      - terriblesoftware
+      - susam
+      - heyparis
+      - refactoringenglish
+      - borretti
+      - gilesthomas
+      - timsh
+      - danieldelaney
+      - grantslatton
+      - martinalderson
+      - pixelmelt
+      - bogdanthegeek
+      - hugotunius
+      - chadnauseam
+      - simone
+      - dragas
+      - beej
+      - danielwirtz
+      - tomrenner
     enabled: true
 
   tech:
@@ -68,7 +143,56 @@ topics:
     icon: 🦄
     prompt: report.tech.md
     limit: 12
-    sources: [hackernews, hn_ai, github, producthunt, v2ex, lobsters, devto, sspai, infoq_cn]
+    sources:
+      - hackernews
+      - hn_ai
+      - github
+      - producthunt
+      - v2ex
+      - lobsters
+      - devto
+      - sspai
+      - infoq_cn
+      # HN Popularity Contest - 开发者/系统/安全博客
+      - antirez
+      - matklad
+      - rachelbythebay
+      - overreacted
+      - lucumr
+      - eli-thegreenplace
+      - fabiensanglard
+      - bernsteinbear
+      - miguelgrinberg
+      - keygen
+      - michaelstapelberg
+      - oldnewthing
+      - matduggan
+      - troyhunt
+      - krebsonsecurity
+      - lcamtuf
+      - mjg59
+      - righto
+      - jyn
+      - sgtatham
+      - tedunangst
+      - computer-rip
+      - abortretryfail
+      - oldvcr
+      - dfarq
+      - jimnielsen
+      - evanhahn
+      - xania
+      - nesbitt
+      - johndcook
+      - skyfall
+      - xeiaso
+      - utcc_cks
+      - dynomight
+      # 聚合源
+      - hnrss-best
+      - reddit-programming
+      - lobsters-feed
+      - producthunt-feed
     enabled: true
 
   ai_daily:
@@ -76,7 +200,43 @@ topics:
     icon: 🧠
     prompt: report.ai_daily.md
     limit: 12
-    sources: [hn_ai, huggingface, arxiv, aihot, tldr_ai, import_ai, bensbites, interconnects, oneusefulthing, chinai, memia, aitoroi, kdnuggets]
+    sources:
+      - hn_ai
+      - huggingface
+      - arxiv
+      - aihot
+      - tldr_ai
+      - import_ai
+      - bensbites
+      - interconnects
+      - oneusefulthing
+      - chinai
+      - memia
+      - aitoroi
+      - kdnuggets
+      - dailydawn
+      - agentradar
+      # HN Popularity Contest - AI/ML 博客
+      - garymarcus
+      - gwern
+      - minimaxir
+      - geohot
+      - lilianweng
+      # AI 公司博客
+      - huggingface-blog
+      - nvidia-blog
+      - deepmind-blog
+      - stability-ai
+      - runway-research
+      - the-decoder
+      - replicate-blog
+      # AI 相关 Reddit
+      - reddit-machinelearning
+      - reddit-localllama
+      - reddit-stablediffusion
+      - reddit-midjourney
+      - reddit-comfyui
+      - reddit-singularity
     enabled: true
 
   finance:
@@ -92,7 +252,7 @@ topics:
     icon: 🍉
     prompt: report.social.md
     limit: 10
-    sources: [weibo, v2ex]
+    sources: [weibo, v2ex, wechat_gzh, xiaohongshu, toutiao, twitter_x, twitter]
     enabled: true
 
   international:
@@ -129,6 +289,11 @@ opml:
 # ==========================================================================
 sources:
   # ---- 专用 API/爬虫源 ----
+  dailydawn:
+    type: api
+    enabled: true
+    limit: 10
+    hours: 48
   hackernews:
     type: api
     enabled: true
@@ -186,6 +351,15 @@ sources:
     enabled: true
     limit: 20
     min_ups: 20
+  twitter:
+    type: api
+    enabled: true
+    limit: 30
+    accounts: [OpenAIDevs, AnthropicAI, deepseek_ai]   # 无凭证时跳过（见 fetchers/twitter.py）
+  toutiao:
+    type: api
+    enabled: true
+    limit: 20        # 头条热榜公开接口，不需 RSSHub（见 fetchers/toutiao.py）
   google_trends:
     type: trends
     enabled: true
@@ -343,3 +517,579 @@ sources:
       url: "https://thedankoe.com/feed/"
       hours: 0
       enabled: true
+    agentradar:
+      name: agent-radar
+      url: "https://duanyytop.github.io/agents-radar/feed.xml"
+      hours: 0
+      enabled: true
+
+    # ---- HN Popularity Contest 2025 (Karpathy curated) - 个人博客 ----
+    simonwillison:
+      name: simonwillison.net
+      url: "https://simonwillison.net/atom/everything/"
+      hours: 48
+      enabled: false
+    jeffgeerling:
+      name: jeffgeerling.com
+      url: "https://www.jeffgeerling.com/blog.xml"
+      hours: 72
+      enabled: false
+    seangoedecke:
+      name: seangoedecke.com
+      url: "https://www.seangoedecke.com/rss.xml"
+      hours: 72
+      enabled: false
+    krebsonsecurity:
+      name: krebsonsecurity.com
+      url: "https://krebsonsecurity.com/feed/"
+      hours: 48
+      enabled: false
+    daringfireball:
+      name: daringfireball.net
+      url: "https://daringfireball.net/feeds/main"
+      hours: 72
+      enabled: false
+    ericmigi:
+      name: ericmigi.com
+      url: "https://ericmigi.com/rss.xml"
+      hours: 72
+      enabled: false
+    antirez:
+      name: antirez.com
+      url: "http://antirez.com/rss"
+      hours: 72
+      enabled: false
+    idiallo:
+      name: idiallo.com
+      url: "https://idiallo.com/feed.rss"
+      hours: 72
+      enabled: false
+    maurycyz:
+      name: maurycyz.com
+      url: "https://maurycyz.com/index.xml"
+      hours: 72
+      enabled: false
+    pluralistic:
+      name: pluralistic.net
+      url: "https://pluralistic.net/feed/"
+      hours: 48
+      enabled: false
+    shkspr:
+      name: shkspr.mobi
+      url: "https://shkspr.mobi/blog/feed/"
+      hours: 72
+      enabled: false
+    lcamtuf:
+      name: lcamtuf.substack.com
+      url: "https://lcamtuf.substack.com/feed"
+      hours: 48
+      enabled: false
+    mitchellh:
+      name: mitchellh.com
+      url: "https://mitchellh.com/feed.xml"
+      hours: 72
+      enabled: false
+    dynomight:
+      name: dynomight.net
+      url: "https://dynomight.net/feed.xml"
+      hours: 72
+      enabled: false
+    utcc_cks:
+      name: utcc.utoronto.ca/~cks
+      url: "https://utcc.utoronto.ca/~cks/space/blog/?atom"
+      hours: 72
+      enabled: false
+    xeiaso:
+      name: xeiaso.net
+      url: "https://xeiaso.net/blog.rss"
+      hours: 72
+      enabled: false
+    oldnewthing:
+      name: devblogs.microsoft.com/oldnewthing
+      url: "https://devblogs.microsoft.com/oldnewthing/feed"
+      hours: 72
+      enabled: false
+    righto:
+      name: righto.com
+      url: "https://www.righto.com/feeds/posts/default"
+      hours: 72
+      enabled: false
+    lucumr:
+      name: lucumr.pocoo.org
+      url: "https://lucumr.pocoo.org/feed.atom"
+      hours: 72
+      enabled: false
+    skyfall:
+      name: skyfall.dev
+      url: "https://skyfall.dev/rss.xml"
+      hours: 72
+      enabled: false
+    garymarcus:
+      name: garymarcus.substack.com
+      url: "https://garymarcus.substack.com/feed"
+      hours: 48
+      enabled: false
+    rachelbythebay:
+      name: rachelbythebay.com
+      url: "https://rachelbythebay.com/w/atom.xml"
+      hours: 72
+      enabled: false
+    overreacted:
+      name: overreacted.io
+      url: "https://overreacted.io/rss.xml"
+      hours: 72
+      enabled: false
+    timsh:
+      name: timsh.org
+      url: "https://timsh.org/rss/"
+      hours: 72
+      enabled: false
+    johndcook:
+      name: johndcook.com
+      url: "https://www.johndcook.com/blog/feed/"
+      hours: 72
+      enabled: false
+    gilesthomas:
+      name: gilesthomas.com
+      url: "https://gilesthomas.com/feed/rss.xml"
+      hours: 72
+      enabled: false
+    matklad:
+      name: matklad.github.io
+      url: "https://matklad.github.io/feed.xml"
+      hours: 72
+      enabled: false
+    derekthompson:
+      name: derekthompson.org
+      url: "https://www.theatlantic.com/feed/author/derek-thompson/"
+      hours: 72
+      enabled: false
+    evanhahn:
+      name: evanhahn.com
+      url: "https://evanhahn.com/feed.xml"
+      hours: 72
+      enabled: false
+    terriblesoftware:
+      name: terriblesoftware.org
+      url: "https://terriblesoftware.org/feed/"
+      hours: 72
+      enabled: false
+    rakhim:
+      name: rakhim.exotext.com
+      url: "https://rakhim.exotext.com/rss.xml"
+      hours: 72
+      enabled: false
+    joanwestenberg:
+      name: joanwestenberg.com
+      url: "https://joanwestenberg.com/rss"
+      hours: 72
+      enabled: false
+    xania:
+      name: xania.org
+      url: "https://xania.org/feed"
+      hours: 72
+      enabled: false
+    micahflee:
+      name: micahflee.com
+      url: "https://micahflee.com/feed/"
+      hours: 72
+      enabled: false
+    nesbitt:
+      name: nesbitt.io
+      url: "https://nesbitt.io/feed.xml"
+      hours: 72
+      enabled: false
+    construction-physics:
+      name: construction-physics.com
+      url: "https://www.construction-physics.com/feed"
+      hours: 72
+      enabled: false
+    tedium:
+      name: tedium.co
+      url: "https://feed.tedium.co/"
+      hours: 72
+      enabled: false
+    susam:
+      name: susam.net
+      url: "https://susam.net/feed.xml"
+      hours: 72
+      enabled: false
+    entropicthoughts:
+      name: entropicthoughts.com
+      url: "https://entropicthoughts.com/feed.xml"
+      hours: 72
+      enabled: false
+    hillelwayne:
+      name: buttondown.com/hillelwayne
+      url: "https://buttondown.com/hillelwayne/rss"
+      hours: 72
+      enabled: false
+    dwarkesh:
+      name: dwarkesh.com
+      url: "https://www.dwarkeshpatel.com/feed"
+      hours: 72
+      enabled: false
+    borretti:
+      name: borretti.me
+      url: "https://borretti.me/feed.xml"
+      hours: 72
+      enabled: false
+    wheresyoured:
+      name: wheresyoured.at
+      url: "https://www.wheresyoured.at/rss/"
+      hours: 72
+      enabled: false
+    jayd:
+      name: jayd.ml
+      url: "https://jayd.ml/feed.xml"
+      hours: 72
+      enabled: false
+    minimaxir:
+      name: minimaxir.com
+      url: "https://minimaxir.com/index.xml"
+      hours: 48
+      enabled: false
+    geohot:
+      name: geohot.github.io
+      url: "https://geohot.github.io/blog/feed.xml"
+      hours: 72
+      enabled: false
+    filfre:
+      name: filfre.net
+      url: "https://www.filfre.net/feed/"
+      hours: 72
+      enabled: false
+    jimnielsen:
+      name: blog.jim-nielsen.com
+      url: "https://blog.jim-nielsen.com/feed.xml"
+      hours: 72
+      enabled: false
+    dfarq:
+      name: dfarq.homeip.net
+      url: "https://dfarq.homeip.net/feed/"
+      hours: 72
+      enabled: false
+    jyn:
+      name: jyn.dev
+      url: "https://jyn.dev/atom.xml"
+      hours: 72
+      enabled: false
+    geoffreylitt:
+      name: geoffreylitt.com
+      url: "https://www.geoffreylitt.com/feed.xml"
+      hours: 72
+      enabled: false
+    downtowndougbrown:
+      name: downtowndougbrown.com
+      url: "https://www.downtowndougbrown.com/feed/"
+      hours: 72
+      enabled: false
+    brutecat:
+      name: brutecat.com
+      url: "https://brutecat.com/rss.xml"
+      hours: 72
+      enabled: false
+    eli-thegreenplace:
+      name: eli.thegreenplace.net
+      url: "https://eli.thegreenplace.net/feeds/all.atom.xml"
+      hours: 72
+      enabled: false
+    abortretryfail:
+      name: abortretry.fail
+      url: "https://www.abortretry.fail/feed"
+      hours: 72
+      enabled: false
+    fabiensanglard:
+      name: fabiensanglard.net
+      url: "https://fabiensanglard.net/rss.xml"
+      hours: 72
+      enabled: false
+    oldvcr:
+      name: oldvcr.blogspot.com
+      url: "https://oldvcr.blogspot.com/feeds/posts/default"
+      hours: 72
+      enabled: false
+    bogdanthegeek:
+      name: bogdanthegeek.github.io
+      url: "https://bogdanthegeek.github.io/blog/index.xml"
+      hours: 72
+      enabled: false
+    hugotunius:
+      name: hugotunius.se
+      url: "https://hugotunius.se/feed.xml"
+      hours: 72
+      enabled: false
+    gwern:
+      name: gwern.net
+      url: "https://gwern.substack.com/feed"
+      hours: 48
+      enabled: false
+    berthub:
+      name: berthub.eu
+      url: "https://berthub.eu/articles/index.xml"
+      hours: 72
+      enabled: false
+    chadnauseam:
+      name: chadnauseam.com
+      url: "https://chadnauseam.com/rss.xml"
+      hours: 72
+      enabled: false
+    simone:
+      name: simone.org
+      url: "https://simone.org/feed/"
+      hours: 72
+      enabled: false
+    dragas:
+      name: it-notes.dragas.net
+      url: "https://it-notes.dragas.net/feed/"
+      hours: 72
+      enabled: false
+    beej:
+      name: beej.us
+      url: "https://beej.us/blog/rss.xml"
+      hours: 72
+      enabled: false
+    heyparis:
+      name: hey.paris
+      url: "https://hey.paris/index.xml"
+      hours: 72
+      enabled: false
+    danielwirtz:
+      name: danielwirtz.com
+      url: "https://danielwirtz.com/rss.xml"
+      hours: 72
+      enabled: false
+    matduggan:
+      name: matduggan.com
+      url: "https://matduggan.com/rss/"
+      hours: 72
+      enabled: false
+    refactoringenglish:
+      name: refactoringenglish.com
+      url: "https://refactoringenglish.com/index.xml"
+      hours: 72
+      enabled: false
+    worksonmymachine:
+      name: worksonmymachine.substack.com
+      url: "https://worksonmymachine.substack.com/feed"
+      hours: 72
+      enabled: false
+    philiplaine:
+      name: philiplaine.com
+      url: "https://philiplaine.com/index.xml"
+      hours: 72
+      enabled: false
+    steveblank:
+      name: steveblank.com
+      url: "https://steveblank.com/feed/"
+      hours: 72
+      enabled: false
+    bernsteinbear:
+      name: bernsteinbear.com
+      url: "https://bernsteinbear.com/feed.xml"
+      hours: 72
+      enabled: false
+    danieldelaney:
+      name: danieldelaney.net
+      url: "https://danieldelaney.net/feed"
+      hours: 72
+      enabled: false
+    troyhunt:
+      name: troyhunt.com
+      url: "https://www.troyhunt.com/rss/"
+      hours: 48
+      enabled: false
+    herman:
+      name: herman.bearblog.dev
+      url: "https://herman.bearblog.dev/feed/"
+      hours: 72
+      enabled: false
+    tomrenner:
+      name: tomrenner.com
+      url: "https://tomrenner.com/index.xml"
+      hours: 72
+      enabled: false
+    pixelmelt:
+      name: blog.pixelmelt.dev
+      url: "https://blog.pixelmelt.dev/rss/"
+      hours: 72
+      enabled: false
+    martinalderson:
+      name: martinalderson.com
+      url: "https://martinalderson.com/feed.xml"
+      hours: 72
+      enabled: false
+    danielchasehooper:
+      name: danielchasehooper.com
+      url: "https://danielchasehooper.com/feed.xml"
+      hours: 72
+      enabled: false
+    sgtatham:
+      name: chiark.greenend.org.uk/~sgtatham
+      url: "https://www.chiark.greenend.org.uk/~sgtatham/quasiblog/feed.xml"
+      hours: 72
+      enabled: false
+    grantslatton:
+      name: grantslatton.com
+      url: "https://grantslatton.com/rss.xml"
+      hours: 72
+      enabled: false
+    experimental-history:
+      name: experimental-history.com
+      url: "https://www.experimental-history.com/feed"
+      hours: 72
+      enabled: false
+    anildash:
+      name: anildash.com
+      url: "https://anildash.com/feed.xml"
+      hours: 72
+      enabled: false
+    aresluna:
+      name: aresluna.org
+      url: "https://aresluna.org/main.rss"
+      hours: 72
+      enabled: false
+    michaelstapelberg:
+      name: michael.stapelberg.ch
+      url: "https://michael.stapelberg.ch/feed.xml"
+      hours: 72
+      enabled: false
+    miguelgrinberg:
+      name: miguelgrinberg.com
+      url: "https://blog.miguelgrinberg.com/feed"
+      hours: 72
+      enabled: false
+    keygen:
+      name: keygen.sh
+      url: "https://keygen.sh/blog/feed.xml"
+      hours: 72
+      enabled: false
+    mjg59:
+      name: mjg59.dreamwidth.org
+      url: "https://mjg59.dreamwidth.org/data/rss"
+      hours: 72
+      enabled: false
+    computer-rip:
+      name: computer.rip
+      url: "https://computer.rip/rss.xml"
+      hours: 72
+      enabled: false
+    tedunangst:
+      name: tedunangst.com
+      url: "https://www.tedunangst.com/flak/rss"
+      hours: 72
+      enabled: false
+
+    # ---- Design & Generative AI Blogs ----
+    huggingface-blog:
+      name: Hugging Face Blog
+      url: "https://huggingface.co/blog/feed.xml"
+      hours: 48
+      enabled: true
+    lilianweng:
+      name: Lilian Weng
+      url: "https://lilianweng.github.io/index.xml"
+      hours: 72
+      enabled: true
+    the-decoder:
+      name: The Decoder
+      url: "https://the-decoder.com/feed/"
+      hours: 48
+      enabled: true
+    replicate-blog:
+      name: Replicate Blog
+      url: "https://replicate.com/blog/rss"
+      hours: 72
+      enabled: true
+    nvidia-blog:
+      name: NVIDIA Technical Blog
+      url: "https://developer.nvidia.com/blog/feed/"
+      hours: 48
+      enabled: true
+    stability-ai:
+      name: Stability AI Blog
+      url: "https://stability.ai/blog/feed"
+      hours: 72
+      enabled: true
+    deepmind-blog:
+      name: Google DeepMind Blog
+      url: "https://deepmind.google/blog/rss.xml"
+      hours: 48
+      enabled: true
+    runway-research:
+      name: Runway Research
+      url: "https://research.runwayml.com/feed.xml"
+      hours: 72
+      enabled: true
+
+    # ---- HN/Reddit/Product Hunt/Lobste.rs 聚合 ----
+    hnrss-best:
+      name: Hacker News Best
+      url: "https://hnrss.org/best"
+      hours: 24
+      enabled: true
+    reddit-programming:
+      name: r/programming
+      url: "https://www.reddit.com/r/programming/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-machinelearning:
+      name: r/MachineLearning
+      url: "https://www.reddit.com/r/MachineLearning/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-localllama:
+      name: r/LocalLLaMA
+      url: "https://www.reddit.com/r/LocalLLaMA/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-stablediffusion:
+      name: r/StableDiffusion
+      url: "https://www.reddit.com/r/StableDiffusion/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-midjourney:
+      name: r/midjourney
+      url: "https://www.reddit.com/r/midjourney/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-comfyui:
+      name: r/comfyui
+      url: "https://www.reddit.com/r/comfyui/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    reddit-singularity:
+      name: r/singularity
+      url: "https://www.reddit.com/r/singularity/top/.rss?t=day"
+      hours: 24
+      enabled: true
+    producthunt-feed:
+      name: Product Hunt
+      url: "https://www.producthunt.com/feed"
+      hours: 24
+      enabled: true
+    lobsters-feed:
+      name: Lobste.rs
+      url: "https://lobste.rs/rss"
+      hours: 24
+      enabled: true
+
+  # ---- RSSHub 社交源（无公开 API 的平台经 RSSHub 路由接入）----
+  # path 为 RSSHub 路由（不含 base）；base_url 默认 https://rsshub.app（可用 env RSSHUB_BASE_URL 覆盖）。
+  # 路由是否可用取决于你的 RSSHub 实例（公众号/小红书部分路由需 token/cookie，失败自动跳过，fail-open）。
+  rsshub:
+    wechat_gzh:
+      name: 微信公众号
+      path: "/wechat/腾讯科技"     # RSSHub /wechat/{公众号名}（sogou 收录，需可用实例）
+      hours: 48
+      enabled: false
+    xiaohongshu:
+      name: 小红书
+      path: "/xhs/user/5e4f8d4c5b1a2c3d4e5f6a7b"   # 示例 uid，替换为真实用户 id
+      hours: 48
+      enabled: false
+    twitter_x:
+      name: X (RSSHub)
+      path: "/twitter/user/OpenAIDevs"
+      hours: 24
+      enabled: false

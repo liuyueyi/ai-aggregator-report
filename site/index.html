@@ -270,6 +270,10 @@
       <h3>按日期浏览</h3>
       <div class="dates" id="dates"></div>
     </div>
+    <div class="card" id="topicsCard" style="display:none">
+      <h3>📋 选题建议</h3>
+      <div id="topicsLinks"></div>
+    </div>
   </aside>
   <main id="content"></main>
 </div>
@@ -285,6 +289,7 @@ const MANIFEST_URL = PATH_PREFIX + "/manifest.json";
 const FALLBACK = {
   "ai-cli":  { name: "AI CLI 生态", icon: "🛠️" },
   "ai-agents": { name: "AI Agent 生态", icon: "🤖" },
+  "topic_suggestions": { name: "选题建议", icon: "📋" },
 };
 
 const LS_FOLLOW = "aiagg_followed";
@@ -414,6 +419,24 @@ function renderSidebar() {
     a.href = "#" + e.date;
     a.innerHTML = `<span>${esc(e.date)}</span><span class="rel">${esc(relDate(e.date))}</span>`;
     dates.appendChild(a);
+  }
+
+  // 选题建议链接：仅显示有 topic_suggestions 的日期
+  const topicsCard = document.getElementById("topicsCard");
+  const topicsLinks = document.getElementById("topicsLinks");
+  topicsLinks.innerHTML = "";
+  const datesWithTopics = manifest.dates.filter(e =>
+    e.reports.some(r => r.key === "topic_suggestions")
+  );
+  if (datesWithTopics.length) {
+    topicsCard.style.display = "";
+    for (const e of datesWithTopics.slice(0, 7)) {
+      const a = document.createElement("a");
+      a.className = "date-link";
+      a.href = "#" + e.date + "/topic_suggestions";
+      a.innerHTML = `<span>${esc(e.date)}</span><span class="rel">${esc(relDate(e.date))}</span>`;
+      topicsLinks.appendChild(a);
+    }
   }
 }
 
