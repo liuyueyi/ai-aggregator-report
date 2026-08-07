@@ -43,7 +43,7 @@ from .topics import (
     generate_topic_suggestions,
     render_topics_md,
 )
-from .main import fetch_all, _apply_global_limit, _today
+from .main import _build_site, fetch_all, _apply_global_limit, _today
 
 
 def _parse_item_idx(uid: str) -> int:
@@ -127,6 +127,8 @@ async def amain_topics_only(args, cfg) -> dict:
     md_path = out_dir / "topic_suggestions.md"
     md_path.write_text(md, encoding="utf-8")
     print(f"✓ 选题建议已保存: {md_path.relative_to(ROOT)}")
+
+    _build_site(cfg, report_dir(cfg))
 
     return {
         **base,

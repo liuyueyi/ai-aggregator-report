@@ -1,72 +1,259 @@
 name: Daily Report
 
+# 分段管线：把原来单 job 全链路拆成可单独重跑的多个 job，阶段间用 GitHub Actions
+# artifact 传递中间产物（signals / aggregated / pools），不落 git，deleting 不污染仓库。
+#
+# 阶段链与产物：
+#   fetch      → signals.json
+#   aggregate  → aggregated.json + tracking.json     （同日去重 + 跨日 mark_seen，只读不改 .state）
+#   classify   → pools.json                           （规则 + LLM 精修）
+#   deep       → pools.json（更新正文 content，可选）  （为各主题 top-N 拉正文）
+#   generate   → report/*.md + .state/（唯一写状态点） （主题日报 + 生态追踪专题 + 选题建议）
+#   suggest    → topic_suggestions.md                 （独立 job，读当日日报）
+#   commit     → git add/commit/push + 触发 Pages     （唯一提交 git 的 job）
+#
+# 数据依赖设计（解决"只跑某 job 但依赖数据缺失"问题）：
+#   1. date 由 workflow_dispatch inputs 固化，经 env 传给每个 job，全链路共用同一个日期。
+#      （排程触发无输入 → 用"今天"。手动重跑可填任意合法日期，或留空=今天。）
+#   2. 每份中间产物带 __meta__{schema,date,stage}，下游 job 的 action_cli 加载时校验；
+#      缺产物/日期不符/schema 不符 → fail-fast（exit 2），并在 run 面板提示重跑上游 job。
+#   3. 状态写入（record_emitted + append_tagline）只收敛到 generate job；fetch/aggregate/
+#      classify/deep 只读不改 .state，因此"只重跑抓取"不会误记指纹、不会把当日信号判为重复。
+#   4. 手动单跑某 job 时，GitHub 会按 needs 自动带上其上游链；若上游产物已被防线清理
+#      （artifact retention 默认 7 天），需连同上游一起重跑。
+#
+# 为啥不用"把中间产物提交进 git"：信号量大，每次 commit 会撑爆仓库历史；且 .state 已随
+# git 提交承担跨日去重载体，中间 JSON 是冗余。故中间态走 artifact，最终产物才落 git。
+
 on:
   schedule:
     # UTC 22:00 = 北京时间 06:00
     - cron: "0 22 * * *"
   workflow_dispatch:
+    inputs:
+      date:
+        description: "报告日期 YYYY-MM-DD（留空=当天，按配置时区）"
+        required: false
+        default: ""
 
 permissions:
   contents: write
-  # 用于 push 成功后显式触发 pages.yml 的 workflow_dispatch
-  #（GITHUB_TOKEN 触发的 on: push 不会连锁启动其他工作流，但 workflow_dispatch 是官方豁免项）
   actions: write
 
 concurrency:
   group: daily-report
   cancel-in-progress: false
 
+env:
+  PYTHONUNBUFFERED: "1"
+
 jobs:
-  generate:
+  # ---------- 均阶段都要取一次共用日期 ----------
+  date:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    outputs:
+      date: ${{ steps.set.outputs.date }}
+    steps:
+      - id: set
+        run: |
+          INPUT="${{ inputs.date }}"
+          if [ -n "$INPUT" ]; then
+            echo "date=$INPUT" >> "$GITHUB_OUTPUT"
+          else
+            echo "date=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+  fetch:
+    needs: date
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Show LLM configuration
-        run: |
-          if [ -n "${{ secrets.LLM_API_KEY }}" ]; then
-            echo "LLM: enabled (LLM_API_KEY configured)"
-          else
-            echo "LLM: disabled (no LLM_API_KEY; pipeline runs in degraded/mock path)"
-          fi
-          echo "LLM_MODEL: ${{ vars.LLM_MODEL || secrets.LLM_MODEL }}"
-          echo "LLM_BASE_URL: ${{ vars.LLM_BASE_URL || secrets.LLM_BASE_URL }}"
-
-      - name: Run pipeline
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -q --upgrade pip && pip install -r requirements.txt
+      - name: Fetch
         env:
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          FEISHU_WEBHOOK_URLS: ${{ secrets.FEISHU_WEBHOOK_URLS }}
-          PAGES_URL: ${{ vars.PAGES_URL }}
-          # GitHub Actions 非 TTY，Python 默认块缓冲会导致日志滞留缓冲区，run 页面看似空白
-          PYTHONUNBUFFERED: "1"
-        run: python -u -m aiaggr.main --force
+        run: python -m aiaggr.action_cli --job fetch --date "${{ needs.date.outputs.date }}"
+      - name: Upload signals
+        uses: actions/upload-artifact@v4
+        with:
+          name: signals
+          path: .action_work/signals.json
+          retention-days: 7
 
+  aggregate:
+    needs: [date, fetch]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: { name: signals, path: .action_work }
+      - name: Aggregate + mark_seen (read-only)
+        run: python -m aiaggr.action_cli --job aggregate --date "${{ needs.date.outputs.date }}"
+      - name: Upload aggregated
+        uses: actions/upload-artifact@v4
+        with:
+          name: aggregated-tracking
+          path: |
+            .action_work/aggregated.json
+            .action_work/tracking.json
+          retention-days: 7
+
+  classify:
+    needs: [date, aggregate]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: aggregated-tracking
+          path: .action_work
+      - name: Classify
+        # 不注入 LLM key 也可只跑规则分类；注入则含精修
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+        run: python -m aiaggr.action_cli --job classify --date "${{ needs.date.outputs.date }}"
+      - name: Upload pools
+        uses: actions/upload-artifact@v4
+        with:
+          name: pools
+          path: .action_work/pools.json
+          retention-days: 7
+
+  deep:
+    needs: [date, classify]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: { name: pools, path: .action_work }
+      - name: Enrich content (deep)
+        run: python -m aiaggr.action_cli --job deep --date "${{ needs.date.outputs.date }}"
+      - name: Upload pools (enriched)
+        uses: actions/upload-artifact@v4
+        with:
+          name: pools
+          path: .action_work/pools.json
+          retention-days: 7
+
+  generate:
+    needs: [date, deep]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          name: pools
+          path: .action_work
+      - name: Generate topic reports (+ tracking)
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m aiaggr.action_cli --job generate --date "${{ needs.date.outputs.date }}"
       - name: Write run summary
         if: always()
         run: |
           echo "### Daily Report 执行结果" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
           if [ -d report ]; then
-            find report -name "*.md" ! -name "index.md" -printf "%T@ %p\n" | sort -rn | head -10 | sed 's|^[0-9.]* ||; s|^|- |' >> "$GITHUB_STEP_SUMMARY"
+            find report -name "*.md" ! -name "index.md" ! -name "topic_suggestions.md" \
+              -newermt "-12 hours" -printf "%T@ %p\n" | sort -rn | head -10 \
+              | sed 's|^[0-9.]* ||; s|^|- |' >> "$GITHUB_STEP_SUMMARY"
           fi
-          if [ ${{ job.status }} = "success" ]; then
-            echo "" >> "$GITHUB_STEP_SUMMARY"
-            echo "✅ 生成成功" >> "$GITHUB_STEP_SUMMARY"
-          fi
+      # 状态与产物随仓库提交由 commit job 统一完成（report/.state→artifact 交给 commit）
+      - name: Upload report + state
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-state
+          path: |
+            report/${{ needs.date.outputs.date }}
+            .state/
+            .action_work/entries.json
+          retention-days: 7
 
+  suggest:
+    needs: [date, generate]
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      # 读取 generate 的 report + .state（选题建议需要当日日报 + 前日 topic_suggestions）
+      - uses: actions/download-artifact@v4
+        with: { name: report-state, path: . }
+      - name: Generate topic suggestions
+        env:
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          LLM_MODEL: ${{ secrets.LLM_MODEL }}
+        run: python -m aiaggr.action_cli --job suggest --date "${{ needs.date.outputs.date }}"
+      - name: Upload suggestions
+        uses: actions/upload-artifact@v4
+        with:
+          name: suggestions
+          path: report/${{ needs.date.outputs.date }}/topic_suggestions.md
+          retention-days: 7
+
+  # ---------- 唯一提交 git + 站点 + 飞书 ----------
+  commit:
+    if: always() && needs.generate.result == 'success' && needs.date.result == 'success'
+    needs: [generate, suggest]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps
+        run: python -m pip install -r requirements.txt
+      - uses: actions/download-artifact@v4
+        with: { name: report-state, path: . }
+      - uses: actions/download-artifact@v4
+        if: needs.suggest.result == 'success'
+        with: { name: suggestions, path: . }
+      - name: Rebuild site (manifest + feed)
+        env:
+          PAGES_URL: ${{ vars.PAGES_URL }}
+        run: python -m aiaggr.action_cli --job site --date "${{ needs.date.outputs.date }}"
+      - name: Send Feishu notification
+        if: needs.generate.result == 'success'
+        env:
+          FEISHU_WEBHOOK_URLS: ${{ secrets.FEISHU_WEBHOOK_URLS }}
+          PAGES_URL: ${{ vars.PAGES_URL }}
+        run: python -m aiaggr.action_cli --job notify --date "${{ needs.date.outputs.date }}"
       - name: Commit reports and state
         id: commit
         run: |
@@ -74,32 +261,19 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add report .state site
           if git diff --cached --quiet; then
-            echo "No changes to commit"
-            echo "pushed=false" >> "$GITHUB_OUTPUT"
-            exit 0
+            echo "No changes to commit"; echo "pushed=false" >> "$GITHUB_OUTPUT"; exit 0
           fi
           git commit -m "daily report: $(date -u +%Y-%m-%d)"
-          # 远端可能有并发提交导致非快进推送失败：rebase 到最新远端后再推，失败重试
           for i in 1 2 3 4 5; do
             if git pull --rebase --autostash; then
               if git push; then
-                echo "Pushed successfully"
-                echo "pushed=true" >> "$GITHUB_OUTPUT"
-                exit 0
+                echo "Pushed successfully"; echo "pushed=true" >> "$GITHUB_OUTPUT"; exit 0
               fi
-            else
-              git rebase --abort 2>/dev/null || true
-            fi
-            echo "push/rebase attempt $i failed, retrying..."
-            sleep 10
+            else git rebase --abort 2>/dev/null || true; fi
+            echo "push/rebase attempt $i failed, retrying..."; sleep 10
           done
-          echo "Failed to push after retries"
-          exit 1
-
-      # GITHUB_TOKEN 的 push 不会触发 pages.yml 的 on: push，
-      # 这里显式派发 workflow_dispatch 触发 GitHub Pages 部署（官方豁免该项限制）
+          echo "Failed to push after retries"; exit 1
       - name: Trigger GitHub Pages deploy
         if: steps.commit.outputs.pushed == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: gh workflow run "Deploy GitHub Pages" --ref "${{ github.ref }}"

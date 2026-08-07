@@ -506,6 +506,9 @@ async def amain(args, cfg) -> dict:
                 print(f"✓ 选题建议已保存: {topic_suggestions_md}")
             stages.end("选题建议生成")
 
+    if not args.collect and topic_suggestions_md:
+        _build_site(cfg, rdir)
+
     stages.summary()
     return {
         **base,
