@@ -1,31 +1,51 @@
-## 📰 今日国际要闻
-
 | 主线 | 代表报道 | 区域/议题 |
-|------|----------|----------|
-| 社交媒体监管 | [Meta fined $567m in largest child safety ruling against social media giant](https://www.bbc.co.uk/news/articles/cd7lz3wr2rlo?at_medium=RSS&at_campaign=rss) | 美国/欧盟 |
-| 美国移民政策 | [Trump again tries to limit US birthright citizenship with new executive orders](https://www.bbc.co.uk/news/articles/cj63966j95yo?at_medium=RSS&at_campaign=rss) | 美国 |
-| 社会治安问题 | [Arrests in Norfolk town as disorder continues for third night](https://www.bbc.co.uk/news/articles/c74g1gxvwlvo?at_medium=RSS&at_campaign=rss) | 英国 |
+|------|---------|---------|
+| 美国社会政策 | Trump再次尝试限制出生公民权 | 美国 |
+| 社会安全议题 | Meta被罚款9.42亿美元 | 美国 |
+| 社会与环境 | 英国遭遇持续干旱 | 英国 |
+| 社会与环境 | 南非火箭残骸撞击月球 | 全球 |
+| 社会与环境 | 阿富汗女足海外重聚 | 全球 |
 
 ### 一、科技监管
-#### 1. [Meta fined $567m in largest child safety ruling against social media giant](https://www.bbc.co.uk/news/articles/cd7lz3wr2rlo?at_medium=0RSS&at_campaign=rss)
+#### 1. [Meta被罚款9.42亿美元](https://www.bbc.co.uk/news/articles/cd7lz3wr2rlo?at_medium=RSS&at_campaign=rss)
 - **来源**: BBC Top News | **时间**: 今天
-- **摘要**: 新墨西哥州法官下令Meta公司因危害儿童行为支付5.67亿美元罚款。
-- **深度洞察**: 💡 这是Meta在儿童安全领域面临的最大处罚，标志着欧美对科技巨头监管的持续升级。此前该公司已因类似问题接受过多次调查，此次判决可能引发全球社交媒体平台合规标准的重新审视。
+- **摘要**: Meta因未能警告公众其平台对儿童的危害被罚款9.42亿美元。
+- **深度洞察**: 该判决是针对Meta在儿童安全方面的持续违规行为，认为其算法推荐有害内容构成“公共危害”。此事件标志着社交媒体公司首次被认定为“公共危害”，并凸显了科技公司在社会影响方面的责任。Meta表示将上诉，但这一裁决可能推动更多监管措施。
 
-### 二、政治与外交
-#### 2. [Trump again tries to limit US birthright citizenship with new executive orders](https://www.bbc.co.uk/news/articles/cj63966j95yo?at_medium=RSS&at_campaign=rss)
-- **来源**: BBC Top News | **时间**: 今天
-- **摘要**: 特朗普试图通过新行政命令限制美国出生公民权。
-- **深度洞察**: 💡 行政命令扩大了非公民子女不享有出生公民权的定义，可能加剧移民政策争议。此举与当前美国社会对移民问题的敏感度相呼应，或影响未来联邦立法方向。
+#### 2. [人工智能设计新病毒](https://www.bbc.co.uk/news/articles/c5y3j3ngevmo?at_medium=RSS&at_campaign=rss)
+- **来源**: BBC Top News | **时间**: 过去72小时
+- **摘要**: 人工智能被用于设计新病毒，这些病毒可感染细菌但对人类无害。
+- **深度洞察**: 这项研究由斯坦福大学团队完成，展示了AI在生物医学领域的潜力，同时也引发了安全和伦理方面的担忧。科学家认为这可能为治疗耐药性感染带来突破，但其技术的滥用风险仍需警惕。
 
-### 三、社会与环境
-#### 3. [Arrests in Norfolk town as disorder continues for third night](https://www.bbc.co.uk/news/articles/c74g1gxvwlvo?at_medium=RSS&at_campaign=rss)
+### 二、美国政策与社会议题
+#### 3. [特朗普限制出生公民权](https://www.bbc.co.uk/news/articles/cj63966j95yo?at_medium=RSS&at_campaign=rss)
 - **来源**: BBC Top News | **时间**: 今天
-- **摘要**: 英国诺福克镇因反移民抗议持续第三晚出现骚乱与逮捕。
-- **深度洞察**: 💡 当地治安恶化反映英国社会对移民议题的深层矛盾，执法部门面临维护秩序与保障人权的双重挑战。此类事件可能引发更多类似抗议活动，考验政府治理能力。
+- **摘要**: 特朗普签署行政命令试图限制出生公民权。
+- **深度洞察**: 特朗普试图通过行政命令限制出生公民权，这反映了美国对移民政策的持续关注。此举可能加剧社会分裂，并引发法律和人权方面的争议。
+
+#### 4. [英国持续干旱](https://www.bbc.co.uk/weather/articles/c99872dyym1o?at_medium=RSS&at_campaign=rss)
+- **来源**: BBC Top News | **时间**: 过去72小时
+- **摘要**: 英国部分地区遭遇持续干旱。
+- **深度洞察**: 英国气象局数据显示，部分地区降雨量低于平均水平，导致健康警报。干旱可能影响农业、水资源和公共健康，引发对气候变化和社会适应能力的讨论。
+
+### 三、国际社会与冲突
+#### 5. [阿富汗女足海外重聚](https://www.bbc.com/zhongwen/articles/c5y3jdlvxego/trad?at_medium=RSS&at_campaign=rss)
+- **来源**: BBC 中文 | **时间**: 过去72小时
+- **摘要**: 阿富汗女足成员在海外重聚，准备参加国际赛事。
+- **深度洞察**: 阿富汗女足成员因塔利班禁令被迫离开祖国，如今在海外集训。她们表示足球是支持她们自由和独立的重要力量，这体现了女性在极端环境下的抗争与希望。
+
+#### 6. [Norfolk镇持续社会动荡](https://www.bbc.co.uk/news/articles/c74g1gxvwlvo?at_medium=RSS&at_campaign=rss)
+- **来源**: BBC Top News | **时间**: 今天
+- **摘要**: Norfolk镇因反移民抗议持续发生骚乱。
+- **深度洞察**: 骚乱已持续三天，警方加强了管控措施，包括要求移除面罩。这种社会动荡反映了移民政策在英国的持续争议，以及对公共安全的担忧。
+
+#### 7. [英国铁路系统因停电受阻](https://www.bbc.co.uk/news/articles/cn5nlvdxpwpo?at_medium=RSS&at_campaign=rss)
+- **来源**: BBC Top News | **时间**: 过去72小时
+- **摘要**: 英国铁路系统因信号中心停电而陷入混乱。
+- **深度洞察**: 信号中心的停电导致列车延误和取消，影响了数千名乘客。铁路运营方表示正在努力修复，但该事件凸显了基础设施维护的重要性。
 
 ## 🧭 今日趋势小结
-1. **科技监管强化**：Meta因儿童保护问题遭巨额罚款，显示全球对社交媒体内容安全的监管趋严
-2. **美国移民政策争议升级**：特朗普新行政命令试图收紧出生公民权，可能加剧移民权益与国家安全的政策博弈
-3. **英国社会矛盾凸显**：反移民抗议引发持续治安问题，反映深层次的社会融合与身份认同矛盾
-4. **极端天气影响加剧**： Surrey地区持续50天无雨的干旱现象，预示气候变化对欧洲地区可能产生更严峻挑战
+1. 科技公司在儿童安全和社会责任方面面临更严格的监管。
+2. 美国移民政策持续引发社会争议，尤其是出生公民权问题。
+3. 英国因气候变化和干旱加剧，社会和公共健康面临挑战。
+4. 国际社会关注女性权利和体育自由，特别是在极端政治环境下。
