@@ -39,6 +39,7 @@ def _format_signal(s: Signal) -> dict:
         "hn_url": s.hn_url,
         "gh_url": s.gh_url,
         "also_on": s.extra.get("also_on", []),
+        "sections": s.extra.get("sections", []),
     }
 
 

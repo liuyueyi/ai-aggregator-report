@@ -155,6 +155,8 @@ jobs:
       - uses: actions/download-artifact@v6
         with: { name: pools, path: .action_work }
       - name: Enrich content (deep)
+        # deep 只做网页正文抓取，不调用 LLM，故无需注入 LLM_* 变量；
+        # 日志中 banner 的"LLM 未配置"提示对本 job 无害，可忽略。
         run: python -m aiaggr.action_cli --job deep --date "${{ needs.date.outputs.date }}"
       - name: Upload pools (enriched)
         uses: actions/upload-artifact@v6
