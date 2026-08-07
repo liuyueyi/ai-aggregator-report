@@ -53,15 +53,19 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       date: ${{ steps.set.outputs.date }}
+      # 目录路径格式 YYYY/MM/DD（与 renderer.date_path 拆分一致），供上传/下载 artifact 用
+      date_path: ${{ steps.set.outputs.date_path }}
     steps:
       - id: set
         run: |
           INPUT="${{ inputs.date }}"
           if [ -n "$INPUT" ]; then
-            echo "date=$INPUT" >> "$GITHUB_OUTPUT"
+            D="$INPUT"
           else
-            echo "date=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+            D="$(TZ=Asia/Shanghai date +%F)"
           fi
+          echo "date=$D" >> "$GITHUB_OUTPUT"
+          echo "date_path=$(echo "$D" | tr '-' '/')" >> "$GITHUB_OUTPUT"
 
   fetch:
     needs: date
@@ -195,7 +199,7 @@ jobs:
         with:
           name: report-state
           path: |
-            report/${{ needs.date.outputs.date }}
+            report/${{ needs.date.outputs.date_path }}
             .state/
             .action_work/entries.json
           retention-days: 7
@@ -223,7 +227,7 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: suggestions
-          path: report/${{ needs.date.outputs.date }}/topic_suggestions.md
+          path: report/${{ needs.date.outputs.date_path }}/topic_suggestions.md
           retention-days: 7
 
   # ---------- 唯一提交 git + 站点 + 飞书 ----------
@@ -242,8 +246,11 @@ jobs:
       - uses: actions/download-artifact@v6
         with: { name: report-state, path: . }
       - uses: actions/download-artifact@v6
-        if: needs.suggest.result == 'success'
+        # topic_suggestions 对 commit 是补充产物：缺 artifact（如仅重跑 commit、suggest 旧 run 未产出）
+        # 时不拖垮整个 commit job，site 重建与 git add 都能优雅处理缺失
         with: { name: suggestions, path: . }
+        if: needs.suggest.result == 'success'
+        continue-on-error: true
       - name: Rebuild site (manifest + feed)
         env:
           PAGES_URL: ${{ vars.PAGES_URL }}
