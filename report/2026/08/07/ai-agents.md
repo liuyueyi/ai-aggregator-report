@@ -1,6 +1,6 @@
 # AI Agent 生态 · 2026-08-07
 
-> LLM 调用失败，输出原始信号（RetryError[<Future at 0x7fede47a8590 state=finished raised APITimeoutError>]），以下为当日追踪到社区动态（未经 AI 深度分析）。
+> LLM 调用失败，输出原始信号（RetryError[<Future at 0x7f6a7c12e090 state=finished raised APITimeoutError>]），以下为当日追踪到社区动态（未经 AI 深度分析）。
 
 ## CoPaw
 - PRs: 5 · Issues: 0 · Releases: 3
