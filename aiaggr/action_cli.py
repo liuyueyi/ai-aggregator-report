@@ -28,6 +28,7 @@ import asyncio
 import json
 import os
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -133,8 +134,6 @@ def _settings(cfg, args) -> dict:
     s = llm_settings(cfg)
     if args.mock_llm:
         s["mock"] = True
-    elif not s["api_key"]:
-        print("→ LLM: 未配置 LLM_API_KEY，将走规则/兜底路径")
     return s
 
 
@@ -162,11 +161,78 @@ def _sep(signals: list[Signal]) -> tuple[list[Signal], dict[str, list[Signal]]]:
     return normal, tracking
 
 
+# ---------------------------------------------------------------- 日志/计时
+
+_JOB_NAMES = {
+    "fetch": "① 数据抓取",
+    "aggregate": "② 同日去重 + 跨日标记",
+    "classify": "③ 主题分类",
+    "deep": "④ 正文增强（deep）",
+    "generate": "⑤ 主题日报生成（含生态追踪）",
+    "suggest": "⑥ 选题建议",
+    "site": "⑦ 站点产物重建",
+    "notify": "⑧ 飞书推送",
+}
+
+
+def _banner(job: str, date: str, settings: dict) -> None:
+    """job 入口引导日志：job 名、日期、LLM 状态。"""
+    print("=" * 56)
+    print(f"▶ {_JOB_NAMES.get(job, job)} · 报告日期 {date}")
+    print("=" * 56)
+    if settings.get("mock"):
+        print("→ LLM: 未启用（mock 模式，不调用模型）")
+    elif settings.get("api_key"):
+        mode = settings.get("model") or "(未配置 LLM_MODEL)"
+        base = settings.get("base_url") or "(未配置 LLM_BASE_URL)"
+        print(f"→ LLM: 已启用 · 模型: {mode} · 接口: {base}")
+    else:
+        print("→ LLM: 未配置 LLM_API_KEY（将按规则/兜底路径运行）")
+
+
+class _Stage:
+    """job 内部子阶段计时：start/end 打印，结束汇总。"""
+
+    def __init__(self) -> None:
+        self._t0: dict[str, float] = {}
+        self._dur: dict[str, float] = {}
+        self._global = time.perf_counter()
+
+    def start(self, name: str) -> None:
+        self._t0[name] = time.perf_counter()
+        print(f"→ 阶段开始: {name}")
+
+    def end(self, name: str, extra: str = "") -> float:
+        sec = time.perf_counter() - self._t0.pop(name, time.perf_counter())
+        self._dur[name] = sec
+        print(f"✓ 阶段结束: {name} · 耗时 {_fmt_duration(sec)}{extra}")
+        return sec
+
+    def summary(self) -> None:
+        if not self._dur:
+            return
+        print("== 本 job 耗时汇总 ==")
+        rows = sorted(self._dur.items(), key=lambda kv: kv[1], reverse=True)
+        rows.append(("job 总计", time.perf_counter() - self._global))
+        for name, sec in rows:
+            print(f"  - {name}: {_fmt_duration(sec)}")
+
+
+def _fmt_duration(sec: float) -> str:
+    if sec < 0.001:
+        return f"{sec * 1000:.1f} ms"
+    if sec < 60:
+        return f"{sec:.2f} 秒"
+    return f"{sec / 60:.1f} 分钟"
+
+
 # ---------------------------------------------------------------- jobs
 
 def job_fetch(cfg, args, settings) -> dict:
     """① 抓取。"""
     date = args.date
+    st = _Stage()
+    st.start("数据抓取")
     requested = [s.strip() for s in args.source.split(",") if s.strip()] if args.source else None
     fetchers = select_fetchers(cfg, requested)
     if not fetchers:
@@ -176,44 +242,71 @@ def job_fetch(cfg, args, settings) -> dict:
             f.config["limit"] = args.limit
     print(f"→ 并行抓取 {len(fetchers)} 个数据源 ...")
     signals, sources_empty = asyncio.run(fetch_all(fetchers))
-    print(f"✓ 抓取到 {len(signals)} 条原始信号")
     if not signals:
+        st.end("数据抓取", extra="（空结果）")
         raise SystemExit("no signals fetched")
+    st.end("数据抓取", extra=f"（{len(signals)} 条原始信号）")
     _, tracking = _sep(signals)
+    st.start("写 fetch 产物")
     _write_signals(Path(args.work_dir) / "signals.json", signals, date, "fetch")
-    print(f"✓ fetch 完成：raw={len(signals)} · tracking={ {k: len(v) for k, v in tracking.items() if v} }")
+    st.end("写 fetch 产物")
+    tr = {k: len(v) for k, v in tracking.items() if v}
+    if tr:
+        print(f"✓ 生态追踪信号：{tr}")
+    if sources_empty:
+        print(f"→ 空结果/失败源: {sources_empty}")
+    st.summary()
     return {"exit_code": 0, "signals": len(signals), "sources": len(fetchers), "sources_empty": sources_empty}
 
 
 def job_aggregate(cfg, args, settings) -> dict:
     """② 聚合去重 + 跨日 mark_seen（只读，不写 .state）。"""
     date = args.date
+    st = _Stage()
+    st.start("同日去重与聚合")
     src_path = Path(args.work_dir) / "signals.json"
     _load(src_path, date, "fetch")
     signals = [_sig_from_dict(d) for d in json.loads(src_path.read_text(encoding="utf-8"))["signals"]]
     date_obj = datetime.strptime(date, "%Y-%m-%d").date()
     aggregated = aggregate(signals, today=date_obj,
                            ignore_tracking=cfg.get("dedup", {}).get("ignore_tracking", True))
+    st.end("同日去重与聚合", extra=f"（{len(aggregated)}/{len(signals)}）")
+    st.start("跨日去重")
     aggregated = _state(cfg, date).mark_seen(aggregated, date)
-    print(f"✓ 聚合去重后 {len(aggregated)} 条唯一信号")
+    n_seen = sum(1 for s in aggregated if s.seen_on)
+    st.end("跨日去重", extra=f"（命中已有指纹 {n_seen} 条）")
     normal, tracking = _sep(aggregated)
+    st.start("写 aggregated 产物")
     _write_signals(Path(args.work_dir) / "aggregated.json", normal, date, "aggregate")
     _write_tracking(Path(args.work_dir) / "tracking.json", tracking)
-    return {"exit_code": 0, "unique": len(normal),
-            "tracking": {k: len(v) for k, v in tracking.items() if v}}
+    st.end("写 aggregated 产物")
+    tr = {k: len(v) for k, v in tracking.items() if v}
+    if tr:
+        print(f"✓ 生态追踪信号：{tr}")
+    st.summary()
+    return {"exit_code": 0, "unique": len(normal), "seen": n_seen, "tracking": tr}
 
 
 def job_classify(cfg, args, settings) -> dict:
     """③ 主题分类。"""
     date = args.date
+    st = _Stage()
+    st.start("主题分类")
     src_path = Path(args.work_dir) / "aggregated.json"
     _load(src_path, date, "aggregate")
     signals = [_sig_from_dict(d) for d in json.loads(src_path.read_text(encoding="utf-8"))["signals"]]
-    pools = classify(signals, _resolve_topics(cfg, args), settings, use_llm=(not args.no_llm and not settings.get("mock")))
-    print(f"✓ 主题分类: { {k: len(v) for k, v in pools.items()} }")
+    topics = _resolve_topics(cfg, args)
+    use_llm = not args.no_llm and not settings.get("mock")
+    pools = classify(signals, topics, settings, use_llm=use_llm)
+    st.end("主题分类", extra=f"（{'' if use_llm else '规则-only，'}共 {len(signals)} 条信号）")
+    counts = {k: len(v) for k, v in pools.items()}
+    print(f"✓ 分类结果（含 LLM 精修：{use_llm}）: {counts}")
+    st.start("写 classify 产物")
     tracking = _read_tracking(Path(args.work_dir) / "tracking.json")
     _write_pools(Path(args.work_dir) / "pools.json", pools, tracking, date, "classify")
-    return {"exit_code": 0, "topic_counts": {k: len(v) for k, v in pools.items()}}
+    st.end("写 classify 产物")
+    st.summary()
+    return {"exit_code": 0, "llm_refined": use_llm, "topic_counts": counts}
 
 
 def _deep_picks(cfg, pools: dict[str, list[Signal]], date: str,
@@ -235,6 +328,8 @@ def _deep_picks(cfg, pools: dict[str, list[Signal]], date: str,
 async def job_deep_async(cfg, args, settings) -> dict:
     """④ 正文增强：对主题 pool 的 top-N 信号拉正文。"""
     date = args.date
+    st = _Stage()
+    st.start("正文增强")
     src_path = Path(args.work_dir) / "pools.json"
     _load(src_path, date, "classify")
     pools, tracking = _read_pools(src_path, date)
@@ -242,13 +337,18 @@ async def job_deep_async(cfg, args, settings) -> dict:
     if picks:
         print(f"→ deep: 正文抓取 {len(picks)} 条信号（并发） ...")
         await enrich_with_content(picks)
+    st.end("正文增强", extra=f"（{len(picks)} 条拉正文）")
+    st.start("写 deep 产物")
     _write_pools(src_path, pools, tracking, date, "deep")
+    st.end("写 deep 产物")
+    st.summary()
     return {"exit_code": 0, "deep_picked": len(picks)}
 
 
 def job_generate(cfg, args, settings) -> dict:
     """⑤ 主题日报生成（唯一写状态点）。"""
     date = args.date
+    st = _Stage()
     src_path = Path(args.work_dir) / "pools.json"
     if not src_path.exists():
         raise SystemExit(f"缺少 {src_path}，请先重跑 classify（或 deep）job。")
@@ -261,6 +361,9 @@ def job_generate(cfg, args, settings) -> dict:
     prompts = promp_dir(cfg)
     llm_concurrency = int(settings.get("max_concurrency", 4))
     sem = asyncio.Semaphore(llm_concurrency)
+
+    st.start("主题日报生成")
+    print(f"→ 并发生成 {len(topics)} 份主题日报（LLM 并发上限 {llm_concurrency}，跨日去重排除：{cross_day_exclude}）...")
 
     async def _gen_one(tkey: str) -> tuple[str, list[Signal], dict | None]:
         async with sem:
@@ -308,16 +411,23 @@ def job_generate(cfg, args, settings) -> dict:
         saved_files.extend(asyncio.run(generate_tracking_reports(
             tracking, settings, date, prompts, rdir, sem=sem)))
 
+    st.end("主题日报生成", extra=f"（{len(saved_files)} 份产物）")
+
     if not saved_files:
         raise SystemExit("all reports failed")
 
+    st.start("落盘与状态更新")
     new_fps, archived_fps = state.record_emitted(emitted, date)
-    print(f"✓ 记录 {new_fps} 条新指纹到 seen · 归档 {archived_fps} 条")
+    print(f"✓ 记录 {new_fps} 条新指纹到 seen · 归档 {archived_fps} 条（跨日去重）")
     save_index(date, entries, rdir)
-    print(f"✓ 落盘 {len(saved_files)} 份报告与索引 → {rdir}")
+    print(f"✓ 当日索引已保存 → {date_path(rdir, date) / 'index.md'}")
+    st.end("落盘与状态更新")
     # 供 commit job 构造飞书卡片与 summary（entries 含 key/name/tagline）
+    st.start("写 entries 产物")
     _write(Path(args.work_dir) / "entries.json",
            {"__meta__": {"schema": SCHEMA, "date": date, "stage": "generate"}, "entries": entries})
+    st.end("写 entries 产物")
+    st.summary()
     return {"exit_code": 0, "saved": len(saved_files), "new_fingerprints": new_fps,
             "archived": archived_fps, "topics": len(entries)}
 
@@ -327,19 +437,28 @@ async def job_suggest_async(cfg, args, settings) -> dict:
     from .topics import _compute_diff, _load_prev_suggestions, generate_topic_suggestions, render_topics_md
 
     date = args.date
+    st = _Stage()
     rdir = report_dir(cfg)
     topics = {k: v for k, v in _resolve_topics(cfg, args).items()
               if (date_path(rdir, date) / f"{k}.md").exists()}
     prompts = promp_dir(cfg)
-    suggestions = await generate_topic_suggestions(topics, date, rdir, settings, prompts)
-    if suggestions:
-        prev = _load_prev_suggestions(rdir, date, topics)
-        curr = {k: v.get("suggestions", []) for k, v in suggestions.items()}
-        diff = _compute_diff(prev, curr)
-        md = render_topics_md(date, suggestions, diff)
-        ts = date_path(rdir, date) / "topic_suggestions.md"
-        ts.write_text(md, encoding="utf-8")
-        print(f"✓ 选题建议已保存: {ts.relative_to(ROOT)}")
+    st.start("选题建议生成")
+    if not topics:
+        print("→ 无可用主题日报，跳过选题建议")
+        suggestions: dict = {}
+    else:
+        print(f"→ 为 {len(topics)} 个主题生成选题建议 ...")
+        suggestions = await generate_topic_suggestions(topics, date, rdir, settings, prompts)
+    # 无论是否生成到内容，都写 topic_suggestions.md，保证 artifact 稳定存在（commit 依赖它）
+    prev = _load_prev_suggestions(rdir, date, topics) if topics else None
+    curr = {k: v.get("suggestions", []) for k, v in suggestions.items()}
+    diff = _compute_diff(prev, curr)
+    md = render_topics_md(date, suggestions, diff)
+    ts = date_path(rdir, date) / "topic_suggestions.md"
+    ts.write_text(md, encoding="utf-8")
+    print(f"✓ 选题建议已保存: {ts.relative_to(ROOT)}（{len(suggestions)} 个主题，含前日 diff：{len(diff)}）")
+    st.end("选题建议生成")
+    st.summary()
     return {"exit_code": 0, "topics": len(suggestions)}
 
 
@@ -350,6 +469,8 @@ def job_site(cfg, args, settings) -> dict:
     from .config import site_dir
     from .site import build_site
 
+    st = _Stage()
+    st.start("站点产物重建")
     rdir = report_dir(cfg)
     state = _state(cfg, args.date)
     w = int(cfg.get("dedup", {}).get("window_days", 7))
@@ -360,6 +481,8 @@ def job_site(cfg, args, settings) -> dict:
             tagline_map.setdefault(d, {})[t] = tl
     base_url = os.environ.get("PAGES_URL") or cfg.get("site", {}).get("base_url", "") or ""
     build_site(rdir, site_dir(cfg), base_url, enabled_topics(cfg), tagline_map)
+    st.end("站点产物重建")
+    st.summary()
     return {"exit_code": 0, "site": str(site_dir(cfg).relative_to(ROOT))}
 
 
@@ -367,6 +490,8 @@ async def job_notify_async(cfg, args, settings) -> dict:
     """⑧ 飞书推送（读 entries.json 构造卡片）。无配置静默跳过。"""
     from .notify import build_feishu_card, send_feishu
 
+    st = _Stage()
+    st.start("飞书推送")
     ep = Path(args.work_dir) / "entries.json"
     entries: list[dict] = []
     if ep.exists():
@@ -375,10 +500,12 @@ async def job_notify_async(cfg, args, settings) -> dict:
         except Exception:
             entries = []
     if not entries:
-        print("→ 无主题条目，跳过飞书推送")
+        st.end("飞书推送", extra="（无主题条目，跳过）")
         return {"exit_code": 0, "notified": False}
     title, content = build_feishu_card(args.date, entries)
     ok = await send_feishu(title, content)
+    st.end("飞书推送")
+    st.summary()
     return {"exit_code": 0, "notified": ok}
 
 
@@ -407,6 +534,7 @@ def main() -> None:
     args = build_parser().parse_args()
     cfg = load_config(args.config)
     settings = _settings(cfg, args)
+    _banner(args.job, args.date, settings)
     try:
         if args.job == "fetch":
             result = job_fetch(cfg, args, settings)
