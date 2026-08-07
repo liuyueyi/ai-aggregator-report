@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    # 仅在 report/ 或 site/ 目录有变更时触发部署，避免无关提交（如代码改动）白跑 Pages
+    paths:
+      - 'report/**'
+      - 'site/**'
   # 报告每日由 daily-report.yml 生成并提交，本工作流随 push 触发部署
 
 permissions:

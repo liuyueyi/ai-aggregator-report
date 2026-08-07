@@ -27,8 +27,8 @@ name: Daily Report
 
 on:
   schedule:
-    # UTC 22:00 = 北京时间 06:00
-    - cron: "0 22 * * *"
+    # UTC 02:00 = 北京时间 10:00
+    - cron: "0 2 * * *"
   workflow_dispatch:
     inputs:
       date:
