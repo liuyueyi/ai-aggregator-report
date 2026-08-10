@@ -196,6 +196,9 @@ jobs:
               | sed 's|^[0-9.]* ||; s|^|- |' >> "$GITHUB_STEP_SUMMARY"
           fi
       # 状态与产物随仓库提交由 commit job 统一完成（report/.state→artifact 交给 commit）
+      # 注意 include-hidden-files: true —— .state/ 与 .action_work/ 是隐藏目录，
+      # upload-artifact 默认排除隐藏文件，必须显式开启，否则 .state 和 entries.json 进不了 artifact
+      #（曾导致 .state 从未被提交、飞书 entries 缺失）。
       - name: Upload report + state
         uses: actions/upload-artifact@v6
         with:
@@ -204,6 +207,7 @@ jobs:
             report/${{ needs.date.outputs.date_path }}
             .state/
             .action_work/entries.json
+          include-hidden-files: true
           retention-days: 7
 
   suggest:
@@ -225,6 +229,8 @@ jobs:
           LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
           LLM_MODEL: ${{ secrets.LLM_MODEL }}
         run: python -m aiaggr.action_cli --job suggest --date "${{ needs.date.outputs.date }}"
+      # upload-artifact 对"单个文件"路径会展平 rootDirectory=dirname(path)（artifact 内只剩裸文件名 topic_suggestions.md），
+      # 结合 upload 完成后再 download 到 report/{date_path}/ 目录，即可恢复到 report 树内的正确位置。
       - name: Upload suggestions
         uses: actions/upload-artifact@v6
         with:
@@ -249,8 +255,12 @@ jobs:
         with: { name: report-state, path: . }
       - uses: actions/download-artifact@v6
         # topic_suggestions 对 commit 是补充产物：缺 artifact（如仅重跑 commit、suggest 旧 run 未产出）
-        # 时不拖垮整个 commit job，site 重建与 git add 都能优雅处理缺失
-        with: { name: suggestions, path: . }
+        # 时不拖垮整个 commit job，site 重建与 git add 都能优雅处理缺失。
+        # 下载目录（而非 .）：suggest 上传的是单文件，upload-artifact 把 rootDirectory 展平到父目录，
+        # artifact 内只剩裸文件名；必须落到 report/{date_path}/ 下，git add report 才会收录。
+        with:
+          name: suggestions
+          path: report/${{ needs.date.outputs.date_path }}
         if: needs.suggest.result == 'success'
         continue-on-error: true
       - name: Rebuild site (manifest + feed)
