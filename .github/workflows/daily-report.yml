@@ -241,7 +241,9 @@ jobs:
   # ---------- 唯一提交 git + 站点 + 飞书 ----------
   commit:
     if: always() && needs.generate.result == 'success' && needs.date.result == 'success'
-    needs: [generate, suggest]
+    # date 必须进 needs（直接依赖），否则 needs.date.outputs.date_path/date 在下面步骤里取不到值
+    # → suggestions 下载路径会退化成 report/，topic_suggestions.md 被落错到仓库根目录。
+    needs: [date, generate, suggest]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
