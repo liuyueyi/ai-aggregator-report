@@ -84,7 +84,15 @@
     max-width: var(--maxw); margin: 0 auto; padding: 22px;
     display: grid; grid-template-columns: 268px 1fr; gap: 26px; align-items: start;
   }
-  .sidebar { position: sticky; top: 86px; display: flex; flex-direction: column; gap: 18px; }
+  .sidebar {
+    position: sticky; top: 86px;
+    display: flex; flex-direction: column; gap: 14px;
+    max-height: calc(100vh - 106px);
+    overflow-y: auto; overscroll-behavior: contain;
+    padding-right: 4px;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
   .card {
     background: var(--panel); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
@@ -96,7 +104,9 @@
   .card h3 .hint { margin-left: auto; font-size: 11px; color: var(--faint); text-transform: none; letter-spacing: 0; }
 
   /* ---------- follow chips ---------- */
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; max-height: 168px; overflow-y: auto; padding-right: 2px; }
+  .chips::-webkit-scrollbar { width: 5px; }
+  .chips::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
   .chip {
     border: 1px solid var(--border); background: var(--panel-2); color: var(--muted);
     border-radius: 999px; padding: 6px 12px; font-size: 13px; cursor: pointer;
@@ -126,6 +136,8 @@
 
   /* ---------- date nav ---------- */
   .dates { display: flex; flex-direction: column; gap: 4px; max-height: 46vh; overflow-y: auto; }
+  .dates::-webkit-scrollbar { width: 5px; }
+  .dates::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
   .date-link {
     display: flex; align-items: baseline; gap: 8px; padding: 8px 10px; border-radius: 10px;
     color: var(--text); cursor: pointer; font-size: 13px; transition: .12s;
@@ -227,7 +239,7 @@
   /* ---------- responsive ---------- */
   @media (max-width: 880px) {
     .layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; }
+    .sidebar { position: static; max-height: none; overflow: visible; padding-right: 0; }
     .dates { max-height: none; }
     .stats { margin-left: 0; width: 100%; justify-content: space-around; }
   }
@@ -268,13 +280,13 @@
         <button data-d="30">近 30 天</button>
       </div>
     </div>
-    <div class="card">
-      <h3>按日期浏览</h3>
-      <div class="dates" id="dates"></div>
-    </div>
     <div class="card" id="topicsCard" style="display:none">
       <h3>📋 选题建议</h3>
       <div id="topicsLinks"></div>
+    </div>
+    <div class="card">
+      <h3>按日期浏览</h3>
+      <div class="dates" id="dates"></div>
     </div>
   </aside>
   <main id="content"></main>
