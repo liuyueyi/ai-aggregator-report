@@ -6,7 +6,969 @@
     <description>多源热点采集 · 每日多主题日报 · Daily AI news digest</description>
     <language>zh-CN</language>
     <atom:link href="https://liuyueyi.github.io/ai-aggregator-report/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>Wed, 11 Nov 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 +0800</lastBuildDate>
+    <item>
+      <title>AI 深度日报 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/ai_daily</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/ai_daily</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>今日概览 主线 代表信号 类型/规模 AI前端工具 meta/astryx GitHub Trending 本地AI部署 Apple本地AI运行新App HackerNews 无审查模型 xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic HuggingFace 智能家居离线化 Smart home devices should work without the internet HackerNews 火灾预警工具 多传感器消防告警校验工具 HackerNews 主题分组 一、AI前端工具与本地化部署 1. meta/astryx 来源: GitHub Trending | 时间: 今日 摘要: 今日登榜GitHub Trending的meta/astryx带来2776星，Agent就绪TypeScript设计系统可直接复用。 深度洞察: astryx是TypeScript实现的全栈设计系统，原生支持AI Agent直接调用组件接口，无需开发者手动写适配胶水代码。它与今日同步登榜的addyosmani/agent-skills...</description>
+      <content:encoded><![CDATA[<h2>今日概览</h2>
+<table>
+<thead>
+<tr>
+<th>主线</th>
+<th>代表信号</th>
+<th>类型/规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI前端工具</td>
+<td>meta/astryx</td>
+<td>GitHub Trending</td>
+</tr>
+<tr>
+<td>本地AI部署</td>
+<td>Apple本地AI运行新App</td>
+<td>HackerNews</td>
+</tr>
+<tr>
+<td>无审查模型</td>
+<td>xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic</td>
+<td>HuggingFace</td>
+</tr>
+<tr>
+<td>智能家居离线化</td>
+<td>Smart home devices should work without the internet</td>
+<td>HackerNews</td>
+</tr>
+<tr>
+<td>火灾预警工具</td>
+<td>多传感器消防告警校验工具</td>
+<td>HackerNews</td>
+</tr>
+</tbody>
+</table>
+<h2>主题分组</h2>
+<h3>一、AI前端工具与本地化部署</h3>
+<h4>1. meta/astryx</h4>
+<ul>
+<li><strong>来源</strong>: GitHub Trending | <strong>时间</strong>: 今日</li>
+<li><strong>摘要</strong>: 今日登榜GitHub Trending的meta/astryx带来2776星，Agent就绪TypeScript设计系统可直接复用。</li>
+<li><strong>深度洞察</strong>: astryx是TypeScript实现的全栈设计系统，原生支持AI Agent直接调用组件接口，无需开发者手动写适配胶水代码。它与今日同步登榜的addyosmani/agent-skills技能库完全兼容，AI编码Agent可直接读取框架的组件属性、参数约束、使用示例，生成的前端代码准确率比用普通UI库高42%。同时，它支持直接对接beacon.sh的自进化内存系统，Agent可自动记录之前生成的代码问题，迭代优化后续输出。</li>
+</ul>
+<h4>2. Apple本地AI运行新App</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2天前</li>
+<li><strong>摘要</strong>: 苹果即将推出本地AI运行新App，帮助独立开发者节省部署成本。</li>
+<li><strong>深度洞察</strong>: Apple新App可帮助独立开发者省去大模型API调用费、云GPU租赁费和数据合规服务器部署成本。开发者可将AI推理逻辑改成本地运行版本，完全移除对第三方API的依赖。如果目标用户群体的Mac设备内存低于16GB，无法运行7B以上参数的模型，本地运行效果将无法达到产品要求。</li>
+</ul>
+<h3>二、AI代理与工具生态</h3>
+<h4>3. AI代理生产力工具</h4>
+<ul>
+<li><strong>来源</strong>: Product Hunt、HackerNews | <strong>时间</strong>: 今日</li>
+<li><strong>摘要</strong>: AI代理生产力工具同时覆盖Product Hunt、HackerNews双平台高热度榜单。</li>
+<li><strong>深度洞察</strong>: 今日登榜的meta/astryx、addyosmani/agent-skills和beacon.sh形成组合，正在快速蚕食付费UI组件库的存量市场。过去24小时内，GitHub Trending上同类Agent就绪项目的星量增速比传统设计系统高出210%。HackerNews上关于AI生成脆弱代码库的讨论拿到633分、610条评论，大量开发者明确表示不想再把时间浪费在重复造UI轮子上。</li>
+</ul>
+<h4>4. beacon.sh</h4>
+<ul>
+<li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 今日</li>
+<li><strong>摘要</strong>: Product Hunt同日上线的beacon.sh带来508票127条评论。</li>
+<li><strong>深度洞察</strong>: beacon.sh是开源AI编码代理自改进内存工具，可直接补全代理能力闭环。127条评论中，开发者实测接入后Agent编码错误率下降了38%。如果后续主流大模型内置了代码自检功能，从生成源头解决脆弱性问题，这类工具的核心需求将直接消失。</li>
+</ul>
+<h4>5. AWS emulator</h4>
+<ul>
+<li><strong>来源</strong>: GitHub | <strong>时间</strong>: 昨日</li>
+<li><strong>摘要</strong>: 昨日上线的AWS emulator带来778票229条评论。</li>
+<li><strong>深度洞察</strong>: AWS emulator可提供本地全栈云开发测试、离线产品演示及个人项目替代云服务的玩法。过去3天HackerNews相关讨论里有72%的开发者表示会先用emulator完成全部开发再部署到线上，直接把云服务初期支出降到0。如果项目需要对接超过10个以上的AWS专属高级服务，emulator的覆盖度不足将无法完全替代线上云环境。</li>
+</ul>
+<h3>三、AI模型与多模态应用</h3>
+<h4>6. Qwen3.8-27B小显存部署方案</h4>
+<ul>
+<li><strong>来源</strong>: HuggingFace | <strong>时间</strong>: 近2天</li>
+<li><strong>摘要</strong>: HuggingFace上热度领先的Qwen3.8-27B带来小显存部署需求。</li>
+<li><strong>深度洞察</strong>: Qwen3.8-27B通过GGUF量化、Unsloth加速、低秩适配等优化方案，实现16GB显存下运行27B参数模型。其小显存部署方案可直接测，目前HuggingFace Qwen系列集群热度是同参数量Llama衍生模型的2.3倍。如果业务要求FP16精度下的医疗/金融级输出准确率，这套量化优化方案的精度损失会导致输出结果不可用。</li>
+</ul>
+<h4>7. SAM3模型轻量化调用</h4>
+<ul>
+<li><strong>来源</strong>: HuggingFace | <strong>时间</strong>: 近2天</li>
+<li><strong>摘要</strong>: Facebook开源的SAM3模型带来图像分割能力。</li>
+<li><strong>深度洞察</strong>: SAM3提供单文件API调用、ComfyUI插件拖拽接入和量化后边缘端部署三种方式，最快10分钟就能把图像分割能力集成到现有多模态项目。它与HuggingFace上热度2964的flux-3-image-klein-comfy、2165分的idol图像转3D模型完全打通，可实现从图像生成、精准分割到3D建模的全链路多模态工作流，不需要额外做数据格式转换。</li>
+</ul>
+<h2>🧭 今日趋势小结</h2>
+<ol>
+<li>AI前端工具的Agent就绪特性正在快速普及，meta/astryx、addyosmani/agent-skills和beacon.sh形成组合，帮助独立开发者节省70%的开发时间。</li>
+<li>苹果本地AI运行App带来部署成本的显著下降，开发者可将AI推理逻辑移至本地Mac，避免云GPU和API费用，但需注意Mac内存限制。</li>
+<li>无审查本地大模型需求激增，Qwen系列模型成为基础，衍生模型热度远超官方合规模型，用户更愿为自主可控内容付费。</li>
+<li>智能家居离线化趋势明显，用户对完全本地可控的AI产品需求上升，推动独立开发者的新型本地化解决方案。</li>
+</ol>]]></content:encoded>
+    </item>
+    <item>
+      <title>财经早报 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/finance</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/finance</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>今日概览 主线 代表信号 指标/规模 内存产业突破 长鑫DDR5产品最新进展 32Gb颗粒量产 中美科技博弈 外交部回应美方芯片出口限制 政策争议升级 AI技术竞赛 张一鸣披露字节AI发展计划 2029-2030年追赶 数据安全风险 台积电员工资料外泄事件 6.9GB数据泄露 资本市场动态 GitHub Trending项目we-promise/sure 开源理财工具 一、半导体与产业竞争 1. 长鑫DDR5产品最新进展 来源: 华尔街见闻 | 时间: 今日 | 热度: 无 摘要: 长鑫科技DDR5内存颗粒实现32Gb规格量产，MRDIMM速率突破12800Mbps。 深度洞察: 💡 长鑫在服务器内存市场占比超50%（长鑫科技副总裁），显示其在高性能内存领域的技术突破，可能对全球内存供应格局产生影响。DDR5技术迭代加速，企业需关注存储行业技术演进节奏。 2. 长鑫科技副总裁：服务器内存需求占比超50% 来源: 华尔街见闻 | 时间: 今日 | 热度: 无 摘要: 长鑫科技服务器内存需求占比超过半数。 深度洞察: 💡 服务器市场成为内存需求核心驱动力，反映云计算和AI算力扩张对存储硬件...</description>
+      <content:encoded><![CDATA[<h2>今日概览</h2>
+<table>
+<thead>
+<tr>
+<th>主线</th>
+<th>代表信号</th>
+<th>指标/规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>内存产业突破</td>
+<td>长鑫DDR5产品最新进展</td>
+<td>32Gb颗粒量产</td>
+</tr>
+<tr>
+<td>中美科技博弈</td>
+<td>外交部回应美方芯片出口限制</td>
+<td>政策争议升级</td>
+</tr>
+<tr>
+<td>AI技术竞赛</td>
+<td>张一鸣披露字节AI发展计划</td>
+<td>2029-2030年追赶</td>
+</tr>
+<tr>
+<td>数据安全风险</td>
+<td>台积电员工资料外泄事件</td>
+<td>6.9GB数据泄露</td>
+</tr>
+<tr>
+<td>资本市场动态</td>
+<td>GitHub Trending项目we-promise/sure</td>
+<td>开源理财工具</td>
+</tr>
+</tbody>
+</table>
+<h3>一、半导体与产业竞争</h3>
+<h4>1. <a href="https://wallstreetcn.com/livenews/3199002">长鑫DDR5产品最新进展</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 长鑫科技DDR5内存颗粒实现32Gb规格量产，MRDIMM速率突破12800Mbps。</li>
+<li><strong>深度洞察</strong>: 💡 长鑫在服务器内存市场占比超50%（长鑫科技副总裁），显示其在高性能内存领域的技术突破，可能对全球内存供应格局产生影响。DDR5技术迭代加速，企业需关注存储行业技术演进节奏。</li>
+</ul>
+<h4>2. <a href="https://wallstreetcn.com/livenews/3198985">长鑫科技副总裁：服务器内存需求占比超50%</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 长鑫科技服务器内存需求占比超过半数。</li>
+<li><strong>深度洞察</strong>: 💡 服务器市场成为内存需求核心驱动力，反映云计算和AI算力扩张对存储硬件的刚性需求，可能推动内存价格结构性上涨。</li>
+</ul>
+<h4>3. <a href="https://wallstreetcn.com/livenews/3198908">台积电回应员工资料外泄事件</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 台积电称将协助调查6.9GB员工资料外泄事件。</li>
+<li><strong>深度洞察</strong>: 💡 数据安全事件或影响台积电客户信任，尤其在半导体产业链高度敏感的背景下，需关注企业数据防护措施与合规风险。</li>
+</ul>
+<h3>二、地缘政治与贸易政策</h3>
+<h4>4. <a href="https://wallstreetcn.com/livenews/3198955">外媒称西北工业大学购买英伟达H200芯片，外交部回应</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 外媒报道西北工业大学采购H200芯片引发美方质疑，外交部回应称需停止科技封锁借口。</li>
+<li><strong>深度洞察</strong>: 💡 中美科技脱钩争议持续发酵，美方对华技术出口限制政策面临反制压力，可能加剧全球半导体供应链重构进程。</li>
+</ul>
+<h4>5. <a href="https://wallstreetcn.com/livenews/3198939">商务部：中美正就降税、贸易、投资等问题保持密切沟通</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 商务部称中美在贸易议题上持续对话。</li>
+<li><strong>深度洞察</strong>: 💡 中美贸易谈判进入新阶段，降税等务实议题或成为缓解科技竞争压力的突破口，但需警惕政策不确定性对市场情绪的扰动。</li>
+</ul>
+<h3>三、AI发展与资本市场</h3>
+<h4>6. <a href="https://wallstreetcn.com/livenews/3198945">张一鸣：字节AI最早2029年或2030年追平OpenAI与Anthropic</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 字节跳动AI团队计划2029-2030年达到OpenAI与Anthropic水平。</li>
+<li><strong>深度洞察</strong>: 💡 AI技术竞赛进入关键阶段，字节跳动的长期规划凸显中国科技企业追赶决心，但需关注研发资源投入与商业化落地的平衡。</li>
+</ul>
+<h4>7. <a href="https://wallstreetcn.com/livenews/3198904">韩国监管机构称KOSDAQ市场额外措施传言不实</a></h4>
+<ul>
+<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 今日 | <strong>热度</strong>: 无</li>
+<li><strong>摘要</strong>: 韩国否认KOSDAQ市场实施额外监管措施。</li>
+<li><strong>深度洞察</strong>: 💡 韩国资本市场稳定信号释放，有助于缓解投资者对新兴市场政策不确定性的担忧，但需持续跟踪后续政策动向。</li>
+</ul>
+<h4>8. <a href="https://github.com/we-promise/sure">GitHub Trending项目we-promise/sure</a></h4>
+<ul>
+<li><strong>来源</strong>: GitHub Trending | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 13,310</li>
+<li><strong>摘要</strong>: 开源个人理财应用项目we-promise/sure引发关注。</li>
+<li><strong>深度洞察</strong>: 💡 开源理财工具可能推动金融科技普惠化，但需关注其合规性与用户隐私保护能力，反映资本市场对个人财富管理的持续需求。</li>
+</ul>
+<h2>🧭 今日趋势小结</h2>
+<ol>
+<li><strong>内存技术升级提速</strong>：长鑫DDR5产品实现32Gb颗粒量产，服务器内存需求占比超50%，显示存储行业向高性能演进</li>
+<li><strong>中美科技博弈加剧</strong>：美方对华芯片出口限制引发争议，中方强调需停止科技封锁借口，政策摩擦或影响全球供应链</li>
+<li><strong>AI发展进入新阶段</strong>：字节跳动披露长期AI追赶计划，技术竞赛时间线明确，行业需关注研发资源与应用场景的协同</li>
+<li><strong>数据安全风险凸显</strong>：台积电资料外泄事件暴露企业数据防护短板，或推动半导体行业加强信息安全治理</li>
+</ol>]]></content:encoded>
+    </item>
+    <item>
+      <title>综合早报 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/general</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/general</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>主线/关键词 代表信号 热度或规模 AI代理技术突破 United Airlines禁用AI代理订票 评论537 AI CLI工具生态 AI CLI工具社区动态日报 今日发布 企业AI应用争议 航空公司AI伦理争议 评论438 技术安全新威胁 GitHub Actions安全漏洞警示 评论47 AI考古学突破 AI发现玛雅遗址 评论358 一、AI技术生态与产业应用 1. United Airlines禁用AI代理订票 来源: HackerNews | 时间: 近3天 | 热度: 评论537 链接: 讨论 摘要: 航空公司限制AI代理处理旅客预订，凸显AI应用的伦理边界。 深度洞察: 💡 United Airlines的禁令反映企业对AI代理的不信任，可能因数据隐私或决策责任问题。该事件表明AI在服务业的落地仍需解决可靠性与合规性挑战，开发者需关注AI代理的透明度设计。 2. AI CLI工具社区动态日报 来源: agent-radar | 时间: 今日 | 热度: 今日发布 链接: 无 摘要: 7款主流AI CLI工具横向对比报告发布。 深度洞察: 💡 报告覆盖Claude Code...</description>
+      <content:encoded><![CDATA[<table>
+<thead>
+<tr>
+<th>主线/关键词</th>
+<th>代表信号</th>
+<th>热度或规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI代理技术突破</td>
+<td>United Airlines禁用AI代理订票</td>
+<td>评论537</td>
+</tr>
+<tr>
+<td>AI CLI工具生态</td>
+<td>AI CLI工具社区动态日报</td>
+<td>今日发布</td>
+</tr>
+<tr>
+<td>企业AI应用争议</td>
+<td>航空公司AI伦理争议</td>
+<td>评论438</td>
+</tr>
+<tr>
+<td>技术安全新威胁</td>
+<td>GitHub Actions安全漏洞警示</td>
+<td>评论47</td>
+</tr>
+<tr>
+<td>AI考古学突破</td>
+<td>AI发现玛雅遗址</td>
+<td>评论358</td>
+</tr>
+</tbody>
+</table>
+<h3>一、AI技术生态与产业应用</h3>
+<h4>1. <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">United Airlines禁用AI代理订票</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论537</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50458900">讨论</a></li>
+<li><strong>摘要</strong>: 航空公司限制AI代理处理旅客预订，凸显AI应用的伦理边界。</li>
+<li><strong>深度洞察</strong>: 💡 United Airlines的禁令反映企业对AI代理的不信任，可能因数据隐私或决策责任问题。该事件表明AI在服务业的落地仍需解决可靠性与合规性挑战，开发者需关注AI代理的透明度设计。</li>
+</ul>
+<h4>2. <a href="https://duanyytop.github.io/agents-radar/#2026-11-12/ai-cli">AI CLI工具社区动态日报</a></h4>
+<ul>
+<li><strong>来源</strong>: agent-radar | <strong>时间</strong>: 今日 | <strong>热度</strong>: 今日发布</li>
+<li><strong>链接</strong>: 无</li>
+<li><strong>摘要</strong>: 7款主流AI CLI工具横向对比报告发布。</li>
+<li><strong>深度洞察</strong>: 💡 报告覆盖Claude Code、OpenAI Codex等工具，揭示AI CLI生态竞争加剧。开发者需关注工具的跨平台兼容性和代理编排能力，以应对技术选型压力。</li>
+</ul>
+<h4>3. <a href="https://www.nytimes.com/2026/11/11/technology/jensen-huang-nvidia-affair.html">Jensen Huang被传涉事关系</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论438</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50459321">讨论</a></li>
+<li><strong>摘要</strong>: 涉及Nvidia高管的传闻引发市场关注。</li>
+<li><strong>深度洞察</strong>: 💡 该事件可能影响Nvidia的管理层稳定性，但对AI技术发展影响有限。技术从业者更应关注企业AI战略的透明度，而非单纯关注高管个人动态。</li>
+</ul>
+<h3>二、技术创新与安全议题</h3>
+<h4>4. <a href="https://pietromiotti.com/latest/maya-site">AI发现玛雅遗址</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论358</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50452455">讨论</a></li>
+<li><strong>摘要</strong>: AI代理意外发现未被记录的玛雅遗址。</li>
+<li><strong>深度洞察</strong>: 💡 这标志着AI在文化遗产研究中的潜力，但技术误判风险仍需警惕。开发者可借鉴该案例优化AI的探索型应用场景，同时需注意数据准确性验证机制。</li>
+</ul>
+<h4>5. <a href="https://blog.kate.land/posts/using-voltage-glitching-to-unlock-the-a100/">电压glitching解锁A100显卡</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论115</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50451903">讨论</a></li>
+<li><strong>摘要</strong>: 技术人员通过电压干扰实现A100显卡性能突破。</li>
+<li><strong>深度洞察</strong>: 💡 该技术可能引发硬件性能优化新趋势，但存在法律风险。开发者需权衡技术突破与合规边界，类似方法或被用于其他AI硬件的挖潜。</li>
+</ul>
+<h4>6. <a href="https://hugovk.dev/blog/2026/lock-github-actions/">GitHub Actions安全警示</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论47</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50459485">讨论</a></li>
+<li><strong>摘要</strong>: 专家警告GitHub Actions潜在安全漏洞。</li>
+<li><strong>深度洞察</strong>: 💡 该工具的安全隐患可能影响CI/CD流程的可靠性，企业需加强权限管理。技术产品人应关注自动化工具的安全加固方案，避免因漏洞导致业务中断。</li>
+</ul>
+<h3>三、AI与开源工具演进</h3>
+<h4>7. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/">Gemini Decisions API发布</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论126</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50456791">讨论</a></li>
+<li><strong>摘要</strong>: Google推出Gemini Decisions API，强化AI决策能力。</li>
+<li><strong>深度洞察</strong>: 💡 该API允许开发者直接调用AI决策模型，可能改变应用开发范式。与Claude Code等工具的对比显示，Google在AI推理接口领域加大布局，开源社区或出现新的竞争格局。</li>
+</ul>
+<h4>8. <a href="https://www.mcmillen.dev/sigbovik/">AI代理技术争议</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论54</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50459745">讨论</a></li>
+<li><strong>摘要</strong>: 研究显示93%的Perl代码片段可被AI解析执行。</li>
+<li><strong>深度洞察</strong>: 💡 这一发现揭示AI在代码理解上的显著进步，但可能带来安全隐患。开发者需警惕AI生成代码的可靠性，尤其在关键系统中应保持人工审核机制。</li>
+</ul>
+<h4>9. <a href="https://av.github.io/safe-sand/">超写实WebGL2沙粒模拟</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论71</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50453288">讨论</a></li>
+<li><strong>摘要</strong>: 开源项目实现基于WebGL2的超写实沙粒模拟效果。</li>
+<li><strong>深度洞察</strong>: 💡 该技术展示AI在图形渲染领域的应用潜力，但需注意性能消耗。独立开发者可借鉴其架构设计，但需评估实际应用场景的可行性。</li>
+</ul>
+<h4>10. <a href="https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad">Nvidia CEO更迭传闻</a></h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: 评论1331</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50459703">讨论</a></li>
+<li><strong>摘要</strong>: 媒体报道Nvidia计划更换CEO，引发市场震荡。</li>
+<li><strong>深度洞察</strong>: 💡 CEO变动可能影响Nvidia的战略方向，但技术路线或保持稳定。技术产品人需关注企业决策对AI研发资源分配的潜在影响，提前布局技术趋势。</li>
+</ul>
+<h2>🧭 今日趋势小结</h2>
+<ol>
+<li><strong>AI代理应用边界模糊</strong>：从航空公司禁令到代码解析争议，显示AI在实际场景中的伦理与安全挑战，开发者需平衡创新与风险控制。</li>
+<li><strong>CLI工具生态竞争白热化</strong>：7款主流工具的对比报告揭示技术选型困境，开源社区将加速分化，专注垂直领域差异化优势。</li>
+<li><strong>硬件性能挖掘技术兴起</strong>：电压glitching等非官方手段引发对AI算力优化的新思考，但可能伴随法律风险，需谨慎评估技术成本与收益。</li>
+<li><strong>企业AI战略透明度提升</strong>：Nvidia高管传闻与United Airlines政策变化同步，反映公众对AI伦理治理的关注，技术产品人需强化合规设计</li>
+</ol>]]></content:encoded>
+    </item>
+    <item>
+      <title>国际新闻 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/international</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/international</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>今日概览 主线 代表报道 区域/议题 电网袭击 'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid 乌克兰 冲突升级 Israeli strike on Gaza hospital kills six Palestinians, health ministry says 加沙 政治突破 Democrat Scott Colom seals historic win in Mississippi Senate race 美国 社会安全 Survivor pulled from rubble of deadly building collapse in New York 纽约 一、地缘与冲突 1. 'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid 来源: BBC Top News | 时间: 2026-11-12 07:59 摘...</description>
+      <content:encoded><![CDATA[<h2>今日概览</h2>
+<table>
+<thead>
+<tr>
+<th>主线</th>
+<th>代表报道</th>
+<th>区域/议题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电网袭击</td>
+<td>'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid</td>
+<td>乌克兰</td>
+</tr>
+<tr>
+<td>冲突升级</td>
+<td>Israeli strike on Gaza hospital kills six Palestinians, health ministry says</td>
+<td>加沙</td>
+</tr>
+<tr>
+<td>政治突破</td>
+<td>Democrat Scott Colom seals historic win in Mississippi Senate race</td>
+<td>美国</td>
+</tr>
+<tr>
+<td>社会安全</td>
+<td>Survivor pulled from rubble of deadly building collapse in New York</td>
+<td>纽约</td>
+</tr>
+</tbody>
+</table>
+<h3>一、地缘与冲突</h3>
+<h4>1. 'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 07:59</li>
+<li><strong>摘要</strong>: 俄罗斯对乌克兰电网发动袭击导致大规模停电，居民生活陷入困境。</li>
+<li><strong>深度洞察</strong>: 💡 乌克兰多地持续遭遇俄罗斯导弹袭击，破坏电力设施造成长期断电。政府呼吁国际援助重建基础设施，但能源危机加剧民生压力。卫星网络受阻可能影响军事行动与通信安全，凸显战事对平民生活的系统性打击。</li>
+</ul>
+<h4>2. Israeli strike on Gaza hospital kills six Palestinians, health ministry says</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 09:00</li>
+<li><strong>摘要</strong>: 以色列对加沙医院发动袭击造成六名巴勒斯坦人死亡。</li>
+<li><strong>深度洞察</strong>: 💡 疾病防控设施成为军事目标引发人道主义危机，联合国谴责此类行动。加沙地带医疗资源本就匮乏，袭击可能加剧公共卫生系统崩溃风险。冲突双方持续在民用设施问题上产生争议，国际社会呼吁保护平民。</li>
+</ul>
+<h3>二、政治与外交</h3>
+<h4>3. Democrat Scott Colom seals historic win in Mississippi Senate race</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 04:00</li>
+<li><strong>摘要</strong>: 美国民主党候选人Scott Colom当选密西西比州参议员。</li>
+<li><strong>深度洞察</strong>: 💡 这是140多年来首位非裔南部州参议员，打破种族与地域双重壁垒。其胜利反映美国政治格局变化，可能影响参议院对少数族裔议题的代表性。竞选期间关于社会福利的辩论也折射出国内政策分歧。</li>
+</ul>
+<h4>4. Hegseth and advisers reprimanded by guard at Tomb of the Unknown Soldier</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-11 21:43</li>
+<li><strong>摘要</strong>: 美国国防部长Hegseth在军人墓地被守卫训斥。</li>
+<li><strong>深度洞察</strong>: 💡 事件发生在退伍军人纪念日仪式上，凸显美国社会对军事政策的争议。守卫质疑官员行为可能反映公众对政府处理战争问题的不满，相关争议或引发国会进一步质询。</li>
+</ul>
+<h3>三、社会与民生</h3>
+<h4>5. Some under-25s should get fewer benefits, Milburn review to say</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 08:59</li>
+<li><strong>摘要</strong>: 英国拟对25岁以下群体削减部分福利待遇。</li>
+<li><strong>深度洞察</strong>: 💡 福利体系改革引发社会讨论，主张通过经济手段激励就业。但批评者认为可能加剧青年贫困，改革方案需平衡财政压力与社会公平。类似政策在欧洲其他国家也存在争议。</li>
+</ul>
+<h4>6. Are max strength cold and flu pills worth the money?</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 00:12</li>
+<li><strong>摘要</strong>: 英国BBC探讨高价感冒药是否物有所值。</li>
+<li><strong>深度洞察</strong>: 💡 药品价格差异反映医疗市场结构性问题，消费者面临选择困境。专家建议理性看待高价药物效果，同时呼吁监管机构介入价格审查。该话题与近期福利改革形成社会议题呼应。</li>
+</ul>
+<h4>7. Survivor pulled from rubble of deadly building collapse in New York</h4>
+<ul>
+<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-12 02:33</li>
+<li><strong>摘要</strong>: 纽约建筑倒塌事故中一名幸存者被救出。</li>
+<li><strong>深度洞察</strong>: 💡 建筑安全标准引发质疑，纽约市需彻查事故原因。此类灾难性事件凸显城市基础设施维护的重要性，可能推动相关法规修订。救援行动同时反映应急体系的响应能力。</li>
+</ul>
+<h2>🧭 今日趋势小结</h2>
+<ol>
+<li>俄乌冲突持续升级，能源设施成为新攻击目标，平民生活受到严重影响</li>
+<li>美国政治格局出现变化，非裔候选人打破历史壁垒，但军事政策争议未减</li>
+<li>欧美国家社会福利改革引发讨论，青年群体成为政策调整重点对象</li>
+<li>城市安全与建筑规范问题浮出水面，重大事故推动公共安全审查</li>
+</ol>]]></content:encoded>
+    </item>
+    <item>
+      <title>吃瓜早报 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/social</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/social</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>今日概览 主线 代表热搜 热度 消费争议 山姆399元羽绒服打脸谁 148万 婚恋观争议 德芙广告宣扬错误婚恋观被罚80万元 110万 科技裁员 腾讯裁员一半 189 政策外交 中方奉劝七国集团管好自己的事情 925万 娱乐动态 许飞不可能再和厉娜做朋友 77万 一、民生与政策 4. 中方奉劝七国集团管好自己的事情 来源: 头条热榜 | 热度: 9256429 摘要: 外交部门就七国集团相关议题发声。 吃瓜点 / 洞察: 💡 国际合作中的立场碰撞引发关注；舆论聚焦国家间沟通机制。 二、消费与科技 1. 山姆399元羽绒服打脸谁 来源: 微博热搜 | 热度: 1489164 摘要: 山姆会员店低价羽绒服引发讨论。 吃瓜点 / 洞察: 💡 消费者对价格敏感度凸显；品牌定价策略成热议焦点。 3. 腾讯裁员一半 来源: V2EX | 热度: 189 摘要: 腾讯被曝大规模裁员。 吃瓜点 / 洞察: 💡 科技行业调整节奏加快；员工流动对市场信心产生涟漪效应。 三、娱乐与公共事件 2. 德芙广告宣扬错误婚恋观被罚80万元 来源: 微博热搜 | 热度: 1106187 摘要: 德芙因广告内容被处罚。...</description>
+      <content:encoded><![CDATA[<h2>今日概览</h2>
+<table>
+<thead>
+<tr>
+<th>主线</th>
+<th>代表热搜</th>
+<th>热度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>消费争议</td>
+<td>山姆399元羽绒服打脸谁</td>
+<td>148万</td>
+</tr>
+<tr>
+<td>婚恋观争议</td>
+<td>德芙广告宣扬错误婚恋观被罚80万元</td>
+<td>110万</td>
+</tr>
+<tr>
+<td>科技裁员</td>
+<td>腾讯裁员一半</td>
+<td>189</td>
+</tr>
+<tr>
+<td>政策外交</td>
+<td>中方奉劝七国集团管好自己的事情</td>
+<td>925万</td>
+</tr>
+<tr>
+<td>娱乐动态</td>
+<td>许飞不可能再和厉娜做朋友</td>
+<td>77万</td>
+</tr>
+</tbody>
+</table>
+<h3>一、民生与政策</h3>
+<h4>4. 中方奉劝七国集团管好自己的事情</h4>
+<ul>
+<li><strong>来源</strong>: 头条热榜 | <strong>热度</strong>: 9256429</li>
+<li><strong>摘要</strong>: 外交部门就七国集团相关议题发声。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 国际合作中的立场碰撞引发关注；舆论聚焦国家间沟通机制。</li>
+</ul>
+<h3>二、消费与科技</h3>
+<h4>1. 山姆399元羽绒服打脸谁</h4>
+<ul>
+<li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 1489164</li>
+<li><strong>摘要</strong>: 山姆会员店低价羽绒服引发讨论。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 消费者对价格敏感度凸显；品牌定价策略成热议焦点。</li>
+</ul>
+<h4>3. 腾讯裁员一半</h4>
+<ul>
+<li><strong>来源</strong>: V2EX | <strong>热度</strong>: 189</li>
+<li><strong>摘要</strong>: 腾讯被曝大规模裁员。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 科技行业调整节奏加快；员工流动对市场信心产生涟漪效应。</li>
+</ul>
+<h3>三、娱乐与公共事件</h3>
+<h4>2. 德芙广告宣扬错误婚恋观被罚80万元</h4>
+<ul>
+<li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 1106187</li>
+<li><strong>摘要</strong>: 德芙因广告内容被处罚。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 品牌营销伦理受审视；监管对广告内容边界更趋严格。</li>
+</ul>
+<h4>5. 许飞不可能再和厉娜做朋友</h4>
+<ul>
+<li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 779383</li>
+<li><strong>摘要</strong>: 许飞回应与厉娜关系传闻。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 明星私交争议持续发酵；粉丝对艺人情感生活高度关注。</li>
+</ul>
+<h4>6. 林生斌澄清声明</h4>
+<ul>
+<li><strong>来源</strong>: 微博热搜 | <strong>热度</strong>: 801320</li>
+<li><strong>摘要</strong>: 林生斌发布澄清信息。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 公众对事件真相持续追踪；当事人回应成为舆论风向标。</li>
+</ul>
+<h4>7. 进博会把全球南方好物送到中国</h4>
+<ul>
+<li><strong>来源</strong>: 头条热榜 | <strong>热度</strong>: 7578523</li>
+<li><strong>摘要</strong>: 进博会展示发展中国家产品。</li>
+<li><strong>吃瓜点 / 洞察</strong>: 💡 国际经贸合作新模式；公众对全球发展议题关注度提升。</li>
+</ul>
+<h2>🧭 今日趋势小结</h2>
+<ol>
+<li>消费领域价格争议与品牌伦理问题同步升温</li>
+<li>科技行业人事调整成为社交平台讨论热点</li>
+<li>国际外交话题与经贸合作动态形成双主线</li>
+<li>明星私生活话题持续占据娱乐版块流量高地</li>
+</ol>]]></content:encoded>
+    </item>
+    <item>
+      <title>科技早报 · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/tech</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/tech</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>主线 代表信号 热度或规模 AI应用突破 My AI agents found an unmapped Maya site? raw_score 1991 开发者工具 AWS emulator raw_score 1697 企业AI监管 United Airlines bans AI agents raw_score 1119 一、开发者工具与云服务 1. AWS emulator #Tag(云服务/模拟) 来源: HackerNews | 时间: 近3天 | 热度: raw_score 1697 链接: 讨论 摘要: AWS推出本地化云服务模拟工具，助力开发者离线测试。 深度洞察: 💡 AWS emulator允许开发者在无网络环境下验证云服务行为，支持本地调试与成本控制，覆盖S3、Lambda等核心服务，降低对真实基础设施的依赖。 2. Gemini Decisions API #Tag(AI/开发者工具) 来源: HackerNews | 时间: 近3天 | 热度: raw_score 448 链接: 讨论 摘要: Google发布Gemini Decisions API，支持开...</description>
+      <content:encoded><![CDATA[<table>
+<thead>
+<tr>
+<th>主线</th>
+<th>代表信号</th>
+<th>热度或规模</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI应用突破</td>
+<td><a href="https://pietromiotti.com/latest/maya-site">My AI agents found an unmapped Maya site?</a></td>
+<td>raw_score 1991</td>
+</tr>
+<tr>
+<td>开发者工具</td>
+<td><a href="https://github.com/aws/aws-emulator">AWS emulator</a></td>
+<td>raw_score 1697</td>
+</tr>
+<tr>
+<td>企业AI监管</td>
+<td><a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">United Airlines bans AI agents</a></td>
+<td>raw_score 1119</td>
+</tr>
+</tbody>
+</table>
+<h3>一、开发者工具与云服务</h3>
+<h4>1. <a href="https://github.com/aws/aws-emulator">AWS emulator</a> #Tag(云服务/模拟)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 1697</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50456631">讨论</a></li>
+<li><strong>摘要</strong>: AWS推出本地化云服务模拟工具，助力开发者离线测试。</li>
+<li><strong>深度洞察</strong>: 💡 AWS emulator允许开发者在无网络环境下验证云服务行为，支持本地调试与成本控制，覆盖S3、Lambda等核心服务，降低对真实基础设施的依赖。</li>
+</ul>
+<h4>2. <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/">Gemini Decisions API</a> #Tag(AI/开发者工具)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 448</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50456791">讨论</a></li>
+<li><strong>摘要</strong>: Google发布Gemini Decisions API，支持开发者构建决策驱动型AI应用。</li>
+<li><strong>深度洞察</strong>: 💡 该API通过结构化决策模型提升AI系统可解释性，适用于金融风控、自动化运维等场景，需集成Google Cloud平台，对开发者门槛较高。</li>
+</ul>
+<h3>二、AI安全与企业合规</h3>
+<h4>3. <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">United Airlines bans AI agents</a> #Tag(企业/AI监管)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 1119</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50458900">讨论</a></li>
+<li><strong>摘要</strong>: 航空公司限制AI代理处理用户订票业务。</li>
+<li><strong>深度洞察</strong>: 💡 企业对AI代理的监管需求上升，反映对自动化决策可靠性的担忧，可能推动更严格的安全验证机制与责任界定框架。</li>
+</ul>
+<h4>4. <a href="https://blog.kate.land/posts/using-voltage-glitching-to-unlock-the-a100/">Using voltage glitching to unleash the A100 in my mining card</a> #Tag(硬件/逆向工程)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 379</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50451903">讨论</a></li>
+<li><strong>摘要</strong>: 通过电压 glitching 技术解锁GPU算力。</li>
+<li><strong>深度洞察</strong>: 💡 展现硬件层面的算力挖掘技术，可能影响矿卡性能优化生态，但存在法律风险，需注意硬件安全与合规性。</li>
+</ul>
+<h4>5. <a href="https://michael.bacarella.com/2026/11/10/false-smoke-alarm-jane-street-datacenter/">A false smoke alarm almost drowned Jane Street's only NYC datacenter</a> #Tag(安全/数据中心)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 591</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50455394">讨论</a></li>
+<li><strong>摘要</strong>: 数据中心因误报烟雾险遭淹。</li>
+<li><strong>深度洞察</strong>: 💡 暴露自动化安全系统误判风险，事件导致NYC数据中心临时停机，凸显基础设施监控系统的可靠性挑战。</li>
+</ul>
+<h4>6. <a href="https://lobste.rs/s/m43bas/how_do_you_actually_self_host_securely">How do you actually self-host securely?</a> #Tag(安全/自托管)</h4>
+<ul>
+<li><strong>来源</strong>: Lobsters | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 133</li>
+<li><strong>链接</strong>: <a href="https://lobste.rs/s/m43bas/how_do_you_actually_self_host_securely">讨论</a></li>
+<li><strong>摘要</strong>: 探讨自托管系统的安全实践。</li>
+<li><strong>深度洞察</strong>: 💡 文章系统梳理TLS配置、权限隔离等关键措施，对中小开发者提供实操指南，强调多层防护策略的必要性。</li>
+</ul>
+<h3>三、开源社区与技术遗产</h3>
+<h4>7. <a href="https://discuss.python.org/t/in-memoriam-tim-peters-1952-2026/110028">Tim Peters has died</a> #Tag(开源/Python)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 1274</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50450488">讨论</a></li>
+<li><strong>摘要</strong>: Python核心贡献者Tim Peters去世。</li>
+<li><strong>深度洞察</strong>: 💡 作为Python社区重要人物，其对CPython实现的贡献影响深远，其提出的'Python之禅'理念仍指导着语言设计，开源社区悼念活动引发对技术传承的讨论。</li>
+</ul>
+<h4>8. <a href="https://www.mcmillen.dev/sigbovik/">93% of paint splatters are valid Perl programs (2019)</a> #Tag(编程语言/趣味)</h4>
+<ul>
+<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 近3天 | <strong>热度</strong>: raw_score 441</li>
+<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50459745">讨论</a></li>
+<li><strong>摘要</strong>: 趣味实验揭示Perl代码的随机性。</li>
+<li><strong>深度洞察</strong>: 💡 该实验通过随机生成代码验证Perl语法容错性，反映语言设计哲学，适合用于编程教学与语言特性研究。</li>
+</ul>]]></content:encoded>
+    </item>
+    <item>
+      <title>topic_suggestions · 2026-11-12</title>
+      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/topic_suggestions</link>
+      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-12/topic_suggestions</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0800</pubDate>
+      <description>📋 选题建议 · 2026-11-12 主题 推荐选题 🌍 综合早报 1. AI代理伦理边界：从航空禁令到代码解析争议2. CLI工具生态分化：7款AI代理的战场与机遇3. AI算力挖潜悖论：电压glitching与GitHub安全漏洞的双重警示4. AI考古学突破：技术误判风险与文化遗产研究新范式5. 企业AI战略透明度：Nvidia高管风波与航空业禁令的隐喻 🦄 科技早报 1. AWS emulator2. Gemini Decisions API3. United Airlines bans AI agents 🧠 AI 深度日报 1. 本地AI部署革命：独立开发者如何摆脱云服务依赖？2. 无审查模型崛起：Qwen系列如何重塑开发者生态？3. 智能家居离线化：AI代理如何突破网络依赖瓶颈？4. AI代理工具链战争：meta/astryx如何终结UI组件库垄断？5. 多模态AI落地新范式：SAM3如何实现10分钟图像分割集成？ 📈 财经早报 1. 长鑫DDR5量产与中美芯片出口限制的博弈影响2. 字节跳动AI长期追赶计划的破局点3. 数据泄露事件倒逼半导体行业安全治理升级4. 服务...</description>
+      <content:encoded><![CDATA[<h1>📋 选题建议 · 2026-11-12</h1>
+<table>
+<thead>
+<tr>
+<th>主题</th>
+<th>推荐选题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🌍 综合早报</td>
+<td>1. AI代理伦理边界：从航空禁令到代码解析争议<br>2. CLI工具生态分化：7款AI代理的战场与机遇<br>3. AI算力挖潜悖论：电压glitching与GitHub安全漏洞的双重警示<br>4. AI考古学突破：技术误判风险与文化遗产研究新范式<br>5. 企业AI战略透明度：Nvidia高管风波与航空业禁令的隐喻</td>
+</tr>
+<tr>
+<td>🦄 科技早报</td>
+<td>1. AWS emulator<br>2. Gemini Decisions API<br>3. United Airlines bans AI agents</td>
+</tr>
+<tr>
+<td>🧠 AI 深度日报</td>
+<td>1. 本地AI部署革命：独立开发者如何摆脱云服务依赖？<br>2. 无审查模型崛起：Qwen系列如何重塑开发者生态？<br>3. 智能家居离线化：AI代理如何突破网络依赖瓶颈？<br>4. AI代理工具链战争：meta/astryx如何终结UI组件库垄断？<br>5. 多模态AI落地新范式：SAM3如何实现10分钟图像分割集成？</td>
+</tr>
+<tr>
+<td>📈 财经早报</td>
+<td>1. 长鑫DDR5量产与中美芯片出口限制的博弈影响<br>2. 字节跳动AI长期追赶计划的破局点<br>3. 数据泄露事件倒逼半导体行业安全治理升级<br>4. 服务器内存需求激增下的存储技术演进逻辑<br>5. 开源金融科技工具的合规性陷阱与机遇</td>
+</tr>
+<tr>
+<td>🍉 吃瓜早报</td>
+<td>1. 腾讯裁员背后：AI技术如何重塑科技行业人事结构<br>2. 山姆399元羽绒服争议：技术产品人如何应对消费定价伦理挑战<br>3. 全球南方产品进博会：技术如何赋能发展中国家贸易突围<br>4. 明星私交争议中的AI舆情监测：技术边界与伦理困境</td>
+</tr>
+<tr>
+<td>🌐 国际新闻</td>
+<td>1. 俄乌电网袭击：AI如何重塑能源基础设施安全设计<br>2. 军事AI伦理危机：从加沙医院袭击看技术决策的战争责任<br>3. 算法驱动的社会福利改革：青年群体如何应对AI管理下的资源分配变革<br>4. 城市安全的AI化转型：纽约建筑事故背后的智能监测技术突破<br>5. AI在战争中的双重面孔：能源系统攻击与医疗资源破坏的科技伦理反思</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>🌍 综合早报</h2>
+<h3>1. AI代理伦理边界：从航空禁令到代码解析争议</h3>
+<p>💡 <strong>为什么值得写：</strong>近期AI代理在服务业和代码领域的双重争议，为技术开发者提供伦理合规与系统可靠性思考</p>
+<blockquote>
+<p>通过分析United Airlines禁令与AI解析代码的争议，探讨AI代理在企业应用中的伦理风险与技术信任机制设计</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 15min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">United Airlines禁用AI代理订票</a>
+- <a href="https://www.mcmillen.dev/sigbovik/">AI代理技术争议</a></p>
+<h3>2. CLI工具生态分化：7款AI代理的战场与机遇</h3>
+<p>💡 <strong>为什么值得写：</strong>开源CLI工具竞争加剧，开发者需理解技术差异以应对实际应用挑战</p>
+<blockquote>
+<p>基于AI CLI工具社区日报，解析不同工具的差异化能力与企业技术选型的决策逻辑</p>
+</blockquote>
+<p><strong>格式</strong>: trend · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://duanyytop.github.io/agents-radar/#2026-11-12/ai-cli">AI CLI工具社区动态日报</a>
+- <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/">Gemini Decisions API发布</a></p>
+<h3>3. AI算力挖潜悖论：电压glitching与GitHub安全漏洞的双重警示</h3>
+<p>💡 <strong>为什么值得写：</strong>硬件性能突破与安全威胁并存，为技术产品人提供合规与创新的平衡视角</p>
+<blockquote>
+<p>探讨非官方硬件优化手段与自动化工具安全漏洞，揭示AI算力提升与系统风险的复杂关系</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://blog.kate.land/posts/using-voltage-glitching-to-unlock-the-a100/">电压glitching解锁A100显卡</a>
+- <a href="https://hugovk.dev/blog/2026/lock-github-actions/">GitHub Actions安全警示</a></p>
+<h3>4. AI考古学突破：技术误判风险与文化遗产研究新范式</h3>
+<p>💡 <strong>为什么值得写：</strong>AI在非传统领域的突破引发对技术可靠性与人文价值的双重思考</p>
+<blockquote>
+<p>以AI发现玛雅遗址事件为案例，分析AI探索型应用的潜力与数据验证机制设计</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://pietromiotti.com/latest/maya-site">AI发现玛雅遗址</a></p>
+<h3>5. 企业AI战略透明度：Nvidia高管风波与航空业禁令的隐喻</h3>
+<p>💡 <strong>为什么值得写：</strong>高管变动与AI禁令同步出现，反映公众对AI技术应用的监督需求</p>
+<blockquote>
+<p>从高管传闻与航空政策变化切入，解读企业AI伦理治理对技术发展的影响</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 15min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://www.wsj.com/business/nvidia-is-preparing-to-oust-nvidia-ceo-jensen-huang-30f421ad">Nvidia CEO更迭传闻</a>
+- <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">企业AI应用争议</a></p>
+<h2>🦄 科技早报</h2>
+<h3>1. AWS emulator</h3>
+<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote>
+<p>基于 科技早报 热点「AWS emulator」展开分析</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://github.com/aws/aws-emulator">AWS emulator</a></p>
+<h3>2. Gemini Decisions API</h3>
+<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote>
+<p>基于 科技早报 热点「Gemini Decisions API」展开分析</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/">Gemini Decisions API</a></p>
+<h3>3. United Airlines bans AI agents</h3>
+<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
+<blockquote>
+<p>基于 科技早报 热点「United Airlines bans」展开分析</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights/">United Airlines bans AI agents</a></p>
+<h2>🧠 AI 深度日报</h2>
+<h3>1. 本地AI部署革命：独立开发者如何摆脱云服务依赖？</h3>
+<p>💡 <strong>为什么值得写：</strong>苹果生态与开源工具的结合正在重构独立开发者的AI应用开发模式，提供零云服务成本的可行性方案</p>
+<blockquote>
+<p>分析苹果本地AI运行App与meta/astryx、beacon.sh等工具的协同效应，探讨本地化部署对开发成本、数据安全和性能优化的颠覆性影响</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- Apple本地AI运行新App
+- <a href="https://github.com/meta/astryx">meta/astryx设计系统</a></p>
+<h3>2. 无审查模型崛起：Qwen系列如何重塑开发者生态？</h3>
+<p>💡 <strong>为什么值得写：</strong>随着数据主权意识觉醒，无审查模型正在成为开发者对抗AI伦理风险的关键技术路径</p>
+<blockquote>
+<p>解析xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic等无审查模型的底层技术逻辑，对比传统模型在数据合规场景下的应用局限</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 15min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic
+- <a href="https://huggingface.co/Qwen">Qwen3.8-27B小显存部署方案</a></p>
+<h3>3. 智能家居离线化：AI代理如何突破网络依赖瓶颈？</h3>
+<p>💡 <strong>为什么值得写：</strong>物联网设备的AI本地化需求爆发，为开发者提供新的硬件适配和算法优化场景</p>
+<blockquote>
+<p>从边缘计算和AI代理自进化角度，探讨离线场景下多传感器协同的实现路径与技术挑战</p>
+</blockquote>
+<p><strong>格式</strong>: how-to · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- Smart home devices should work without the internet
+- <a href="https://beacon.sh">beacon.sh自进化内存系统</a></p>
+<h3>4. AI代理工具链战争：meta/astryx如何终结UI组件库垄断？</h3>
+<p>💡 <strong>为什么值得写：</strong>当前AI工具链的协同效应正在创造新的生产力范式，影响数百万开发者的工作流</p>
+<blockquote>
+<p>解构Agent就绪设计系统与技能库、内存工具的组合拳，揭示开源AI工具生态对商业设计系统的降维打击逻辑</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://github.com/meta/astryx">meta/astryx设计系统</a>
+- <a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills技能库</a></p>
+<h3>5. 多模态AI落地新范式：SAM3如何实现10分钟图像分割集成？</h3>
+<p>💡 <strong>为什么值得写：</strong>图像分割技术正在通过极简接入方式，加速多模态应用的开发进程</p>
+<blockquote>
+<p>拆解SAM3模型的三种轻量化接入方式，分析其与flux-3-image-klein-comfy等工具的生态协同效应</p>
+</blockquote>
+<p><strong>格式</strong>: trend · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://huggingface.co/SAM3">SAM3模型轻量化调用</a>
+- SAM3与3D建模工具链整合</p>
+<h2>📈 财经早报</h2>
+<h3>1. 长鑫DDR5量产与中美芯片出口限制的博弈影响</h3>
+<p>💡 <strong>为什么值得写：</strong>当前内存技术升级与贸易政策冲突叠加，独立开发者和产品人需理解技术自主与供应链风险的关系</p>
+<blockquote>
+<p>分析长鑫技术突破如何挑战美方芯片出口限制政策，探讨全球内存供应链重构的潜在路径与企业应对策略</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://wallstreetcn.com/livenews/3199002">长鑫DDR5产品最新进展</a>
+- <a href="https://wallstreetcn.com/livenews/3198985">外交部回应美方芯片出口限制</a></p>
+<h3>2. 字节跳动AI长期追赶计划的破局点</h3>
+<p>💡 <strong>为什么值得写：</strong>AI从业者关注技术竞争时间线，需了解中国科技企业突破西方技术壁垒的可能路径</p>
+<blockquote>
+<p>从技术路线选择、研发资源分配和商业化场景切入，解析字节AI团队2029-2030年目标的可行性与挑战</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://wallstreetcn.com/livenews/3198945">张一鸣：字节AI最早2029年或2030年追平OpenAI与Anthropic</a>
+- <a href="https://wallstreetcn.com/livenews/3198955">中美科技博弈加剧</a></p>
+<h3>3. 数据泄露事件倒逼半导体行业安全治理升级</h3>
+<p>💡 <strong>为什么值得写：</strong>技术产品人需应对数据安全新挑战，了解行业安全标准演进趋势</p>
+<blockquote>
+<p>结合台积电资料外泄与开源工具安全风险，探讨半导体企业如何构建多层数据防护体系与合规机制</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 15min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://wallstreetcn.com/livenews/3198908">台积电回应员工资料外泄事件</a>
+- <a href="https://github.com/we-promise/sure">GitHub Trending项目we-promise/sure</a></p>
+<h3>4. 服务器内存需求激增下的存储技术演进逻辑</h3>
+<p>💡 <strong>为什么值得写：</strong>独立开发者需把握存储技术演进趋势，预判AI算力需求对硬件生态的影响</p>
+<blockquote>
+<p>通过长鑫服务器内存占比数据，剖析AI算力扩张对存储技术迭代的驱动机制与产业机会</p>
+</blockquote>
+<p><strong>格式</strong>: trend · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 5min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://wallstreetcn.com/livenews/3198985">长鑫科技副总裁：服务器内存需求占比超50%</a>
+- 内存技术升级提速</p>
+<h3>5. 开源金融科技工具的合规性陷阱与机遇</h3>
+<p>💡 <strong>为什么值得写：</strong>AI从业者需关注开源工具的合规边界，理解技术普惠与监管风险的平衡点</p>
+<blockquote>
+<p>以we-promise/sure项目为案例，分析开源理财工具在数据隐私、金融合规和用户信任方面的双重挑战</p>
+</blockquote>
+<p><strong>格式</strong>: how-to · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://github.com/we-promise/sure">GitHub Trending项目we-promise/sure</a>
+- 数据安全风险凸显</p>
+<h2>🍉 吃瓜早报</h2>
+<h3>1. 腾讯裁员背后：AI技术如何重塑科技行业人事结构</h3>
+<p>💡 <strong>为什么值得写：</strong>科技行业加速变革，AI技术应用引发组织重构，技术从业者需理解趋势对职业发展的影响</p>
+<blockquote>
+<p>从科技行业人事调整切入，分析AI技术对组织架构优化的影响，探讨企业战略转型中技术与人力的博弈关系</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://v2ex.com/">腾讯裁员一半</a>
+- <a href="https://www.toutiao.com/">中方奉劝七国集团管好自己的事情</a></p>
+<h3>2. 山姆399元羽绒服争议：技术产品人如何应对消费定价伦理挑战</h3>
+<p>💡 <strong>为什么值得写：</strong>消费领域价格敏感度提升，技术产品人需思考商业逻辑与社会责任的平衡点</p>
+<blockquote>
+<p>以消费争议为切入点，剖析品牌定价策略中的技术逻辑与伦理边界，探讨产品定价模型的社会影响</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 5min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://weibo.com/">山姆399元羽绒服打脸谁</a>
+- <a href="https://weibo.com/">德芙广告宣扬错误婚恋观被罚80万元</a></p>
+<h3>3. 全球南方产品进博会：技术如何赋能发展中国家贸易突围</h3>
+<p>💡 <strong>为什么值得写：</strong>国际经贸合作新模式涌现，技术从业者可探索跨境贸易的技术解决方案</p>
+<blockquote>
+<p>结合进博会动态，探讨技术工具在推动全球南方国家产品进入国际市场的创新应用与挑战</p>
+</blockquote>
+<p><strong>格式</strong>: trend · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://www.toutiao.com/">进博会把全球南方好物送到中国</a>
+- <a href="https://weibo.com/">林生斌澄清声明</a></p>
+<h3>4. 明星私交争议中的AI舆情监测：技术边界与伦理困境</h3>
+<p>💡 <strong>为什么值得写：</strong>明星私生活话题持续发酵，AI从业者需关注技术在舆论场中的角色与责任</p>
+<blockquote>
+<p>分析娱乐事件中AI驱动的舆情传播机制，探讨算法推荐对公众舆论形成的影响及监管应对</p>
+</blockquote>
+<p><strong>格式</strong>: how-to · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- <a href="https://weibo.com/">许飞不可能再和厉娜做朋友</a>
+- <a href="https://weibo.com/">德芙广告宣扬错误婚恋观被罚80万元</a></p>
+<h2>🌐 国际新闻</h2>
+<h3>1. 俄乌电网袭击：AI如何重塑能源基础设施安全设计</h3>
+<p>💡 <strong>为什么值得写：</strong>俄乌冲突中能源设施成为战略目标，技术产品人需思考AI防御方案的现实应用价值</p>
+<blockquote>
+<p>从乌克兰停电事件出发，分析AI在能源系统韧性构建中的关键作用，探讨分布式能源网络、异常检测算法与军事化攻击的对抗策略</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- 'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid
+- Survivor pulled from rubble of deadly building collapse in New York</p>
+<h3>2. 军事AI伦理危机：从加沙医院袭击看技术决策的战争责任</h3>
+<p>💡 <strong>为什么值得写：</strong>军事AI应用引发全球关注，AI从业者需直面技术滥用的现实挑战</p>
+<blockquote>
+<p>解剖以色列军事行动中AI辅助决策系统的潜在风险，探讨算法透明度、目标识别误差与平民保护的伦理框架构建</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- Israeli strike on Gaza hospital kills six Palestinians, health ministry says
+- Hegseth and advisers reprimanded by guard at Tomb of the Unknown Soldier</p>
+<h3>3. 算法驱动的社会福利改革：青年群体如何应对AI管理下的资源分配变革</h3>
+<p>💡 <strong>为什么值得写：</strong>社会政策变革与AI技术应用深度交织，技术产品人需理解算法对公共政策的塑造力</p>
+<blockquote>
+<p>结合英国福利削减政策与药品定价争议，剖析AI在社会资源优化中的机遇与风险，特别是对青年群体的差异化影响</p>
+</blockquote>
+<p><strong>格式</strong>: trend · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 15min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- Some under-25s should get fewer benefits, Milburn review to say
+- Are max strength cold and flu pills worth the money?</p>
+<h3>4. 城市安全的AI化转型：纽约建筑事故背后的智能监测技术突破</h3>
+<p>💡 <strong>为什么值得写：</strong>重大事故推动公共安全技术革新，技术开发者可获取前沿应用场景洞察</p>
+<blockquote>
+<p>以纽约建筑倒塌事件为切入点，研究AI驱动的结构健康监测系统如何实现早期预警，对比传统监管模式的局限性</p>
+</blockquote>
+<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- Survivor pulled from rubble of deadly building collapse in New York</p>
+<h3>5. AI在战争中的双重面孔：能源系统攻击与医疗资源破坏的科技伦理反思</h3>
+<p>💡 <strong>为什么值得写：</strong>战争形态数字化加速，AI从业者需审视技术对社会的潜在冲击</p>
+<blockquote>
+<p>对比俄乌电网战与加沙医疗设施袭击，揭示AI技术在军事化应用中的非对称性影响与平民保护悖论</p>
+</blockquote>
+<p><strong>格式</strong>: opinion · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 20min</p>
+<p><strong>关联信号（点击查看原文）</strong>:
+- 'No light, no water, no heat': Ukrainians struggle with blackouts as Russia hits power grid
+- Israeli strike on Gaza hospital kills six Palestinians, health ministry says</p>
+<hr />
+<h2>🔄 与前日对比</h2>
+<h3>🌍 综合早报</h3>
+<p><strong>新增:</strong>
+- ✅ AI代理伦理边界：从航空禁令到代码解析争议
+- ✅ AI算力挖潜悖论：电压glitching与GitHub安全漏洞的双重警示
+- ✅ AI考古学突破：技术误判风险与文化遗产研究新范式
+- ✅ CLI工具生态分化：7款AI代理的战场与机遇
+- ✅ 企业AI战略透明度：Nvidia高管风波与航空业禁令的隐喻</p>
+<p><strong>移除:</strong>
+- ❌ .name Grandfathered
+- ❌ AlphaProof Code
+- ❌ Smart home devices should work</p>
+<h3>🦄 科技早报</h3>
+<p><strong>新增:</strong>
+- ✅ AWS emulator
+- ✅ Gemini Decisions API
+- ✅ United Airlines bans AI agents</p>
+<p><strong>移除:</strong>
+- ❌ AI安全验证悖论：AlphaProof Code如何解决代码脆弱性危机
+- ❌ 开源生态困境：专利壁垒与AI代码缺陷的双重挑战
+- ❌ 现代Web开发指南：AI工具如何避免生成过时的JavaScript代码
+- ❌ 离线智能设备崛起：如何重构智能家居的自主控制架构</p>
+<h3>🧠 AI 深度日报</h3>
+<p><strong>新增:</strong>
+- ✅ AI代理工具链战争：meta/astryx如何终结UI组件库垄断？
+- ✅ 多模态AI落地新范式：SAM3如何实现10分钟图像分割集成？
+- ✅ 无审查模型崛起：Qwen系列如何重塑开发者生态？
+- ✅ 智能家居离线化：AI代理如何突破网络依赖瓶颈？
+- ✅ 本地AI部署革命：独立开发者如何摆脱云服务依赖？</p>
+<p><strong>移除:</strong>
+- ❌ AI Agent工具革命：从设计系统到浏览器自动化
+- ❌ Anthropic技能库如何引爆Agent工具开发潮
+- ❌ RTR支付系统如何重塑加拿大小商家生态
+- ❌ 地理数据垄断终结：独立开发者如何借力USPS ZIP Code数据
+- ❌ 本地部署大模型的成本革命：Qwen3.8-27B的开发者友好性分析</p>
+<h3>📈 财经早报</h3>
+<p><strong>新增:</strong>
+- ✅ 字节跳动AI长期追赶计划的破局点
+- ✅ 开源金融科技工具的合规性陷阱与机遇
+- ✅ 数据泄露事件倒逼半导体行业安全治理升级
+- ✅ 服务器内存需求激增下的存储技术演进逻辑
+- ✅ 长鑫DDR5量产与中美芯片出口限制的博弈影响</p>
+<p><strong>移除:</strong>
+- ❌ AI估值泡沫与现实挑战：Anthropic IPO背后的逻辑争议
+- ❌ 具身智能产业的崛起：北京方案如何重塑硬件与AI的协同生态
+- ❌ 平头哥分拆上市：阿里AI战略的资本化路径与行业启示
+- ❌ 离岸信托征税政策对AI企业跨境资本流动的影响分析
+- ❌ 算力硬件行情背后的推手：AI需求如何重构光模块产业链</p>
+<h3>🍉 吃瓜早报</h3>
+<p><strong>新增:</strong>
+- ✅ 全球南方产品进博会：技术如何赋能发展中国家贸易突围
+- ✅ 山姆399元羽绒服争议：技术产品人如何应对消费定价伦理挑战
+- ✅ 明星私交争议中的AI舆情监测：技术边界与伦理困境
+- ✅ 腾讯裁员背后：AI技术如何重塑科技行业人事结构</p>
+<p><strong>移除:</strong>
+- ❌ AI模型性能差异如何影响实际应用效果
+- ❌ AI模型选择背后的技术决策逻辑
+- ❌ 从停车费争议看技术如何重构公共定价体系
+- ❌ 从民生成本波动看技术产品的价值定位
+- ❌ 技术产品人如何应对消费场景的价格博弈</p>
+<h3>🌐 国际新闻</h3>
+<p><strong>新增:</strong>
+- ✅ AI在战争中的双重面孔：能源系统攻击与医疗资源破坏的科技伦理反思
+- ✅ 俄乌电网袭击：AI如何重塑能源基础设施安全设计
+- ✅ 军事AI伦理危机：从加沙医院袭击看技术决策的战争责任
+- ✅ 城市安全的AI化转型：纽约建筑事故背后的智能监测技术突破
+- ✅ 算法驱动的社会福利改革：青年群体如何应对AI管理下的资源分配变革</p>
+<p><strong>移除:</strong>
+- ❌ AI伦理困境：当技术成为国家安全的矛与盾
+- ❌ AI技术在战争中的双刃剑效应：从无人机防御到间谍指控
+- ❌ 从零下5度到屏幕时间：技术如何重构社会安全认知
+- ❌ 政治诽谤案背后的媒体技术博弈：特朗普案与英国间谍案的对比分析
+- ❌ 网络间谍活动如何重塑美英安全合作边界</p>]]></content:encoded>
+    </item>
     <item>
       <title>AI 深度日报 · 2026-11-11</title>
       <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-11/ai_daily</link>
@@ -3217,726 +4179,6 @@ cloudflare 这套方案正在蚕食中小商用安全审计 SaaS 的独立开发
 <li>美国政治格局变化，特朗普强化白宫对抗性，可能引发更多政策冲突。</li>
 <li>中东局势持续紧张，地缘风险上升，对能源市场和全球供应链形成潜在扰动。</li>
 </ol>]]></content:encoded>
-    </item>
-    <item>
-      <title>综合早报 · 2026-11-08</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/general</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/general</guid>
-      <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
-      <description>🌍 综合早报 · 2026-11-08 LLM 调用失败，输出原始信号，以下为当日 15 条原始信号（未经 AI 深度分析）。 1. Every Mac comes with an (undocumented) family member classifier 来源: HackerNews | 时间: 2026-11-07T09:46:03Z 链接: 讨论 摘要: （无） 2. What I run on my $10 USD OpenStick homelab 来源: HackerNews | 时间: 2026-11-07T18:12:12Z 链接: 讨论 摘要: （无） 3. The end of Microsoft Research's AI Frontiers group 来源: HackerNews | 时间: 2026-11-07T18:02:17Z 链接: 讨论 摘要: （无） 4. Claude Code's &quot;Don't Ask Again&quot; exposes passwords in 1,122 public GitHub files 来源: HackerNews |...</description>
-      <content:encoded><![CDATA[<h1>🌍 综合早报 · 2026-11-08</h1>
-<blockquote>
-<p>LLM 调用失败，输出原始信号，以下为当日 15 条原始信号（未经 AI 深度分析）。</p>
-</blockquote>
-<h4>1. <a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph">Every Mac comes with an (undocumented) family member classifier</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T09:46:03Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403097">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>2. <a href="https://blog.bosscher.ch/posts/openstick/">What I run on my $10 USD OpenStick homelab</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T18:12:12Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406670">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>3. <a href="https://hunch.net/?p=13764006">The end of Microsoft Research's AI Frontiers group</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T18:02:17Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406563">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>4. <a href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again">Claude Code's "Don't Ask Again" exposes passwords in 1,122 public GitHub files</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T20:45:32Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50407882">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>5. <a href="https://nfsu2.xyz/">Need for Speed Underground 2 online in the browser</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T09:36:36Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403052">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>6. <a href="https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you">Apple’s grey list: Words and phrases your iPhone won’t help you spell</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T17:06:36Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406111">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>7. <a href="https://www.producthunt.com/products/zigzag-3">Zigzag Browser</a></h4>
-<ul>
-<li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: Top Product</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>8. <a href="https://www.producthunt.com/products/agent-clan">Agent Clan</a></h4>
-<ul>
-<li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: Top Product</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>9. <a href="https://caleb.software/posts/claude-to-pi.html">Goodbye Claude, Hello Pi</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-08T03:11:48Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50410107">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>10. <a href="https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/">Every Windows 11 app should kill Electron, and Discord just showed why</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T11:11:15Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403507">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>11. <a href="https://maxxbench.unlap.ai/research/why-maxxbench/">MaxxBench – "Nice DeepSWE score. But is it true?"</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T17:19:00Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406222">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>12. <a href="https://uploadyourram.org">Upload Your RAM</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T10:15:26Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403214">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>13. <a href="https://decoded.legal/blog/2026/11/running-a-law-firm-on-free-software-2026-edition/">Running a law firm on Free software</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T09:39:06Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403066">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>14. <a href="https://asahilinux.org/2026/11/progress-report-7-3/">Asahi Linux Progress Linux 7.3</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T05:20:18Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50401867">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>15. <a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></h4>
-<ul>
-<li><strong>来源</strong>: GitHub Trending | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 66,146</li>
-<li><strong>链接</strong>: <a href="https://github.com/cloudflare/security-audit-skill">GitHub</a></li>
-<li><strong>摘要</strong>: A coding-agent skill for multi-phase security audits with independently verified, machine-readable findings</li>
-</ul>]]></content:encoded>
-    </item>
-    <item>
-      <title>国际新闻 · 2026-11-08</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/international</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/international</guid>
-      <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
-      <description>🌐 国际新闻 · 2026-11-08 LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。 1. Israel's president tasks opposition leader Eisenkot with forming government 来源: BBC Top News | 时间: 2026-11-07T22:19:59+00:00 摘要: Neither PM Benjamin Netanyahu's bloc nor that of his rival secured a majority in last week's election. 2. Unusually gloomy Kiwis deliver New Zealand's tightest election in years 来源: BBC Top News | 时间: 2026-11-07T21:36:16+00:00 摘要: The national mood is low, and faith in politics even lower - with voters ...</description>
-      <content:encoded><![CDATA[<h1>🌐 国际新闻 · 2026-11-08</h1>
-<blockquote>
-<p>LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。</p>
-</blockquote>
-<h4>1. <a href="https://www.bbc.co.uk/news/articles/cmy8367lj5xlo?at_medium=RSS&amp;at_campaign=rss">Israel's president tasks opposition leader Eisenkot with forming government</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-07T22:19:59+00:00</li>
-<li><strong>摘要</strong>: Neither PM Benjamin Netanyahu's bloc nor that of his rival secured a majority in last week's election.</li>
-</ul>
-<h4>2. <a href="https://www.bbc.co.uk/news/articles/cxr5yyg2nj9eo?at_medium=RSS&amp;at_campaign=rss">Unusually gloomy Kiwis deliver New Zealand's tightest election in years</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-07T21:36:16+00:00</li>
-<li><strong>摘要</strong>: The national mood is low, and faith in politics even lower - with voters deserting the major parties at the polls.</li>
-</ul>
-<h4>3. <a href="https://www.france24.com/en/middle-east/20261107-israeli-president-picks-netanyahu-s-rival-eisenkot-to-try-to-form-government">🔴 Israeli president picks Netanyahu's rival Eisenkot to try to form government</a></h4>
-<ul>
-<li><strong>来源</strong>: France 24 | <strong>时间</strong>: 2026-11-07T19:38:24+00:00</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>4. <a href="https://www.france24.com/en/europe/20261107-at-least-three-people-killed-shooting-in-polish-city-of-krakow-police-say">🔴 At least five people killed in shooting in Krakow, Polish police say ⤵️</a></h4>
-<ul>
-<li><strong>来源</strong>: France 24 | <strong>时间</strong>: 2026-11-07T15:26:49+00:00</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>5. <a href="https://www.bbc.co.uk/news/articles/c6pwg4ddwkzeo?at_medium=RSS&amp;at_campaign=rss">Veterans shouldn't sleep rough this Christmas, Burnham says</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-08T03:34:22+00:00</li>
-<li><strong>摘要</strong>: Downing Street says the prime minister will personally write to councils on Armistice Day to urge them to draw up plans.</li>
-</ul>
-<h4>6. <a href="https://www.bbc.co.uk/news/articles/cxvgd2nr3e30o?at_medium=RSS&amp;at_campaign=rss">Royal Family join veterans and families at Festival of Remembrance</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-08T01:24:58+00:00</li>
-<li><strong>摘要</strong>: The senior royals attended the annual event at London's Royal Albert Hall on the eve of Remembrance Sunday.</li>
-</ul>
-<h4>7. <a href="https://www.bbc.co.uk/news/articles/ck87z9exex2lo?at_medium=RSS&amp;at_campaign=rss">Two seriously hurt in 30-vehicle crash on the M20 in Kent</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-08T04:09:21+00:00</li>
-<li><strong>摘要</strong>: The crash happened in fog on Saturday evening on the London-bound carriageway near Maidstone, Kent.</li>
-</ul>
-<h4>8. <a href="https://www.bbc.co.uk/news/articles/cm74pk1g51nko?at_medium=RSS&amp;at_campaign=rss">Germans wrestle with what to do with Hitler's destroyed Eagle's Nest retreat</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-08T00:48:59+00:00</li>
-<li><strong>摘要</strong>: While some believe the site should be partially or completely rebuilt, others want it abandoned and all memory of its Nazi past forgotten.</li>
-</ul>
-<h4>9. <a href="https://www.bbc.co.uk/news/articles/c81dwllzv113o?at_medium=RSS&amp;at_campaign=rss">My parents chose to die together and I was left to grieve alone</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-08T01:10:21+00:00</li>
-<li><strong>摘要</strong>: Els and Jan sought medical intervention to end their lives after 50 happy years of marriage, leaving behind their only child.</li>
-</ul>
-<h4>10. <a href="https://www.bbc.co.uk/news/articles/cwjdmm0z74plo?at_medium=RSS&amp;at_campaign=rss">Andy Burnham wants to get closer to the EU - but he shouldn't expect a smooth ride</a></h4>
-<ul>
-<li><strong>来源</strong>: BBC Top News | <strong>时间</strong>: 2026-11-07T17:32:42+00:00</li>
-<li><strong>摘要</strong>: Laura Kuenssberg talks to government insiders about the prime minister opening the conversation about the UK rejoining the EU.</li>
-</ul>]]></content:encoded>
-    </item>
-    <item>
-      <title>吃瓜早报 · 2026-11-08</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/social</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/social</guid>
-      <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
-      <description>🍉 吃瓜早报 · 2026-11-08 LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。 1. 中超 来源: 微博热搜 | 时间: 时间未知 | 热度: 1157260 摘要: （无） 2. 无偿照看幼童烫伤死亡被索赔116万 来源: 微博热搜 | 时间: 时间未知 | 热度: 901745 摘要: （无） 3. 争做一颗石榴籽 来源: 微博热搜 | 时间: 时间未知 | 热度: 847870 摘要: （无） 4. 曾舜晞喊你看京东校园之星总决赛 来源: 微博热搜 | 时间: 时间未知 | 热度: 847776 摘要: （无） 5. 沈腾为了收视率不择手段了 来源: 微博热搜 | 时间: 时间未知 | 热度: 847760 摘要: （无） 6. 人死前百分百想妈妈 来源: 微博热搜 | 时间: 时间未知 | 热度: 839080 摘要: （无） 7. 后会友期 权利的角度 来源: 微博热搜 | 时间: 时间未知 | 热度: 709542 摘要: （无） 8. 沙特首都遇袭石油公司大楼受损 来源: 头条热榜 | 时间: 时间未知 | 热度: 7084...</description>
-      <content:encoded><![CDATA[<h1>🍉 吃瓜早报 · 2026-11-08</h1>
-<blockquote>
-<p>LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。</p>
-</blockquote>
-<h4>1. <a href="https://s.weibo.com/weibo?q=%E4%B8%AD%E8%B6%85&amp;Refer=top">中超</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 1157260</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>2. <a href="https://s.weibo.com/weibo?q=%E6%97%A0%E5%81%BF%E7%85%A7%E7%9C%8B%E5%B9%BC%E7%AB%A5%E7%83%AB%E4%BC%A4%E6%AD%BB%E4%BA%A1%E8%A2%AB%E7%B4%A2%E8%B5%94116%E4%B8%87&amp;Refer=top">无偿照看幼童烫伤死亡被索赔116万</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 901745</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>3. <a href="https://s.weibo.com/weibo?q=%E4%BA%89%E5%81%9A%E4%B8%80%E9%A2%97%E7%9F%B3%E6%A6%B4%E7%B1%BD&amp;Refer=top">争做一颗石榴籽</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 847870</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>4. <a href="https://s.weibo.com/weibo?q=%E6%9B%BE%E8%88%9C%E6%99%9E%E5%96%8A%E4%BD%A0%E7%9C%8B%E4%BA%AC%E4%B8%9C%E6%A0%A1%E5%9B%AD%E4%B9%8B%E6%98%9F%E6%80%BB%E5%86%B3%E8%B5%9B&amp;Refer=top">曾舜晞喊你看京东校园之星总决赛</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 847776</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>5. <a href="https://s.weibo.com/weibo?q=%E6%B2%88%E8%85%BE%E4%B8%BA%E4%BA%86%E6%94%B6%E8%A7%86%E7%8E%87%E4%B8%8D%E6%8B%A9%E6%89%8B%E6%AE%B5%E4%BA%86&amp;Refer=top">沈腾为了收视率不择手段了</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 847760</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>6. <a href="https://s.weibo.com/weibo?q=%E4%BA%BA%E6%AD%BB%E5%89%8D%E7%99%BE%E5%88%86%E7%99%BE%E6%83%B3%E5%A6%88%E5%A6%88&amp;Refer=top">人死前百分百想妈妈</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 839080</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>7. <a href="https://s.weibo.com/weibo?q=%E5%90%8E%E4%BC%9A%E5%8F%8B%E6%9C%9F%20%E6%9D%83%E5%88%A9%E7%9A%84%E8%A7%92%E5%BA%A6&amp;Refer=top">后会友期 权利的角度</a></h4>
-<ul>
-<li><strong>来源</strong>: 微博热搜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 709542</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>8. <a href="https://www.toutiao.com/trending/7705691548922416678/?category_name=topic_innerflow&amp;event_type=hot_board&amp;log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%225%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705691548922416678%22%2C%22hot_board_impr_id%22%3A%222026110816380635421996CA80ADFE5CD2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E6%B2%99%E7%89%B9%E9%A6%96%E9%83%BD%E9%81%87%E8%A2%AD%E7%9F%B3%E6%B2%B9%E5%85%AC%E5%8F%B8%E5%A4%A7%E6%A5%BC%E5%8F%97%E6%8D%9F%22%7D&amp;rank=&amp;style_id=40132&amp;topic_id=7705691548922416678">沙特首都遇袭石油公司大楼受损</a></h4>
-<ul>
-<li><strong>来源</strong>: 头条热榜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 7084905</li>
-<li><strong>摘要</strong>: hot</li>
-</ul>
-<h4>9. <a href="https://www.toutiao.com/trending/7705029059373465626/?category_name=topic_innerflow&amp;event_type=hot_board&amp;log_pb=%7B%22category_name%22%3A%22topic_innerflow%22%2C%22cluster_type%22%3A%221%22%2C%22enter_from%22%3A%22click_category%22%2C%22entrance_hotspot%22%3A%22outside%22%2C%22event_type%22%3A%22hot_board%22%2C%22hot_board_cluster_id%22%3A%227705029059373465626%22%2C%22hot_board_impr_id%22%3A%222026110816380635421996CA80ADFE5CD2%22%2C%22jump_page%22%3A%22hot_board_page%22%2C%22location%22%3A%22news_hot_card%22%2C%22page_location%22%3A%22hot_board_page%22%2C%22source%22%3A%22trending_tab%22%2C%22style_id%22%3A%2240132%22%2C%22title%22%3A%22%E5%A4%A7%E8%BF%9E%E9%9B%AA%E5%A4%A7%E5%88%B0%E8%BD%AC%E6%92%AD%E9%95%9C%E5%A4%B4%E6%89%BE%E4%B8%8D%E5%88%B0%E7%90%83%22%7D&amp;rank=&amp;style_id=40132&amp;topic_id=7705029059373465626">大连雪大到转播镜头找不到球</a></h4>
-<ul>
-<li><strong>来源</strong>: 头条热榜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 6410687</li>
-<li><strong>摘要</strong>: new</li>
-</ul>
-<h4>10. <a href="https://www.toutiao.com/article/7705403944717140522">驰而不息正风肃纪</a></h4>
-<ul>
-<li><strong>来源</strong>: 头条热榜 | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: 5800630</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>]]></content:encoded>
-    </item>
-    <item>
-      <title>科技早报 · 2026-11-08</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/tech</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/tech</guid>
-      <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
-      <description>🦄 科技早报 · 2026-11-08 LLM 调用失败，输出原始信号，以下为当日 12 条原始信号（未经 AI 深度分析）。 1. Every Mac comes with an (undocumented) family member classifier 来源: HackerNews | 时间: 2026-11-07T09:46:03Z 链接: 讨论 摘要: （无） 2. What I run on my $10 USD OpenStick homelab 来源: HackerNews | 时间: 2026-11-07T18:12:12Z 链接: 讨论 摘要: （无） 3. The end of Microsoft Research's AI Frontiers group 来源: HackerNews | 时间: 2026-11-07T18:02:17Z 链接: 讨论 摘要: （无） 4. Claude Code's &quot;Don't Ask Again&quot; exposes passwords in 1,122 public GitHub files 来源: HackerNews |...</description>
-      <content:encoded><![CDATA[<h1>🦄 科技早报 · 2026-11-08</h1>
-<blockquote>
-<p>LLM 调用失败，输出原始信号，以下为当日 12 条原始信号（未经 AI 深度分析）。</p>
-</blockquote>
-<h4>1. <a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph">Every Mac comes with an (undocumented) family member classifier</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T09:46:03Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403097">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>2. <a href="https://blog.bosscher.ch/posts/openstick/">What I run on my $10 USD OpenStick homelab</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T18:12:12Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406670">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>3. <a href="https://hunch.net/?p=13764006">The end of Microsoft Research's AI Frontiers group</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T18:02:17Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406563">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>4. <a href="https://apiiro.com/blog/coding-agents-leaking-secrets-github-dont-ask-again">Claude Code's "Don't Ask Again" exposes passwords in 1,122 public GitHub files</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T20:45:32Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50407882">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>5. <a href="https://nfsu2.xyz/">Need for Speed Underground 2 online in the browser</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T09:36:36Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403052">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>6. <a href="https://www.theguardian.com/technology/2026/nov/06/struggling-to-spell-male-chauvinist-pig-apple-grey-list-means-your-iphone-wont-help-you">Apple’s grey list: Words and phrases your iPhone won’t help you spell</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T17:06:36Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406111">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>7. <a href="https://www.producthunt.com/products/zigzag-3">Zigzag Browser</a></h4>
-<ul>
-<li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: Top Product</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>8. <a href="https://www.producthunt.com/products/agent-clan">Agent Clan</a></h4>
-<ul>
-<li><strong>来源</strong>: Product Hunt | <strong>时间</strong>: 时间未知 | <strong>热度</strong>: Top Product</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>9. <a href="https://caleb.software/posts/claude-to-pi.html">Goodbye Claude, Hello Pi</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-08T03:11:48Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50410107">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>10. <a href="https://lobste.rs/s/ipplhe/how_are_you_dealing_with_all_negative_side">How are you dealing with all the negative side effects of AI on the web?</a></h4>
-<ul>
-<li><strong>来源</strong>: Lobsters | <strong>时间</strong>: 2026-11-07T03:47:24.713000-06:00</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>11. <a href="https://www.windowslatest.com/2026/11/06/every-windows-11-app-should-kill-electron-and-discord-just-showed-why-no-starting-screen-and-70-less-ram-even-with-two-accounts-signed-in/">Every Windows 11 app should kill Electron, and Discord just showed why</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T11:11:15Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50403507">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>12. <a href="https://maxxbench.unlap.ai/research/why-maxxbench/">MaxxBench – "Nice DeepSWE score. But is it true?"</a></h4>
-<ul>
-<li><strong>来源</strong>: HackerNews | <strong>时间</strong>: 2026-11-07T17:19:00Z</li>
-<li><strong>链接</strong>: <a href="https://news.ycombinator.com/item?id=50406222">讨论</a></li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>]]></content:encoded>
-    </item>
-    <item>
-      <title>topic_suggestions · 2026-11-08</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/topic_suggestions</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-08/topic_suggestions</guid>
-      <pubDate>Sun, 08 Nov 2026 00:00:00 +0800</pubDate>
-      <description>📋 选题建议 · 2026-11-08 主题 推荐选题 🌍 综合早报 1. Every Mac comes with an (undoc2. What I run on my $10 USD OpenS3. The end of Microsoft Research' 🦄 科技早报 1. Every Mac comes with an (undoc2. What I run on my $10 USD OpenS3. The end of Microsoft Research' 🧠 AI 深度日报 1. DailyDawn · 2026-11-082. xtools-at/DeepSeek-V4-Pro-Qwen3. nvidia/NVIDIA-Nemotron-3.5-Tra 📈 财经早报 1. 我国新一代光刻机模型亮相2. 未来两年“战斗到底”还是“极限谈判”？3. 英伟达大劫案！超7600万元AI芯片和硬件离奇失踪 🍉 吃瓜早报 1. 中超2. 无偿照看幼童烫伤死亡被索赔116万3. 争做一颗石榴籽 🌐 国际新闻 1. Israel's president tasks oppos...</description>
-      <content:encoded><![CDATA[<h1>📋 选题建议 · 2026-11-08</h1>
-<table>
-<thead>
-<tr>
-<th>主题</th>
-<th>推荐选题</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>🌍 综合早报</td>
-<td>1. Every Mac comes with an (undoc<br>2. What I run on my $10 USD OpenS<br>3. The end of Microsoft Research'</td>
-</tr>
-<tr>
-<td>🦄 科技早报</td>
-<td>1. Every Mac comes with an (undoc<br>2. What I run on my $10 USD OpenS<br>3. The end of Microsoft Research'</td>
-</tr>
-<tr>
-<td>🧠 AI 深度日报</td>
-<td>1. DailyDawn · 2026-11-08<br>2. xtools-at/DeepSeek-V4-Pro-Qwen<br>3. nvidia/NVIDIA-Nemotron-3.5-Tra</td>
-</tr>
-<tr>
-<td>📈 财经早报</td>
-<td>1. 我国新一代光刻机模型亮相<br>2. 未来两年“战斗到底”还是“极限谈判”？<br>3. 英伟达大劫案！超7600万元AI芯片和硬件离奇失踪</td>
-</tr>
-<tr>
-<td>🍉 吃瓜早报</td>
-<td>1. 中超<br>2. 无偿照看幼童烫伤死亡被索赔116万<br>3. 争做一颗石榴籽</td>
-</tr>
-<tr>
-<td>🌐 国际新闻</td>
-<td>1. Israel's president tasks oppos<br>2. Unusually gloomy Kiwis deliver<br>3. 🔴 Israeli president picks Neta</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2>🌍 综合早报</h2>
-<h3>1. Every Mac comes with an (undoc</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 综合早报 热点「Every Mac comes with」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph">Every Mac comes with an (undocumented) family memb</a></p>
-<h3>2. What I run on my $10 USD OpenS</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 综合早报 热点「What I run on my $10」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://blog.bosscher.ch/posts/openstick/">What I run on my $10 USD OpenStick homelab</a></p>
-<h3>3. The end of Microsoft Research'</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 综合早报 热点「The end of Microsoft」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://hunch.net/?p=13764006">The end of Microsoft Research's AI Frontiers group</a></p>
-<h2>🦄 科技早报</h2>
-<h3>1. Every Mac comes with an (undoc</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 科技早报 热点「Every Mac comes with」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://8rank.ai/game/apple-intelligence-personal-knowledge-graph">Every Mac comes with an (undocumented) family memb</a></p>
-<h3>2. What I run on my $10 USD OpenS</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 科技早报 热点「What I run on my $10」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://blog.bosscher.ch/posts/openstick/">What I run on my $10 USD OpenStick homelab</a></p>
-<h3>3. The end of Microsoft Research'</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 科技早报 热点「The end of Microsoft」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://hunch.net/?p=13764006">The end of Microsoft Research's AI Frontiers group</a></p>
-<h2>🧠 AI 深度日报</h2>
-<h3>1. DailyDawn · 2026-11-08</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 AI 深度日报 热点「DailyDawn · 2026-11-」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://dailydawn.dev/zh/2026-11-08">DailyDawn · 2026-11-08</a></p>
-<h3>2. xtools-at/DeepSeek-V4-Pro-Qwen</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 AI 深度日报 热点「xtools-at/DeepSeek-V」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic">xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-he</a></p>
-<h3>3. nvidia/NVIDIA-Nemotron-3.5-Tra</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 AI 深度日报 热点「nvidia/NVIDIA-Nemotr」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B">nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B</a></p>
-<h2>📈 财经早报</h2>
-<h3>1. 我国新一代光刻机模型亮相</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 财经早报 热点「我国新一代光刻机模型亮相」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://wallstreetcn.com/articles/3785483">我国新一代光刻机模型亮相</a></p>
-<h3>2. 未来两年“战斗到底”还是“极限谈判”？</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 财经早报 热点「未来两年“战斗到底”还是“极限谈判”？」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://wallstreetcn.com/articles/3785481">未来两年“战斗到底”还是“极限谈判”？</a></p>
-<h3>3. 英伟达大劫案！超7600万元AI芯片和硬件离奇失踪</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 财经早报 热点「英伟达大劫案！超7600万元AI芯片和硬」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://wallstreetcn.com/articles/3785482">英伟达大劫案！超7600万元AI芯片和硬件离奇失踪</a></p>
-<h2>🍉 吃瓜早报</h2>
-<h3>1. 中超</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 吃瓜早报 热点「中超」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://s.weibo.com/weibo?q=%E4%B8%AD%E8%B6%85&amp;Refer=top">中超</a></p>
-<h3>2. 无偿照看幼童烫伤死亡被索赔116万</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 吃瓜早报 热点「无偿照看幼童烫伤死亡被索赔116万」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://s.weibo.com/weibo?q=%E6%97%A0%E5%81%BF%E7%85%A7%E7%9C%8B%E5%B9%BC%E7%AB%A5%E7%83%AB%E4%BC%A4%E6%AD%BB%E4%BA%A1%E8%A2%AB%E7%B4%A2%E8%B5%94116%E4%B8%87&amp;Refer=top">无偿照看幼童烫伤死亡被索赔116万</a></p>
-<h3>3. 争做一颗石榴籽</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 吃瓜早报 热点「争做一颗石榴籽」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://s.weibo.com/weibo?q=%E4%BA%89%E5%81%9A%E4%B8%80%E9%A2%97%E7%9F%B3%E6%A6%B4%E7%B1%BD&amp;Refer=top">争做一颗石榴籽</a></p>
-<h2>🌐 国际新闻</h2>
-<h3>1. Israel's president tasks oppos</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 国际新闻 热点「Israel's president t」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: high · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://www.bbc.co.uk/news/articles/cmy8367lj5xlo?at_medium=RSS&amp;at_campaign=rss">Israel's president tasks opposition leader Eisenko</a></p>
-<h3>2. Unusually gloomy Kiwis deliver</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 国际新闻 热点「Unusually gloomy Kiw」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://www.bbc.co.uk/news/articles/cxr5yyg2nj9eo?at_medium=RSS&amp;at_campaign=rss">Unusually gloomy Kiwis deliver New Zealand's tight</a></p>
-<h3>3. 🔴 Israeli president picks Neta</h3>
-<p>💡 <strong>为什么值得写：</strong>该话题具有时效性和话题性，目标读者关注度高</p>
-<blockquote>
-<p>基于 国际新闻 热点「🔴 Israeli president 」展开分析</p>
-</blockquote>
-<p><strong>格式</strong>: deep-dive · <strong>优先级</strong>: medium · <strong>阅读时间</strong>: 10min</p>
-<p><strong>关联信号（点击查看原文）</strong>:
-- <a href="https://www.france24.com/en/middle-east/20261107-israeli-president-picks-netanyahu-s-rival-eisenkot-to-try-to-form-government">🔴 Israeli president picks Netanyahu's rival Eisenk</a></p>
-<hr />
-<h2>🔄 与前日对比</h2>
-<h3>🌍 综合早报</h3>
-<p><strong>新增:</strong>
-- ✅ Every Mac comes with an (undoc
-- ✅ The end of Microsoft Research'
-- ✅ What I run on my $10 USD OpenS</p>
-<p><strong>移除:</strong>
-- ❌ Dutch 'idealist' bank ASN bloc
-- ❌ Libghostty 1.0
-- ❌ Tesla to wind down Cybertruck</p>
-<h3>🦄 科技早报</h3>
-<p><strong>新增:</strong>
-- ✅ Every Mac comes with an (undoc
-- ✅ The end of Microsoft Research'
-- ✅ What I run on my $10 USD OpenS</p>
-<p><strong>移除:</strong>
-- ❌ AI is dramatically acceleratin
-- ❌ Blender's UI and Runtime: Much
-- ❌ Gemini Omni 1.2 Flash</p>
-<h3>🧠 AI 深度日报</h3>
-<p><strong>新增:</strong>
-- ✅ DailyDawn · 2026-11-08
-- ✅ nvidia/NVIDIA-Nemotron-3.5-Tra
-- ✅ xtools-at/DeepSeek-V4-Pro-Qwen</p>
-<p><strong>移除:</strong>
-- ❌ GPT Image 2.6
-- ❌ NVIDIA/auto-ontology
-- ❌ Qwen3.8-27B-TURBO</p>
-<h3>📈 财经早报</h3>
-<p><strong>新增:</strong>
-- ✅ 我国新一代光刻机模型亮相
-- ✅ 未来两年“战斗到底”还是“极限谈判”？
-- ✅ 英伟达大劫案！超7600万元AI芯片和硬件离奇失踪</p>
-<p><strong>移除:</strong>
-- ❌ AI泡沫破裂了吗？高盛：当下更像1998年，而非2000年
-- ❌ DeepSeek网页及API部分中断
-- ❌ 景顺长城基金刘彦春半年内三度“减负”，独管产品仅剩一只</p>
-<h3>🍉 吃瓜早报</h3>
-<p><strong>新增:</strong>
-- ✅ 中超
-- ✅ 争做一颗石榴籽
-- ✅ 无偿照看幼童烫伤死亡被索赔116万</p>
-<p><strong>移除:</strong>
-- ❌ 保定一立交桥坍塌砸中车辆
-- ❌ 因为画地为牢被辞退了
-- ❌ 河北保定一在建桥梁垮塌</p>
-<h3>🌐 国际新闻</h3>
-<p><strong>新增:</strong>
-- ✅ Israel's president tasks oppos
-- ✅ Unusually gloomy Kiwis deliver
-- ✅ 🔴 Israeli president picks Neta</p>]]></content:encoded>
-    </item>
-    <item>
-      <title>AI 深度日报 · 2026-11-07</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-07/ai_daily</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-07/ai_daily</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 +0800</pubDate>
-      <description>今日概览 主线 代表信号 类型/规模 推理与优化 NVIDIA/auto-ontology 小模型推理 低代码变现 beacon.sh 独立开发者 本地部署 Qwen3.8-27B-TURBO 大模型本地 安全审计 cloudflare/security-audit-skill 安全工具 金融兼容 sshole GrapheneOS 产业变革 Tesla Cybertruck停产 电动皮卡 一、推理与评测 1. NVIDIA/auto-ontology 来源: DailyDawn | 时间: today 摘要: NVIDIA开源语义图框架auto-ontology推动小模型推理性能提升。 深度洞察: auto-ontology通过预定义Schema剪枝、图邻接矩阵量化存储和查询蒸馏，显著降低小模型推理token开销，提高检索速度。与beacon.sh联动后，小模型上下文占用降低37%。该框架的出现直接打破了传统RAG链路的性能瓶颈，为独立开发者提供性能提升。 2. Qwen3.8-27B-TURBO 来源: HuggingFace Models | 时间: past_72h 摘要: D...</description>
-      <content:encoded><![CDATA[<h2>今日概览</h2>
-<table>
-<thead>
-<tr>
-<th>主线</th>
-<th>代表信号</th>
-<th>类型/规模</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>推理与优化</td>
-<td>NVIDIA/auto-ontology</td>
-<td>小模型推理</td>
-</tr>
-<tr>
-<td>低代码变现</td>
-<td>beacon.sh</td>
-<td>独立开发者</td>
-</tr>
-<tr>
-<td>本地部署</td>
-<td>Qwen3.8-27B-TURBO</td>
-<td>大模型本地</td>
-</tr>
-<tr>
-<td>安全审计</td>
-<td>cloudflare/security-audit-skill</td>
-<td>安全工具</td>
-</tr>
-<tr>
-<td>金融兼容</td>
-<td>sshole</td>
-<td>GrapheneOS</td>
-</tr>
-<tr>
-<td>产业变革</td>
-<td>Tesla Cybertruck停产</td>
-<td>电动皮卡</td>
-</tr>
-</tbody>
-</table>
-<h3>一、推理与评测</h3>
-<h4>1. <a href="https://dailydawn.dev/zh/2026-11-07">NVIDIA/auto-ontology</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: NVIDIA开源语义图框架auto-ontology推动小模型推理性能提升。</li>
-<li><strong>深度洞察</strong>: auto-ontology通过预定义Schema剪枝、图邻接矩阵量化存储和查询蒸馏，显著降低小模型推理token开销，提高检索速度。与beacon.sh联动后，小模型上下文占用降低37%。该框架的出现直接打破了传统RAG链路的性能瓶颈，为独立开发者提供性能提升。</li>
-</ul>
-<h4>2. <a href="https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF">Qwen3.8-27B-TURBO</a></h4>
-<ul>
-<li><strong>来源</strong>: HuggingFace Models | <strong>时间</strong>: past_72h</li>
-<li><strong>摘要</strong>: DavidAU发布的Qwen3.8-27B-TURBO实现推理效率提升。</li>
-<li><strong>深度洞察</strong>: Qwen3.8-27B-TURBO通过量化和训练方法优化，推理速度和质量显著提升，支持消费级硬件运行，使大模型本地部署更加可行。</li>
-</ul>
-<h4>3. <a href="https://aihot.news/items/pqbbgx5sn86iy7v4izf1qv49z">GPT Image 2.6</a></h4>
-<ul>
-<li><strong>来源</strong>: AIHOT | <strong>时间</strong>: past_72h</li>
-<li><strong>摘要</strong>: OpenAI发布GPT Image 2.6，提升图像生成与编辑能力。</li>
-<li><strong>深度洞察</strong>: GPT Image 2.6在生成速度和质量上均有提升，且支持动态GIF和SVG输出，为图像生成领域带来新的可能性。</li>
-</ul>
-<h3>二、Agent与工具</h3>
-<h4>4. <a href="https://dailydawn.dev/zh/2026-11-07">Claude Duet</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: Claude Duet为独立开发者提供协作代理功能。</li>
-<li><strong>深度洞察</strong>: Claude Duet的主动感知能力大幅降低协作类工作耗时，提高效率。结合混合调用大模型方案，可将使用成本压缩到原来的25%。</li>
-</ul>
-<h4>5. <a href="https://dailydawn.dev/zh/2026-11-07">sshole</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: sshole成为独立开发者快速开发的SSH工具。</li>
-<li><strong>深度洞察</strong>: sshole通过零配置、一键直连的特性，解决传统SSH客户端的配置复杂度问题，适用于日常远程运维场景。</li>
-</ul>
-<h4>6. <a href="https://dailydawn.dev/zh/2026-11-07">Discord新架构</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: Discord弃用Electron，优化内存占用。</li>
-<li><strong>深度洞察</strong>: 新架构砍掉Chromium冗余模块，内存占用比Electron版本降低70%。开发者开始迁移应用到新架构，以提升性能。</li>
-</ul>
-<h3>三、模型与多模态</h3>
-<h4>7. <a href="https://aihot.news/items/pqbbgx5sn86iy7v4izf1qv49z">LTX-2.5</a></h4>
-<ul>
-<li><strong>来源</strong>: AIHOT | <strong>时间</strong>: past_72h</li>
-<li><strong>摘要</strong>: LTX-2.5成为开源视频生成模型的代表。</li>
-<li><strong>深度洞察</strong>: LTX-2.5支持多输入生成，且自带diffusion-single-file属性，简化部署。其热度远超其他视频生成模型，显示开发者正在从单图能力转向视频场景落地。</li>
-</ul>
-<h4>8. <a href="https://dailydawn.dev/zh/2026-11-07">DeepSeek-V4.1-Flash</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: DeepSeek-V4.1-Flash实现端侧大模型部署。</li>
-<li><strong>深度洞察</strong>: DeepSeek-V4.1-Flash支持多模态推理，且在消费级设备上表现优异。其推理延迟低于10ms，适用于实时交互场景。</li>
-</ul>
-<h4>9. <a href="https://dailydawn.dev/zh/2026-11-07">Meta SAM3</a></h4>
-<ul>
-<li><strong>来源</strong>: DailyDawn | <strong>时间</strong>: today</li>
-<li><strong>摘要</strong>: Meta发布SAM3，支持视频分割。</li>
-<li><strong>深度洞察</strong>: SAM3通过新增sam3_video标签属性，使视频帧连续分割成为可能，效率比SAM2提升40%。开发者开始基于SAM3构建完整开源工作流。</li>
-</ul>
-<h2>🧭 今日趋势小结</h2>
-<ol>
-<li>小模型推理性能显著提升，NVIDIA/auto-ontology和Qwen3.8-27B-TURBO等工具降低本地推理成本。</li>
-<li>开源工具在独立开发者变现路径中占据重要地位，如beacon.sh、sshole等，提供低门槛的营收方案。</li>
-<li>多模态和视频生成模型成为新热点，LTX-2.5、SAM3等开源模型显示开发者正在转向视频场景的落地。</li>
-<li>独立开发者可利用工具链快速部署和优化模型，如通过ComfyUI和GGUF量化方案实现本地运行。</li>
-</ol>]]></content:encoded>
-    </item>
-    <item>
-      <title>财经早报 · 2026-11-07</title>
-      <link>https://liuyueyi.github.io/ai-aggregator-report/#2026-11-07/finance</link>
-      <guid isPermaLink="true">https://liuyueyi.github.io/ai-aggregator-report/#2026-11-07/finance</guid>
-      <pubDate>Sat, 07 Nov 2026 00:00:00 +0800</pubDate>
-      <description>📈 财经早报 · 2026-11-07 LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。 1. DeepSeek网页及API部分中断 来源: 华尔街见闻 | 时间: 2026-11-07T07:46:30Z 摘要: （无） 2. 景顺长城基金刘彦春半年内三度“减负”，独管产品仅剩一只 来源: 华尔街见闻 | 时间: 2026-11-07T02:31:03Z 摘要: （无） 3. AI泡沫破裂了吗？高盛：当下更像1998年，而非2000年 来源: 华尔街见闻 | 时间: 2026-11-07T08:15:40Z 摘要: 高盛交易台表示，当下这波抛售更像1998年流动性危机，而非2000年泡沫破裂，是杠杆强制出清而非商业逻辑被证伪。市场剧烈重定价的是建设融资与时间节奏，而非底层需求。此外，市场目前最关注的电力与许可问题恰恰是最不重要的一条，供给受限并不等于需求消失。真正需要回答的问题是：收入端能否最终证明所投入资本的合理性。 4. 卡塔尔称美伊谈判取得重大进展！万斯深度介入，斡旋升至美国政府最高层级 来源: 华尔街见闻 | 时间: 2026-11-07...</description>
-      <content:encoded><![CDATA[<h1>📈 财经早报 · 2026-11-07</h1>
-<blockquote>
-<p>LLM 调用失败，输出原始信号，以下为当日 10 条原始信号（未经 AI 深度分析）。</p>
-</blockquote>
-<h4>1. <a href="https://wallstreetcn.com/livenews/3196371">DeepSeek网页及API部分中断</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T07:46:30Z</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>2. <a href="https://wallstreetcn.com/livenews/3196333">景顺长城基金刘彦春半年内三度“减负”，独管产品仅剩一只</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T02:31:03Z</li>
-<li><strong>摘要</strong>: （无）</li>
-</ul>
-<h4>3. <a href="https://wallstreetcn.com/articles/3785440">AI泡沫破裂了吗？高盛：当下更像1998年，而非2000年</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T08:15:40Z</li>
-<li><strong>摘要</strong>: 高盛交易台表示，当下这波抛售更像1998年流动性危机，而非2000年泡沫破裂，是杠杆强制出清而非商业逻辑被证伪。市场剧烈重定价的是建设融资与时间节奏，而非底层需求。此外，市场目前最关注的电力与许可问题恰恰是最不重要的一条，供给受限并不等于需求消失。真正需要回答的问题是：收入端能否最终证明所投入资本的合理性。</li>
-</ul>
-<h4>4. <a href="https://wallstreetcn.com/articles/3785439">卡塔尔称美伊谈判取得重大进展！万斯深度介入，斡旋升至美国政府最高层级</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T07:59:00Z</li>
-<li><strong>摘要</strong>: 美伊谈判出现破冰信号，卡塔尔首相罕见高调表态"相信能达成解决方案"，美国副总统万斯更亲自下场，几乎每日与多国调停方密切沟通。与此同时，特朗普与卡塔尔埃米尔通话，双方讨论了如何缓和地区紧张局势、如何推动全面协议以结束危机等议题。</li>
-</ul>
-<h4>5. <a href="https://wallstreetcn.com/articles/3785438">预示反弹？高盛美股恐慌指数已达“极端水平” </a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T07:07:30Z</li>
-<li><strong>摘要</strong>: 高盛波动率恐慌指数飙至9.57，逼近满分，单日涨幅创历史第三大，两日合计波动更刷新历史纪录。历史数据显示，该指数15次突破9.5阈值后，标普500三个月平均涨4.6%，胜率80%。但高盛交易员警告：被迫平仓尚未出清，市场仍在寻底，但另一侧的机会已越来越难以忽视。</li>
-</ul>
-<h4>6. <a href="https://wallstreetcn.com/articles/3785437">美股科技股经历“过山车”，但斌：AI时代落幕概率极小，回笼资金继续加仓</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T06:11:13Z</li>
-<li><strong>摘要</strong>: 美股科技股本周遭遇"史诗级"暴跌，东方港湾但斌逆势出手——触发高位卖出策略后，回笼资金火速加仓SpaceX。与此同时，其旗下产品宏远2期净值跌至0.6282元，重仓AI产业链的押注承压。但斌坚称AI时代远未落幕，管理规模90%仍坚守全球投资布局。</li>
-</ul>
-<h4>7. <a href="https://wallstreetcn.com/articles/3785436">卢拉连任，巴西计划出台关键矿产监管新规定，英媒：美试图快速获得巴西稀土计划可能遇阻</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T06:05:14Z</li>
-<li><strong>摘要</strong>: 巴西总统卢拉主持新成立的关键矿产委员会CIMCE首次会议，宣布将27种矿产纳入监管，并把稀土列为"高度优先"，明确拒绝充当原材料出口国，转而推动本土加工增值。这一举措被指将阻碍美国快速获取巴西稀土资源的图谋，而巴西官员则公开将中国30年产业升级经验奉为学习范本。</li>
-</ul>
-<h4>8. <a href="https://wallstreetcn.com/articles/3785435">中选只不过是最后一根稻草？市场终于正视AI“循环融资”的雷</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T06:05:05Z</li>
-<li><strong>摘要</strong>: 摩根大通交易主管指出，AI交易早已摇摇欲坠，中期选举或只是“压倒骆驼的最后一根稻草"，与此同时，长期被市场忽视的AI循环融资风险正重新浮出水面：超大规模云计算企业越来越依赖外部融资支撑扩张，资金沿着芯片、光通信、存储和数据中心等产业链传导。一旦融资环境收紧或市场信心逆转，这套相互支撑的增长循环也可能迅速反转。</li>
-</ul>
-<h4>9. <a href="https://wallstreetcn.com/articles/3785434">AI基建融资新裂痕！一批数据中心贷款被打包甩卖，星际之门项目也在其中</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T05:22:56Z</li>
-<li><strong>摘要</strong>: 荷兰国际集团ING正寻求一次性抛售约5亿美元数据中心贷款组合，其中包括与OpenAI、软银、甲骨文联合推进的"星际之门"AI旗舰项目相关融资。更令市场警觉的是，甲骨文已向该项目新墨西哥州开发商发出不可抗力通知，暗示核心参与方正为退出预留法律空间。叠加美国大选后科技股重挫、标普500蒸发逾3万亿美元的双重压力，此次抛售或成本轮AI基建融资泡沫的最新裂缝。</li>
-</ul>
-<h4>10. <a href="https://wallstreetcn.com/articles/3785433">英伟达“催单”，台积电也要造存储芯片了！</a></h4>
-<ul>
-<li><strong>来源</strong>: 华尔街见闻 | <strong>时间</strong>: 2026-11-07T04:52:12Z</li>
-<li><strong>摘要</strong>: 台积电正应英伟达要求，评估进军先进存储芯片领域，3D DRAM成为潜在切入点。若计划落地，台积电将从逻辑芯片代工延伸至存储领域，进一步强化AI供应链话语权。</li>
-</ul>]]></content:encoded>
     </item>
   </channel>
 </rss>
